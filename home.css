@@ -1,45 +1,140 @@
+/* Inclusive and Consistent Styling */
+
+/* Define custom properties (CSS variables) for consistent theming */
+:root {
+    --bg-color: #e0f7f9; /* Light teal background */
+    --primary-text: #003344; /* Deep teal for main text */
+    --accent-color: #007b8a; /* Accent color for links */
+    --hover-color: #00a8b5; /* Hover color for links/buttons */
+    --font-heading: 'Orbitron', 'Bank Gothic', sans-serif; /* Fonts for titles */
+    --font-body: 'Bookman Old Style', Georgia, serif; /* Fonts for general text */
+}
+
+/* Apply box-sizing globally to include padding and border in width/height calculations */
+* {
+    box-sizing: border-box;
+}
+
+/* Body */
+
 body {
-    background-color: #e0f7f9;
-    background-size: 100vw 100vh;
+    background-color: var(--bg-color);
+    color: var(--primary-text);
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
-    font-family: 'Bookman Old Style', Georgia, serif;
+    line-height: 1.6; /* Improves readability */
 }
 
-h1, h3 {
-    font-family: 'Orbitron', 'Bank Gothic', sans-serif;
-    color: #003344;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
+/* Main heading style */
 h1 {
     text-align: center;
-    font-size: 40px;
-    margin-top: 40px;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin: 40px 20px 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Soft shadow for pop */
 }
 
+/* Subheadings (nav text, etc.) */
 h3 {
-    font-size: 25px;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
     margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
+
+/* Navigation Bar */
 
 .TopBar {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allows nav items to wrap on smaller screens */
     justify-content: center;
-    gap: 50px;
-    padding: 25px;
-    background-color: rgba(0, 51, 68, 0.1);
+    gap: 30px;
+    padding: 20px;
+    background-color: rgba(0, 51, 68, 0.1); /* Subtle background tint */
     border-bottom: 1px solid #ccc;
 }
 
+/* Nav links */
 .TopBar a {
     text-decoration: none;
-    padding: 10px 20px;
-    transition: all 0.3s ease;
+    color: var(--primary-text);
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth hover effect */
 }
 
-.TopBar a:hover h3 {
-    color: #007b8a;
-    transform: scale(1.1);
+/* Hover and keyboard focus styling for nav links */
+.TopBar a:focus,
+.TopBar a:hover {
+    color: var(--hover-color);
+    background-color: rgba(0, 123, 138, 0.1);
+    outline: none;
 }
+
+/* Link Styling */
+
+a {
+    color: var(--accent-color);
+}
+
+/* Accessibility: show dashed outline when keyboard users tab to a link */
+a:focus {
+    outline: 2px dashed var(--accent-color);
+    outline-offset: 4px;
+}
+
+/* Layout */
+
+/* Content wrapper */
+main {
+    padding: 20px;
+    max-width: 960px;
+    margin: auto;
+}
+
+/* List styling */
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+/* Paragraph styling */
+p {
+    font-size: 1.1rem;
+    margin: 1em 0;
+}
+
+/* Mobile Devices */
+
+@media (max-width: 768px) {
+    /* Scale down headings for smaller screens */
+    h1 {
+        font-size: 2rem;
+    }
+
+    /* Stack nav links vertically on phones */
+    .TopBar {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .TopBar h3 {
+        font-size: 1.2rem;
+    }
+
+    body {
+        padding: 10px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+/* Credit/Authorship */

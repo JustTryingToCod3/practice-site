@@ -3,7 +3,7 @@ Project Portfolio
 
 Hello World, I am just here to code. I am a computer sceince student with an interest in exploring and learning as much as I can.  
 
-I created this website because I wanted to learn as I went. I plan to start by adding the projects I have already done, and then building on that with new projects and fun styling. This portfolio websire in and of itself is a project. Rather than trying to study and complete multiple things at once and then trying to consolidate them all in the future, I decided to learn by doing, and do it all in one go. 
+I created this website because I wanted to learn as I went. I plan to start by adding the projects I have already done, and then building on that with new projects and fun styling. This portfolio website in and of itself is just a project. Rather than trying to study and complete multiple things at once and then trying to consolidate them all in the future, I decided to just learn by doing, and just put some of the projects here. 
 
 Hopefully in the future, I can add my art, animations, short stories, podcasts, learning courses, and fun little games. But for now, I am taking small steps.  
 

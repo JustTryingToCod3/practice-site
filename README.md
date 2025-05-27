@@ -17,9 +17,12 @@ AI-assisted tools were used for code editing and to meet accessibility standards
 All other sources used will be listed below
   College Courses
   https://www.w3schools.com/
+  
   https://stackoverflow.com/questions
+  
   https://linuxjourney.com/
+  
   https://getbootstrap.com/docs/5.3/getting-started/introduction/
   
-  
+
 

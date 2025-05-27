@@ -1,18 +1,18 @@
-# portfolio-website
+# projects-and-practice
 Project Portfolio
 
-Hello World, I am just here to code. I am a computer sceince student with an interest in exploring and learning as much as I can.  
+Hello World, I am just here to code. I made this website just to teach myself and have fun with projects. There is so much to learn so this website will just keep getting updated as I go. Perhaps I will make more advaned ones in the future.
 
-I created this website because I wanted to learn as I went. I plan to start by adding the projects I have already done, and then building on that with new projects and fun styling. This portfolio website in and of itself is just a project. Rather than trying to study and complete multiple things at once and then trying to consolidate them all in the future, I decided to just learn by doing, and just put some of the projects here. 
+Hope you enjoy! 
 
-Hopefully in the future, I can add my art, animations, short stories, podcasts, learning courses, and fun little games. But for now, I am taking small steps.  
+
 
 
 
 ### Credits and sources
 
 Logic, design, and creative direction by **Hannah Brown**   
-AI-assisted tools were used for code editing and to meet accessibility standards
+AI-assisted tools were also used for code editing and to meet accessibility standards
 
 **All other sources used will be listed below**
 

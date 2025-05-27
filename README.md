@@ -14,7 +14,7 @@ Hopefully in the future, I can add my art, animations, short stories, podcasts, 
 Logic, design, and creative direction by **Hannah Brown**   
 AI-assisted tools were used for code editing and to meet accessibility standards
 
-All other sources used will be listed below
+**All other sources used will be listed below**
 
   College Courses
   

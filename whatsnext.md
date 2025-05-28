@@ -6,7 +6,7 @@ Project Website:
   
 **Practice Test**
 
-  Showcase a practice test the user can interact with
+  A practice test that will be updated as we go with the programming concepts we learn
   
   Do the logic first, then the graphics later
   

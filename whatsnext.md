@@ -22,3 +22,6 @@ Project Website:
 
 **Wallet Class Assignment**
 
+
+Random idea: It would be fun to make a tarot deck
+

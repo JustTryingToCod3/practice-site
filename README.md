@@ -28,3 +28,5 @@ Hope you enjoy!
   https://stackoverflow.com/questions/65240884/what-is-the-shorcut-key-to-open-emoji-picker-on-vs-code-on-windows
 
   https://www.geeksforgeeks.org/variables-programming/
+
+  https://www.geeksforgeeks.org/what-is-constructor/

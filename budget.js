@@ -50,7 +50,10 @@ for num in [1, 2, 3, 4]:
 
 print(total) */
 
-   /*Python init is a constructor was used to "Initialize objects of a class" (Source: GeeksforGeeks)
+   /*
+   Personal Notes Written for my Reference: 
+   
+   Python init is a constructor was used to "Initialize objects of a class" (Source: GeeksforGeeks)
    This Python function can be translated to the JS constructor named "constructor" 
    Constructor: "Used to initialize objects of a class" and is "Called every time an object of said class is created" and allows the "obvject to set initial values for its attributes or perform 
    other setup tasks" (Source: GeeksForGeeks) 

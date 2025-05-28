@@ -30,9 +30,9 @@ function WiseBalls() {
     //Allows the code to still run smoothly if the size of the list is changed
     
     if(input !== ""){
-        document.getElementById('outputDiv').innerHTML = response; //If there is input output the response
+        document.getElementById('outputDiv').innerHTML = response; //If there is input display the response
     } else{
-        document.getElementById('outputDiv').innerHTML = error; //else throw an error
+        document.getElementById('outputDiv').innerHTML = error; //Else throw an error
     }
 }
 //This was just transferred over from my previous web development assignment with a few edits

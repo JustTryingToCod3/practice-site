@@ -23,7 +23,14 @@ function WiseBalls() {
         'I Read your horoscope... It is best for you not to know... 🫢',
         'Yeah, absolutely 🤥',
     ];
+
+    var error = "Please enter a question ❓";
+    
     var response = responses[Math.floor(Math.random() * responses.length)];
-    document.getElementById('outputDiv').innerHTML = response;
+    if(document.getElementById("questionBox").value !== ""){
+        document.getElementById('outputDiv').innerHTML = response;
+    } else{
+        document.getElementById('outputDiv').innerHTML = error;
+    }
 }
 //This was just transferred over from my previous web development assignment with a few edits

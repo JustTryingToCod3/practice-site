@@ -9,7 +9,7 @@ Hope you enjoy!
 
 
 
-### Credits and sources
+### Resources
 
   College Courses
 
@@ -32,3 +32,19 @@ Hope you enjoy!
   https://www.geeksforgeeks.org/what-is-constructor/
 
   https://htmlcheatsheet.com/
+
+  https://www.pythoncheatsheet.org/
+
+  https://www.javascriptcheatsheet.org/
+
+  https://introcs.cs.princeton.edu/java/11cheatsheet/
+
+  https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html 
+
+  https://docs.oracle.com/en/database/
+
+  https://docs.oracle.com/en/java/javase/21/docs/api/index.html
+
+  Note to self: Change the number here >>>se/21/do<<< in the link above to customize libraries to your SE and JDK
+
+  https://docs.oracle.com/cd/E17952_01/mysql-9.3-en/index.html - Future Reference SQL

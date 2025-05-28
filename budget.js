@@ -1,20 +1,23 @@
 // Creating a budget class using my python budget 
-//Translating the Python code to JavaScript code using W3Schools
+//Translating the Python code to JavaScript code and learning as I go
 
 // The JavaScript Code:
-class Budget { 
-  constructor(self, name, amount, rent, lights, car, phone, discretionary, needs, laundry, family) {
-      this.self = self;
+class Budget {
+  // In Python, 'self' is used to refer to the instance, 
+  // but in JavaScript, the instance is automatically handled using 'this'
+  constructor(name, amount, rent, lights, car, phone, discretionary, needs, laundry, family) {
       this.name = name;
       this.amount = amount;
       this.rent = rent;
       this.lights = lights;
       this.car = car;
       this.phone = phone;
-      this.discretionary = discredionary; 
+      this.discretionary = discretionary; 
       this.needs = needs;
       this.laundry = laundry;
       this.family = family;
+  }
+  calcBill() {
   }
 }
 // Creating a budget class using my python budget 

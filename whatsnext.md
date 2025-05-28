@@ -23,5 +23,5 @@ Project Website:
 **Wallet Class Assignment**
 
 
-Random idea: It would be fun to make a tarot deck
+Random idea: It would be fun to make a tarot deck. I could function like m8ball.js but with classes and objects representing a deck 
 

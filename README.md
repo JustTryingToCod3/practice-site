@@ -19,8 +19,6 @@ Hope you enjoy!
   
   https://stackoverflow.com/questions
   
-  https://linuxjourney.com/ - Saved for future reference 
-  
   https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
   https://ihatetomatoes.net/vscode-tips-select-everything-between-brackets-quotes/
@@ -31,11 +29,19 @@ Hope you enjoy!
 
   https://www.geeksforgeeks.org/what-is-constructor/
 
+  **HTML**
+
   https://htmlcheatsheet.com/
+
+  **Python**
 
   https://www.pythoncheatsheet.org/
 
+  **JavaScript**
+
   https://www.javascriptcheatsheet.org/
+
+  **Java** 
 
   https://introcs.cs.princeton.edu/java/11cheatsheet/
 
@@ -47,4 +53,8 @@ Hope you enjoy!
 
   Note to self: Change the number here >>>se/21/do<<< in the link above to customize libraries to your SE and JDK
 
+  **Future Reference** 
+
   https://docs.oracle.com/cd/E17952_01/mysql-9.3-en/index.html - Future Reference SQL
+
+  https://linuxjourney.com/ - Saved for future reference 

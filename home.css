@@ -7,7 +7,7 @@
     --accent-color: #007b8a; /* Accent color for links */
     --hover-color: #00a8b5; /* Hover color for links/buttons */
     --font-heading: 'Orbitron', 'Bank Gothic', sans-serif; /* Fonts for titles */
-    --font-body: 'Bookman Old Style', Georgia, serif; /* Fonts for general text */
+    --font-body: 'Orbitron', 'Bank Gothic', sans-serif; /* Fonts for general text */
 }
 
 /* Apply box-sizing globally to include padding and border in width/height calculations */

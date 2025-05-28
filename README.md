@@ -1,9 +1,9 @@
 # projects-and-practice
 Project Portfolio
 
-Hello World, I am just here to code. I made this website just to teach myself and have fun with projects. There is so much to learn so this website will just keep getting updated as I go. Perhaps I will make more advaned ones in the future. Some of the projects I have done were in other programming languages like Python or Java, but I decided to translate the logic to JavaScript. 
+Hello World, 👋 I am just here to learn to code. I made this website just to teach myself and just have fun with projects. There is so much to learn so this website is just getting started. Perhaps I will make more advaned ones in the future. We'll see... 🤷‍♀️ Some of the projects I have were in other programming languages (Python, Java) but I decided to translate the logic to JavaScript just to learn another language while I build on those two. 😅
 
-Hope you enjoy! 
+Hope you enjoy! 😊
 
 
 

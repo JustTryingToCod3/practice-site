@@ -22,15 +22,20 @@ function WiseBalls() {
         'I am just going to pretend... I dont know the answer we both clearly know 🫣',
         'I Read your horoscope... It is best for you not to know... 🫢',
         'Yeah, absolutely 🤥',
-    ];
+    ]; //all possible answers
 
-    var error = "Please enter a question ❓";
+    var error = "Please enter a question ❓"; //Asks user to enter a question
+    var input = document.getElementById("questionBox").value.trim(); //input variable trimmed to prevent spaces at beginning and end
+    var response = responses[Math.floor(Math.random() * responses.length)]; //ensures we return a random response from the list and 
+    //Allows the code to still run smoothly if the size of the list is changed
     
-    var response = responses[Math.floor(Math.random() * responses.length)];
-    if(document.getElementById("questionBox").value !== ""){
-        document.getElementById('outputDiv').innerHTML = response;
+    if(input !== ""){
+        document.getElementById('outputDiv').innerHTML = response; //If there is input output the response
     } else{
-        document.getElementById('outputDiv').innerHTML = error;
+        document.getElementById('outputDiv').innerHTML = error; //else throw an error
     }
 }
 //This was just transferred over from my previous web development assignment with a few edits
+/* additions to consider: 
+    Animations
+    Error checking for things like "2903jd0" or "blah blah" */

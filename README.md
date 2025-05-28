@@ -11,12 +11,9 @@ Hope you enjoy!
 
 ### Credits and sources
 
-Logic, design, and creative direction by **Hannah Brown**   
-AI-assisted tools were also used for code editing and to meet accessibility standards
-
-**All other sources used will be listed below**
-
   College Courses
+
+  AI Assisted Tools
   
   https://www.w3schools.com/
   
@@ -25,6 +22,5 @@ AI-assisted tools were also used for code editing and to meet accessibility stan
   https://linuxjourney.com/
   
   https://getbootstrap.com/docs/5.3/getting-started/introduction/
-  
 
-
+  https://ihatetomatoes.net/vscode-tips-select-everything-between-brackets-quotes/

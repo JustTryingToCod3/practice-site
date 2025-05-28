@@ -24,3 +24,5 @@ Hope you enjoy!
   https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
   https://ihatetomatoes.net/vscode-tips-select-everything-between-brackets-quotes/
+
+  https://stackoverflow.com/questions/65240884/what-is-the-shorcut-key-to-open-emoji-picker-on-vs-code-on-windows

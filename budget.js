@@ -17,9 +17,33 @@ class Budget {
       this.laundry = laundry;
       this.family = family;
   }
-  calcBill() {
-  }
+  //Calculate the bill 
+    calcBill() {
+      return this.amount - (
+        this.rent + this.lights + this.car +
+        this.phone + this.discretionary +
+        this.needs + this.laundry + this.family 
+      );
+    }
 }
+//Calculate all of the inputs 
+  function calculateBudget() {
+    const name = document.getElementById("name").value;
+    const amount = Number(document.getElementById("amount").value);
+    const rent = Number(document.getElementById("rent").value);
+    const lights = Number(document.getElementById("lights").value);
+    const car = Number(document.getElementById("car").value);
+    const phone = Number(document.getElementById("phone").value);
+    const discretionary = Number(document.getElementById("discretionary").value);
+    const needs = Number(document.getElementById("needs").value);
+    const laundry = Number(document.getElementById("laundry").value);
+    const family = Number(document.getElementById("family").value);
+//Create an object of the class 
+    const myBudget = new Budget(name, amount, rent, lights, car, phone, discretionary, needs, laundry, family);
+    const result = myBudget.calcBill();
+//Return the result properly formatted to the page 
+    document.getElementById("result").innerText = `${name}, you have $${result.toFixed(2)} left after bills.`;
+  }
 // Creating a budget class using my python budget 
 //Translating the Python code to JavaScript code using W3Schools
 
@@ -82,3 +106,5 @@ print(total) */
                 Applies its attributes ✨🚙
                 And performs the function it was built for (Honk, stop, take the family on vacation) 
         */ 
+
+

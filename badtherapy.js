@@ -19,6 +19,7 @@ function BadTherapy () {
   var holy; //There is no reason to pretend you are a person af virture
   var dis; // Everyone already knows you are an imposter. They are just waiting for you to admit you're incompetent, but we both know that you never will
   var brkn; // You are a disappointment to anyone who tries to love you. Dist yourself off. You're the only one who can.
+
   
   
 }

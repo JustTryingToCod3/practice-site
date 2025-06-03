@@ -25,3 +25,13 @@ function BadTherapy(score) {
   const match = messages.find(msg => score >= msg.min && score <= msg.max);
   return match ? match.text : "You are beyond help.";
 }
+document.getElementById("personality-quiz").addEventListener("submit", function(e) {
+  e.preventDefault(); // prevent page reload
+  let total = 0;
+  for (let i = 1; i <= 20; i++) {
+    const val = parseInt(document.getElementById("ques" + i).value);
+    if (!isNaN(val)) total += val;
+  }
+  const result = BadTherapy(total);
+  document.getElementById("therapy-output").innerText = `💬 Result: ${result}`;
+});

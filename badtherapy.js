@@ -9,13 +9,13 @@ function BadTherapy(score) {
     { min: 25, max: 28, text: "Diagnosis: Cooked \nAdvice: There is nothing anyone can do to help you. You are absolutely mentally fucked." },
     { min: 29, max: 32, text: "Diagnosis: Irrelevant \nAdvice: You can't cope with how irrelevant you are and you never will. You are only good enough to be a disappointment." },
     { min: 33, max: 36, text: "Diagnosis: Self-proclaimed Altruist. \nAdvice: You love to be the hero, but you'd rather pretend to be the victim than accept when you're the villain. It's alright, everyone lies to themselves."},
-    { min: 37, max: 40, text: "Diagnosis: Sad \nAdvice: Happiness is chasing you, but you are fast." },
+    { min: 37, max: 40, text: "Diagnosis: Masochist \nAdvice: You tell people you love working hard, but you really just enjoy the hard part of it. Never take a break, you're better than that." },
     { min: 41, max: 44, text: "Diagnosis: Codependent \nAdvice You enable bad behavior because want to see people destroy themselves so you can save them. There is no saving you, you sadist." },
-    { min: 45, max: 48, text: "Diagnosis: Not what I asked for \nAdvice: If there was a refund policy on relationships, you'd be a frequently returned item. Glow up, make them regret it. We all know you can't love yourself." },
+    { min: 45, max: 48, text: "Diagnosis: Broke \nAdvice: Why even Try? You will never escape the broke mentality." },
     { min: 49, max: 52, text: "Diagnosis: Mean \nAdvice: You secretly enjoy the pain of others. Stop pretending to be sad and just laugh in their face already." },
     { min: 53, max: 56, text: "Diagnosis: Shame \nAdvice: I know your kinks are rare, but there's nothing to be ashamed of..." },
-    { min: 57, max: 60, text: "Diagnosis: Masochist \nAdvice: You tell people you love working hard, but you really just enjoy the hard part of it. Never take a break, you're better than that." },
-    { min: 61, max: 64, text: "Diagnosis: Broke \nAdvice: Why even Try? You will never escape the broke mentality." },
+    { min: 57, max: 60, text: "Diagnosis: Sad \nAdvice: Happiness is chasing you, but you are fast."},
+    { min: 61, max: 64, text: "Diagnosis: Not what I asked for \nAdvice: If there was a refund policy on relationships, you'd be a frequently returned item." },
     { min: 65, max: 68, text: "Diagnosis: What's the point? \nAdvice: I know you secretly want someone to save you. Grow up or give up." },
     { min: 69, max: 72, text: "Diagnosis: Holy Liar \nAdvice: There is no reason to pretend you are a person of virtue. Everyone knows the truth of what you did. Go ahead, keep pretending." },
     { min: 73, max: 76, text: "Diagnosis: Reject \nAdvice: People talk to you because they feel bad. Just never talk to anyone ever again." },
@@ -24,9 +24,8 @@ function BadTherapy(score) {
     { min: 85, max: 88, text: "Diagnosis: Defensive \nAdvice: You lie to others, lie to yourself, and even your heart lies to you. You can deny that if you want." },
     { min: 89, max: 92, text: "Diagnosis: Ticking Time Bomb \nAdvice: Everyone walks on eggshells around you. Just crash out already so they know what to expect." },
     { min: 93, max: 96, text: "Diagnosis: Glass human \nAdvice: Unfortunately you are so transparent, others can see more of you than you can see of yourself. Marry someone oblivious." },
-    { min: 97, max: 100, text: "Diagnosis: Try-hard \nAdvice: You care too much. Stop fucking around and get a personality." }
+    { min: 97, max: 100, text: "Diagnosis: Try-hard \nAdvice: You care too much. Stop fucking around and get a personality." } 
   ]; 
-
 
   // Arrow function used inside `.find()` to locate the first object where
   // the score is between the `min` and `max` values (inclusive).

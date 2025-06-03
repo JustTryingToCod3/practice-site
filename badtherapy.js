@@ -81,7 +81,4 @@ document.getElementById("persquiz").addEventListener("submit", function(x) {
 
 });
 
-document.getElementById("persquiz").addEventListener("reset", function(reset) {
-      document.getElementById("persquiz").reset(); // Reset the form after processing
-}
 

@@ -23,5 +23,5 @@ function BadTherapy(score) {
   ];
 
   const match = messages.find(msg => score >= msg.min && score <= msg.max);
-  return match ? match.text : "Score out of range. You're an enigma.";
+  return match ? match.text : "You are beyond help.";
 }

@@ -1,5 +1,9 @@
 function BadTherapy(score) {
-  // A string of messages to be returned as the result if it is between a specific range
+    // An array of objects, each representing a score range and its corresponding message.
+  // Each object has:
+  //  `min`: the lowest score for that message
+  //  `max`: the highest score for that message
+  //  `text`: the message to return if the score falls within that range
   const messages = [
     { min: 20, max: 24, text: "You just like to fuck around and find out." },
     { min: 25, max: 28, text: "You are a disappointment to anyone who tries to love you. Dust yourself off. You're the only one who can." },
@@ -23,7 +27,21 @@ function BadTherapy(score) {
     { min: 97, max: 100, text: "Stop fucking around and get a personality." }
   ];  
 
+
+  // Arrow function used inside `.find()` to locate the first object where
+  // the score is between the `min` and `max` values (inclusive).
+  // Equivalent to:
+  // function(msg) {
+  //   return score >= msg.min && score <= msg.max;
+  // }
   const match = messages.find(msg => score >= msg.min && score <= msg.max);
+
+  // The line below uses the ternary operator ( ? : )
+  // Syntax: condition ? valueIfTrue : valueIfFalse
+  // In this case:
+  // - If `match` is found (truthy), return `match.text`
+  // - If not, return "You are beyond help."
+  //Shorthand if statement
   return match ? match.text : "You are beyond help.";
 }
 document.getElementById("personality-quiz").addEventListener("submit", function(e) {

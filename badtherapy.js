@@ -5,9 +5,9 @@ function BadTherapy(score) {
   //  `max`: the highest score for that message
   //  `text`: the message to return if the score falls within that range
   const messages = [
-    { min: 20, max: 24, text: "You just like to fuck around and find out." },
-    { min: 25, max: 28, text: "You are a disappointment to anyone who tries to love you. Dust yourself off. You're the only one who can." },
-    { min: 29, max: 32, text: "You aren't an introvert. You just say that when you don't like the person you're talking to." },
+    { min: 20, max: 24, text: `Diagnosis: You just like to fuck around and find out. \nAdvice: Do it.` },
+    { min: 25, max: 28, text: `Diagnosis: You are a disappointment to anyone who tries to love you. \nAdvice: Dust yourself off. You're the only one who can.` },
+    { min: 29, max: 32, text: "Diagnosis: Unassuming; negligible. \nAdvice: Say everything on your mind at all times. And I mean everything." },
     { min: 33, max: 36, text: "You can't cope with how irrelevant you are. You are only good enough to be a disappointment." },
     { min: 37, max: 40, text: "Happiness is chasing you, but you are fast." },
     { min: 41, max: 44, text: "You don't enable other people's bad behavior because you're kind. You want to see them destroy themselves so you can save them." },

@@ -78,7 +78,10 @@ document.getElementById("persquiz").addEventListener("submit", function(x) {
 
   // Display the result on the page
   document.getElementById("therapy-output").innerText = result;
+
 });
 
-document.getElementById("persquiz").reset();
+document.getElementById("persquiz").addEventListener("reset", function(reset) {
+      document.getElementById("persquiz").reset(); // Reset the form after processing
+}
 

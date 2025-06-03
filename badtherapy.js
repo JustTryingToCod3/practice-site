@@ -5,12 +5,12 @@ function BadTherapy(score) {
   //  `max`: the highest score for that message
   //  `text`: the message to return if the score falls within that range
   const messages = [
-    { min: 20, max: 24, text: `Diagnosis: You just like to fuck around and find out. \nAdvice: Do it.` },
-    { min: 25, max: 28, text: `Diagnosis: You are a disappointment to anyone who tries to love you. \nAdvice: Dust yourself off. You're the only one who can.` },
-    { min: 29, max: 32, text: "Diagnosis: Unassuming; negligible. \nAdvice: Say everything on your mind at all times. And I mean everything." },
-    { min: 33, max: 36, text: "You can't cope with how irrelevant you are. You are only good enough to be a disappointment." },
-    { min: 37, max: 40, text: "Happiness is chasing you, but you are fast." },
-    { min: 41, max: 44, text: "You don't enable other people's bad behavior because you're kind. You want to see them destroy themselves so you can save them." },
+    { min: 20, max: 24, text: `Diagnosis: Unassuming; negligible. \nAdvice: Even your responses were predictable. Go ahead... Try again... I dare you...` },
+    { min: 25, max: 28, text: "Diagnosis: Cooked \nAdvice: There is nothing anyone can do to help you. You are absolutely mentally fucked." },
+    { min: 29, max: 32, text: "Diagnosis: Irrelevant \nAdvice: You can't cope with how irrelevant you are and you never will. You are only good enough to be a disappointment." },
+    { min: 33, max: 36, text: `Diagnosis: Not what I asked for \nAdvice: If there was a refund policy on relationships, you'd be a frequently returned item.` },
+    { min: 37, max: 40, text: "Diagnosis: Sad \nAdvice: Happiness is chasing you, but you are fast." },
+    { min: 41, max: 44, text: "Diagnosis: Codependent \nAdvice You enable because want to see people destroy themselves so you can save them. There is no saving you" },
     { min: 45, max: 48, text: "You love to be the hero, but you'd rather pretend to be the victim than accept when you're the villain."  },
     { min: 49, max: 52, text: "You secretly enjoy the pain of others. Stop pretending to be sad and just laugh in their face already." },
     { min: 53, max: 56, text: "I know your kinks are rare, but there's nothing to be ashamed of..." },
@@ -25,7 +25,7 @@ function BadTherapy(score) {
     { min: 89, max: 92, text: "Everyone walks on eggshells around you. You're a ticking time bomb." },
     { min: 93, max: 96, text: "Unfortunately you are so transparent, others can see more of you than you can see of yourself." },
     { min: 97, max: 100, text: "Stop fucking around and get a personality." }
-  ];  
+  ]; 
 
 
   // Arrow function used inside `.find()` to locate the first object where

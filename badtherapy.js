@@ -1,6 +1,7 @@
 function BadTherapy(score) {
+  // A string of messages to be returned as the result if it is between a specific range
   const messages = [
-    { min: 20, max: 24, text: "You will never reach an orgasm." },
+    { min: 20, max: 24, text: "You just like to fuck around and find out." },
     { min: 25, max: 28, text: "You are a disappointment to anyone who tries to love you. Dust yourself off. You're the only one who can." },
     { min: 29, max: 32, text: "You aren't an introvert. You just say that when you don't like the person you're talking to." },
     { min: 33, max: 36, text: "You can't cope with how irrelevant you are. You are only good enough to be a disappointment." },

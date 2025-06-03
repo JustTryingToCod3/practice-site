@@ -81,9 +81,5 @@ document.getElementById("persquiz").addEventListener("submit", function(x) {
 
 });
 
-document.getElementById("reset").addEventListener("click", function() {
-  document.getElementById("therapy-output").innerText = "";
-});
-
 
 

@@ -44,6 +44,7 @@ function BadTherapy(score) {
   //Shorthand if statement
   return match ? match.text : "You are beyond help.";
 }
+
   const result = BadTherapy(total);
   document.getElementById("therapy-output").innerText = `${result}`;
 });

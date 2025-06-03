@@ -5,26 +5,26 @@ function BadTherapy(score) {
   //  `max`: the highest score for that message
   //  `text`: the message to return if the score falls within that range
   const messages = [
-    { min: 20, max: 24, text: `Diagnosis: Unassuming; negligible. \nAdvice: Even your responses were predictable. Go ahead... Try again... I dare you...` },
+    { min: 20, max: 24, text: "Diagnosis: Unassuming; negligible. \nAdvice: Even your responses were predictable. Go ahead... Try again... I dare you..." },
     { min: 25, max: 28, text: "Diagnosis: Cooked \nAdvice: There is nothing anyone can do to help you. You are absolutely mentally fucked." },
     { min: 29, max: 32, text: "Diagnosis: Irrelevant \nAdvice: You can't cope with how irrelevant you are and you never will. You are only good enough to be a disappointment." },
     { min: 33, max: 36, text: "Diagnosis: Self-proclaimed Altruist. \nAdvice: You love to be the hero, but you'd rather pretend to be the victim than accept when you're the villain. It's alright, everyone lies to themselves."},
     { min: 37, max: 40, text: "Diagnosis: Sad \nAdvice: Happiness is chasing you, but you are fast." },
     { min: 41, max: 44, text: "Diagnosis: Codependent \nAdvice You enable bad behavior because want to see people destroy themselves so you can save them. There is no saving you, you sadist." },
-    { min: 45, max: 48, text: `Diagnosis: Not what I asked for \nAdvice: If there was a refund policy on relationships, you'd be a frequently returned item. Glow up, make them regret it. We all know you can't love yourself.` },
+    { min: 45, max: 48, text: "Diagnosis: Not what I asked for \nAdvice: If there was a refund policy on relationships, you'd be a frequently returned item. Glow up, make them regret it. We all know you can't love yourself." },
     { min: 49, max: 52, text: "Diagnosis: Mean \nAdvice: You secretly enjoy the pain of others. Stop pretending to be sad and just laugh in their face already." },
     { min: 53, max: 56, text: "Diagnosis: Shame \nAdvice: I know your kinks are rare, but there's nothing to be ashamed of..." },
     { min: 57, max: 60, text: "Diagnosis: Masochist \nAdvice: You tell people you love working hard, but you really just enjoy the hard part of it. Never take a break, you're better than that." },
     { min: 61, max: 64, text: "Diagnosis: Broke \nAdvice: Why even Try? You will never escape the broke mentality." },
     { min: 65, max: 68, text: "Diagnosis: What's the point? \nAdvice: I know you secretly want someone to save you. Grow up or give up." },
     { min: 69, max: 72, text: "Diagnosis: Holy Liar \nAdvice: There is no reason to pretend you are a person of virtue. Everyone knows the truth of what you did. Go ahead, keep pretending." },
-    { min: 73, max: 76, text: "Diagnosis: Reject \nAdvice: No one truly likes you. They just talk to you because they feel bad. Do something re" },
-    { min: 77, max: 80, text: "You will never achieve what you want in life and you already know that." },
-    { min: 81, max: 84, text: "Everyone already knows you are an imposter..." },
-    { min: 85, max: 88, text: "You lie to others, lie to yourself, and even your heart lies to you. Love will never find you." },
-    { min: 89, max: 92, text: "Everyone walks on eggshells around you. You're a ticking time bomb." },
-    { min: 93, max: 96, text: "Unfortunately you are so transparent, others can see more of you than you can see of yourself." },
-    { min: 97, max: 100, text: "Stop fucking around and get a personality." }
+    { min: 73, max: 76, text: "Diagnosis: Reject \nAdvice: People talk to you because they feel bad. Just never talk to anyone ever again." },
+    { min: 77, max: 80, text: "Diagnosis: Underachiever \nAdvice: Give up on your dreams. You will never achieve what you want in life. You already know that." },
+    { min: 81, max: 84, text: "Diagnosis: Overachiever \nAdvice: Everyone already knows you're an imposter. They all just accept that you will continue to pretend like you know what you're doing." },
+    { min: 85, max: 88, text: "Diagnosis: Defensive \nAdvice: You lie to others, lie to yourself, and even your heart lies to you. You can deny that if you want." },
+    { min: 89, max: 92, text: "Diagnosis: Ticking Time Bomb \nAdvice: Everyone walks on eggshells around you. Just crash out already so they know what to expect." },
+    { min: 93, max: 96, text: "Diagnosis: Glass human \nAdvice: Unfortunately you are so transparent, others can see more of you than you can see of yourself. Marry someone oblivious." },
+    { min: 97, max: 100, text: "Diagnosis: Try-hard \nAdvice: You care too much. Stop fucking around and get a personality." }
   ]; 
 
 

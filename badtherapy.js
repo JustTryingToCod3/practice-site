@@ -33,5 +33,5 @@ document.getElementById("personality-quiz").addEventListener("submit", function(
     if (!isNaN(val)) total += val;
   }
   const result = BadTherapy(total);
-  document.getElementById("therapy-output").innerText = `💬 Result: ${result}`;
+  document.getElementById("therapy-output").innerText = `${result}`;
 });

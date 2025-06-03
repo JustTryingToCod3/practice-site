@@ -45,6 +45,40 @@ function BadTherapy(score) {
   return match ? match.text : "You are beyond help.";
 }
 
+document.getElementById("persquiz").addEventListener("submit", function(x) {
+  x.preventDefault(); 
+  // Prevents the default form behavior (page reload) when the submit button is clicked.
+
+  //  Select all <select> dropdown elements inside the form with ID 'persquiz'
+  const scanForm = document.querySelectorAll("#persquiz select");
+  //  document: The entire loaded HTML page in the browser.
+  //  querySelectorAll(): Selects all elements that match the given CSS selector.
+  //  "#persquiz select":
+  //     - "#persquiz": targets the element with id="persquiz"
+  //     - "select": targets all <select> elements inside that form.
+
+  let total = 0; // Initialize total score
+
+  scanForm.forEach(select => { 
+    //  forEach(): Loops through each <select> element in the NodeList.
+    //  `select`: The current <select> dropdown being looped over.
+
+    const selected = select.value;
+    //  select.value: Gets the selected option’s value (as a string).
+    //  const selected: Stores the value of the current dropdown.
+
+    //  Only add value if something was selected (not blank)
+    if (selected !== "") {
+      total += parseInt(selected);
+      //  parseInt(): Converts the selected value (a string like "3") into a number.
+      //  total += ... : Adds the numeric value to the total score.
+    }
+  });
+
+  // Get the result text from BadTherapy based on the total score
   const result = BadTherapy(total);
-  document.getElementById("therapy-output").innerText = `${result}`;
+
+  // Display the result on the page
+  document.getElementById("therapy-output").innerText = result;
 });
+

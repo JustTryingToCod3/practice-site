@@ -144,4 +144,6 @@ p {
     }
 }
 
-/* ChatGPT was used here to help with the styling */
+.center {
+    text-align: center;
+}

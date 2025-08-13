@@ -68,7 +68,8 @@ class Psych {
     oneCard(){}
 }
 
-const test = new Psych();
+const reading = new Psych();
+var test = reading.genRead();
 
 
 

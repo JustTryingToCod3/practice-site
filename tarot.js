@@ -59,7 +59,7 @@ class Psych {
       
     }
     genRead(){
-        return this.response;
+        return document.getElementById('outputDiv').innerHTML = this.response; //returns a random card from the deck 
     }
     spirit(){}
     secure(){}
@@ -68,8 +68,14 @@ class Psych {
     oneCard(){}
 }
 
-const reading = new Psych();
-var test = reading.genRead();
+function TestFunc (){
+    const reading = new Psych();
+    var test = reading.genRead();
+
+    document.getElementById('outputDiv').innerHTML = test;
+    
+}
+
 
 
 

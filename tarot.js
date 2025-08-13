@@ -1,7 +1,5 @@
-class Psych {
-    deck(){
-      this.response = responses[Math.floor(Math.random() * responses.length)]; 
-      this.deck = [
+function tarot {
+    deck = [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',
         '💞 2 of Spiritual Fulfillment - Embracing the unknown',
@@ -57,22 +55,15 @@ class Psych {
           
     ]; //Deck of cards
       
+    var input = document.getElementById("questionBox").value.trim(); //input variable trimmed to prevent spaces at beginning and end
+    var response = responses[Math.floor(Math.random() * responses.length)]; //ensures we return a random response from the list and 
+    //Allows the code to still run smoothly if the size of the list is changed
+    
+    if(input !== ""){
+        document.getElementById('outputDiv').innerHTML = response; //If there is input display the response
+    } else{
+        document.getElementById('outputDiv').innerHTML = error; //Else throw an error
     }
-    genRead(){
-        return document.getElementById('outputDiv').innerHTML = this.response; //returns a random card from the deck 
-    }
-    spirit(){}
-    secure(){}
-    selfsab(){}
-    relation(){}
-    oneCard(){}
-}
-
-function TestFunc (){
-    const reading = new Psych();
-    var test = reading.genRead();
-
-    document.getElementById('outputDiv').innerHTML = test;
     
 }
 

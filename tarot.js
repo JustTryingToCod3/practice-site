@@ -68,17 +68,7 @@ class Psych {
     oneCard(){}
 }
 
+const test = new Psych();
 
-
-    var error = "Please enter a question ❓"; //Asks user to enter a question
-    var input = document.getElementById("questionBox").value.trim(); //input variable trimmed to prevent spaces at beginning and end
-
-    
-    if(input !== ""){
-        document.getElementById('outputDiv').innerHTML = response; //If there is input display the response
-    } else{
-        document.getElementById('outputDiv').innerHTML = error; //Else throw an error
-    }
-}
 
 

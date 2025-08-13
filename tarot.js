@@ -1,4 +1,4 @@
-function tarot {
+function Tarot() {
     deck = [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',
@@ -55,11 +55,11 @@ function tarot {
           
     ]; //Deck of cards
       
-    var input = document.getElementById("questionBox").value.trim(); //input variable trimmed to prevent spaces at beginning and end
+    var geninput = document.getElementById("genbutton").value.trim(); //input variable trimmed to prevent spaces at beginning and end
     var response = responses[Math.floor(Math.random() * responses.length)]; //ensures we return a random response from the list and 
     //Allows the code to still run smoothly if the size of the list is changed
     
-    if(input !== ""){
+    if(geninput){
         document.getElementById('outputDiv').innerHTML = response; //If there is input display the response
     } else{
         document.getElementById('outputDiv').innerHTML = error; //Else throw an error

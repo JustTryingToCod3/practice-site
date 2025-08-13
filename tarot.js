@@ -59,7 +59,7 @@ function Tarot() {
     var response = responses[Math.floor(Math.random() * responses.length)]; //ensures we return a random response from the list and 
     //Allows the code to still run smoothly if the size of the list is changed
     
-    if(geninput){
+    if(geninput == True){
         document.getElementById('outputDiv').innerHTML = response; //If there is input display the response
     } else{
         document.getElementById('outputDiv').innerHTML = error; //Else throw an error

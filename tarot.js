@@ -1,9 +1,9 @@
 //Turning the HTML elements into variables to make them easier to work with 
 const genbutton = document.getElementById('genbutton') // The button variable for general readings 
-const genbutton = document.getElementById('cardOne') //First Card
-const genbutton = document.getElementById('cardTwo') //Second Card
-const genbutton = document.getElementById('cardThree') //Third Card
-const genbutton = document.getElementById('cardFour') //Fourth Card
+const cardOne = document.getElementById('cardOne') //First Card
+const cardTwo = document.getElementById('cardTwo') //Second Card
+const cardThree = document.getElementById('cardThree') //Third Card
+const cardFour = document.getElementById('cardFour') //Fourth Card
 let deck = [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',
@@ -66,7 +66,7 @@ genbutton.addEventListener("click", genCard)
 function genCard() {
     var response = deck[Math.floor(Math.random() * deck.length)]; //ensures we return a random response from the list and 
     //Allows the code to still run smoothly if the size of the list is changed
-    document.getElementById('cardOne').innerHTML = response; // Creates paragraph text to screen
+    cardOne.innerText = response // Creates paragraph text to screen
 
 }
 

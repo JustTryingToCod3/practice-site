@@ -11,6 +11,7 @@ const cardOne = document.getElementById('cardOne') //First Card
 const cardTwo = document.getElementById('cardTwo') //Second Card
 const cardThree = document.getElementById('cardThree') //Third Card
 const cardFour = document.getElementById('cardFour') //Fourth Card
+
 const deck = [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',

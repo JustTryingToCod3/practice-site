@@ -67,10 +67,10 @@ let response = deck[Math.floor(Math.random() * deck.length)]; //ensures we retur
 genbutton.addEventListener("click", genCard)
 
 function genCard() {
-        cardOne.innerText = response // Creates paragraph text to screen
-        cardTwo.innerText = response
-        cardThree.innerText = response
-        cardFour.innerText = response
+        cardOne.innerText = deck[Math.floor(Math.random() * deck.length)]; // Creates paragraph text to screen
+        cardTwo.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardThree.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardFour.innerText = deck[Math.floor(Math.random() * deck.length)];
 }
 
 

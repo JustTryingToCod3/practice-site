@@ -1,5 +1,12 @@
+
+
 //Turning the HTML elements into variables to make them easier to work with 
 const genbutton = document.getElementById('genbutton') // The button variable for general readings 
+const rel = document.getElementById('rel')
+const sec = document.getElementById('genbutton')
+const spi = document.getElementById('spi')
+const sels = document.getElementById('sels')
+
 const cardOne = document.getElementById('cardOne') //First Card
 const cardTwo = document.getElementById('cardTwo') //Second Card
 const cardThree = document.getElementById('cardThree') //Third Card
@@ -64,9 +71,66 @@ let response = deck[Math.floor(Math.random() * deck.length)]; //ensures we retur
     //Allows the code to still run smoothly if the size of the list is changed
 
 
-genbutton.addEventListener("click", genCard)
+genbutton.addEventListener("click", genCard()  {
+        rel.disabled = true;
+        sec.disabled = true;
+        sels.disabled = true;
+        spi.disabled = true;
+    });
+rel.addEventListener("click", relCard() {
+        genbutton.disabled = true;
+        sec.disabled = true;
+        sels.disabled = true;
+        spi.disabled = true;
+    });
+sec.addEventListener("click", secCard() {
+        genbutton.disabled = true;
+        rel.disabled = true;
+        sels.disabled = true;
+        spi.disabled = true;
+    });
+sels.addEventListener("click", selfCard() {
+        genbutton.disabled = true;
+        sec.disabled = true;
+        rel.disabled = true;
+        spi.disabled = true;
+    });
+spi.addEventListener("click", spirCard() {
+        genbutton.disabled = true;
+        sec.disabled = true;
+        sels.disabled = true;
+        rel.disabled = true;
+    });
 
 function genCard() {
+        cardOne.innerText = deck[Math.floor(Math.random() * deck.length)]; // Creates paragraph text to screen
+        cardTwo.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardThree.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardFour.innerText = deck[Math.floor(Math.random() * deck.length)];
+}
+
+function relCard() {
+        cardOne.innerText = deck[Math.floor(Math.random() * deck.length)]; // Creates paragraph text to screen
+        cardTwo.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardThree.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardFour.innerText = deck[Math.floor(Math.random() * deck.length)];
+}
+
+function secCard() {
+        cardOne.innerText = deck[Math.floor(Math.random() * deck.length)]; // Creates paragraph text to screen
+        cardTwo.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardThree.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardFour.innerText = deck[Math.floor(Math.random() * deck.length)];
+}
+
+function selfCard() {
+        cardOne.innerText = deck[Math.floor(Math.random() * deck.length)]; // Creates paragraph text to screen
+        cardTwo.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardThree.innerText = deck[Math.floor(Math.random() * deck.length)];
+        cardFour.innerText = deck[Math.floor(Math.random() * deck.length)];
+}
+
+function spirCard() {
         cardOne.innerText = deck[Math.floor(Math.random() * deck.length)]; // Creates paragraph text to screen
         cardTwo.innerText = deck[Math.floor(Math.random() * deck.length)];
         cardThree.innerText = deck[Math.floor(Math.random() * deck.length)];

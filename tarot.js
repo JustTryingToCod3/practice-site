@@ -1,3 +1,13 @@
+//Turning the HTML elements into variables to make them easier to work with 
+const genbutton = document.getElementById('genbutton') // The button variable for general readings 
+const genbutton = document.getElementById('cardOne') //First Card
+const genbutton = document.getElementById('cardTwo') //Second Card
+const genbutton = document.getElementById('cardThree') //Third Card
+const genbutton = document.getElementById('cardFour') //Fourth Card
+
+
+genbutton.addEventListener("click", Tarot)
+
 function Tarot() {
     deck = [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
@@ -61,7 +71,7 @@ function Tarot() {
     
 
 
-    document.getElementById('outputDiv').innerHTML = response; // Creates paragraph text to screen
+    document.getElementById('cardOne').innerHTML = response; // Creates paragraph text to screen
 
 }
 

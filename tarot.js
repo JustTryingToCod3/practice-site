@@ -60,14 +60,14 @@ const deck = [
           
     ]; //Deck of cards
 
+let response = deck[Math.floor(Math.random() * deck.length)]; //ensures we return a random response from the list and 
+    //Allows the code to still run smoothly if the size of the list is changed
+
 
 genbutton.addEventListener("click", genCard)
 
 function genCard() {
-    var response = deck[Math.floor(Math.random() * deck.length)]; //ensures we return a random response from the list and 
-    //Allows the code to still run smoothly if the size of the list is changed
-    cardOne.innerText = response // Creates paragraph text to screen
-
+        cardOne.innerText = response // Creates paragraph text to screen
 }
 
 

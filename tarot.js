@@ -68,6 +68,9 @@ genbutton.addEventListener("click", genCard)
 
 function genCard() {
         cardOne.innerText = response // Creates paragraph text to screen
+        cardTwo.innerText = response
+        cardThree.innerText = response
+        cardFour.innerText = response
 }
 
 

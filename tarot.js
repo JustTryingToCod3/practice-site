@@ -3,7 +3,7 @@
 //Turning the HTML elements into variables to make them easier to work with 
 const genbutton = document.getElementById('genbutton') // The button variable for general readings 
 const rel = document.getElementById('rel')
-const sec = document.getElementById('genbutton')
+const sec = document.getElementById('sec')
 const spi = document.getElementById('spi')
 const sels = document.getElementById('sels')
 

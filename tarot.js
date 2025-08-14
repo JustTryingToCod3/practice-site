@@ -4,12 +4,7 @@ const genbutton = document.getElementById('cardOne') //First Card
 const genbutton = document.getElementById('cardTwo') //Second Card
 const genbutton = document.getElementById('cardThree') //Third Card
 const genbutton = document.getElementById('cardFour') //Fourth Card
-
-
-genbutton.addEventListener("click", Tarot)
-
-function Tarot() {
-    deck = [
+let deck = [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',
         '💞 2 of Spiritual Fulfillment - Embracing the unknown',
@@ -64,13 +59,13 @@ function Tarot() {
         "👺 Ace of Self-Sabotage - Your lack of belief in yourself is inhibiting your ability to grow and manifest the things you want in your life. Re-align with who you are and what your values are. Accept that both good and bad things can happen to you. Trust you have the ability to play the cards you are dealt.",
           
     ]; //Deck of cards
-      
 
-    var response = responses[Math.floor(Math.random() * responses.length)]; //ensures we return a random response from the list and 
+
+genbutton.addEventListener("click", genCard)
+
+function genCard() {
+    var response = deck[Math.floor(Math.random() * deck.length)]; //ensures we return a random response from the list and 
     //Allows the code to still run smoothly if the size of the list is changed
-    
-
-
     document.getElementById('cardOne').innerHTML = response; // Creates paragraph text to screen
 
 }

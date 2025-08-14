@@ -71,36 +71,11 @@ let response = deck[Math.floor(Math.random() * deck.length)]; //ensures we retur
     //Allows the code to still run smoothly if the size of the list is changed
 
 
-genbutton.addEventListener("click", genCard()  {
-        rel.disabled = true;
-        sec.disabled = true;
-        sels.disabled = true;
-        spi.disabled = true;
-    });
-rel.addEventListener("click", relCard() {
-        genbutton.disabled = true;
-        sec.disabled = true;
-        sels.disabled = true;
-        spi.disabled = true;
-    });
-sec.addEventListener("click", secCard() {
-        genbutton.disabled = true;
-        rel.disabled = true;
-        sels.disabled = true;
-        spi.disabled = true;
-    });
-sels.addEventListener("click", selfCard() {
-        genbutton.disabled = true;
-        sec.disabled = true;
-        rel.disabled = true;
-        spi.disabled = true;
-    });
-spi.addEventListener("click", spirCard() {
-        genbutton.disabled = true;
-        sec.disabled = true;
-        sels.disabled = true;
-        rel.disabled = true;
-    });
+genbutton.addEventListener("click", genCard)
+rel.addEventListener("click", relCard)
+sec.addEventListener("click", secCard)
+sels.addEventListener("click", selfCard)
+spi.addEventListener("click", spirCard)
 
 function genCard() {
         cardOne.innerText = deck[Math.floor(Math.random() * deck.length)]; // Creates paragraph text to screen

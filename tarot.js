@@ -75,8 +75,6 @@ function Tarot() {
 
 }
 
-element.addEventListener("genbutton", myFunction);
-
 
 
 

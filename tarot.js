@@ -1,10 +1,10 @@
 class Deck {
         headerMessages(){
         const deck = [
-        'You pulled the 🫂 2 of Relationships which points to a potential change in your relationships. This may result in new experiences and or it may result in lessons learned.',
-        'You pulled the 🔐 2 of Security this means letting go of the fear of uncertainty, and allowing or creating necessary changes in your life',
-        '💞 2 of Spiritual Fulfillment - Embracing the unknown',
-        '👺 2 of Self-Sabotage - Fear and stagnation',
+        'You pulled the 🫂 2 of Relationships. The number 2 represents change which can be exciting or daunting within relationships. This may result in new experiences and or it may result in lessons learned. No matter what, stick to your values and remember to be kind to yourself.',
+        'You pulled the 🔐 2 of Security. The number 2 represents change which can be difficuly if you are trying to build a sense of security in your life. You must accept the fact that you can cultivate security amidst uncertainty. You do not have to prepare for every imagined scenario in order to feel safe.',
+        'You pulles the 💞 2 of Spiritual Fulfillment. The number 2 represents change, but in spiritual fulfillment it means you must let go of your need for control in your life. Ground yourself in something you love as you ride the waves of uncertainty.',
+        'You pulled the 👺 2 of Self-Sabotage. The number 2 represents change, but within self sabotage, it means you are stagnant and living a life built on fear. There is something you are unsilling to accept or embrace.',
         '🫂 3 of Relationships - Ensure relationships are balanced',
         '🔐 3 of Security - It is okay to ask for help',
         '💞 3 of Spiritual Fulfillment - Healthy routine and boundaries ',

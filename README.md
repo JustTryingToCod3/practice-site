@@ -12,8 +12,6 @@ Hope you enjoy! 😊
 ### Resources
 
   College Courses
-
-  AI Assisted Tools
   
   https://www.w3schools.com/
   

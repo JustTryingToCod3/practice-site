@@ -1,10 +1,9 @@
-const tarotMain = document.getElementById("tarotMain");
-const genReadingBtn = document.getElementById("genreading");
-const ppfBtn = document.getElementById("ppf");
-const mainP = document.getElementById("mainp");
-const supP = document.getElementById("supP");
-const present = document.getElementById("present");
-const future = document.getElementById("future");
-const encourageBtn = document.getElementById("encourage");
-const encouragement = document.getElementById("encouragement");
+const genReadingBtn = document.getElementById("genreading"); //general reading button
+const ppfBtn = document.getElementById("ppf"); //Past present future button 
+const mainP = document.getElementById("mainp"); //main paragraph
+const supP = document.getElementById("supP"); // supporting paragraph and past paragraph
+const present = document.getElementById("present"); //present paragrapg
+const future = document.getElementById("future"); //future paragraph
+const encourageBtn = document.getElementById("encourage"); //encouragement button 
+const encouragement = document.getElementById("encouragement"); //encouragement paragraph 
 

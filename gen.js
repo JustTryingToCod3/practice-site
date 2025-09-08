@@ -7,3 +7,10 @@ const future = document.getElementById("future"); //future paragraph
 const encourageBtn = document.getElementById("encourage"); //encouragement button 
 const encouragement = document.getElementById("encouragement"); //encouragement paragraph 
 
+Class GenRead extends Deck {
+  
+}
+genRead = new genRead{}
+genReadingBtn.addEventListener("click", genRead(){});
+ppfBtn.addEventListener("click", ppf(){});
+encourageBtn.addEventListener("click", encourage(){});

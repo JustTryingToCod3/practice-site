@@ -1,5 +1,5 @@
 class Deck {
-        headerMessages(){
+        static headerMessages(){
         return [
         '🫂 2 of Relationships. The number 2 represents change which can be exciting or daunting within relationships. This may result in new experiences and/or it may result in lessons learned. No matter what, stick to your values and remember to be kind to yourself.',
         '🔐 2 of Security. The number 2 represents change which can be difficult if you are trying to build a sense of security in your life. You must accept the fact that you can cultivate security amidst uncertainty. You do not have to prepare for every imagined scenario in order to feel safe.',
@@ -57,7 +57,7 @@ class Deck {
             ]; //Deck of main messages
               
         }
-        supportingMessages(){
+        static supportingMessages(){
         return [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',
@@ -114,7 +114,7 @@ class Deck {
           
             ]; //support      
         }
-        past(){
+        static past(){
         return [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',
@@ -171,7 +171,7 @@ class Deck {
           
             ]; //past       
         }
-        present(){
+        static present(){
         return [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',
@@ -228,7 +228,7 @@ class Deck {
           
             ]; //present    
         }
-        future(){
+        static future(){
         return [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',
@@ -285,7 +285,7 @@ class Deck {
           
             ]; //future       
         }
-        encouragement(){
+        static encouragement(){
         return [
         '🫂 2 of Relationships - New relationship or taking existing one to a new level',
         '🔐 2 of Security - Allowing yourself to accept change',

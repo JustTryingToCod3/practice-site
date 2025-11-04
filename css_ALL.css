@@ -30,7 +30,7 @@ body {
 h1 {
     text-align: center;
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 40px 20px 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Soft shadow for pop */
 }
@@ -56,7 +56,7 @@ h2 {
     display: flex;
     flex-wrap: wrap; /* Allows nav items to wrap on smaller screens */
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     padding: 20px;
     background-color: rgba(0, 51, 68, 0.1); /* Subtle background tint */
     border-bottom: 1px solid #ccc;

@@ -38,14 +38,14 @@ h1 {
 /* Subheadings (nav text, etc.) */
 h3 {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     margin: 0;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 h2 {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin: 0;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }

@@ -56,8 +56,8 @@ h2 {
     display: flex;
     flex-wrap: wrap; /* Allows nav items to wrap on smaller screens */
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 10px;
+    padding: 10px;
     background-color: rgba(0, 51, 68, 0.1); /* Subtle background tint */
     border-bottom: 1px solid #ccc;
 }
@@ -66,8 +66,8 @@ h2 {
 .TopBar a {
     text-decoration: none;
     color: var(--primary-text);
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 6px 10px;
+    border-radius: 4px;
     transition: all 0.3s ease; /* Smooth hover effect */
 }
 

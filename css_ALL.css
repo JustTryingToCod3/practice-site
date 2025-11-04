@@ -38,7 +38,7 @@ h1 {
 /* Subheadings (nav text, etc.) */
 h3 {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin: 0;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }

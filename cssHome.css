@@ -19,7 +19,7 @@
 
 body {
     background-image: url("BackgroundTestHome.png");
-    background-color: var(--bg-color);
+    background-color: #cccccc;
     color: var(--primary-text);
     font-family: var(--font-body);
     margin: 0;

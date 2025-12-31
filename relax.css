@@ -18,7 +18,7 @@
 /* Body */
 
 body {
-    background-image: url("rain"); 
+    background-image: url("rain.jpg"); 
     background-color: #cccccc;
     color: var(--primary-text);
     font-family: var(--font-body);

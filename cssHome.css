@@ -1,150 +1,76 @@
-/* Inclusive and Consistent Styling */
-
-/* Define custom properties (CSS variables) for consistent theming */
-:root {
-    --bg-color: #e0f7f9; /* Light teal background */
-    --primary-text: #003344; /* Deep teal for main text */
-    --accent-color: #007b8a; /* Accent color for links */
-    --hover-color: #00a8b5; /* Hover color for links/buttons */
-    --font-heading: 'Orbitron', 'Bank Gothic', sans-serif; /* Fonts for titles */
-    --font-body: 'Orbitron', 'Bank Gothic', sans-serif; /* Fonts for general text */
-}
-
-/* Apply box-sizing globally to include padding and border in width/height calculations */
-* {
-    box-sizing: border-box;
-}
-
-/* Body */
-
+/* Body & background */
 body {
     background-image: url("Fashion.png");
     background-color: #cccccc;
+    background-size: cover;         /* Make background resize with window */
+    background-attachment: fixed;   /* Keep it fixed while scrolling */
+    background-position: center;
     color: var(--primary-text);
     font-family: var(--font-body);
     margin: 0;
     padding: 0;
-    line-height: 1.6; /* Improves readability */
-}
-
-/* Main heading style */
-h1 {
-    text-align: center;
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    margin: 40px 20px 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Soft shadow for pop */
-}
-
-/* Subheadings (nav text, etc.) */
-h3 {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    margin: 0;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-h2 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin: 0;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-/* Navigation Bar */
-
-.TopBar {
+    line-height: 1.6;
     display: flex;
-    flex-wrap: wrap; /* Allows nav items to wrap on smaller screens */
-    justify-content: center;
-    gap: 10px;
+    justify-content: center;        /* Center nav horizontally */
+}
+
+/* Navigation buttons container */
+nav.Buttons {
+    display: flex;
+    flex-direction: column;         /* Stack buttons vertically */
+    gap: 20px;                      /* Space between buttons */
+    margin: 40px 0;                 /* Margin top/bottom */
+    width: 90%;
+    max-width: 400px;               /* Limit width on large screens */
+    overflow-y: auto;               /* Scroll if too tall for viewport */
     padding: 10px;
-    background-color: rgba(0, 51, 68, 0.1); /* Subtle background tint */
-    border-bottom: 1px solid #ccc;
 }
 
-/* Nav links */
-.TopBar a {
-    text-decoration: none;
-    color: var(--primary-text);
-    padding: 6px 10px;
+/* Make nav scrollable smoothly on smaller screens */
+nav.Buttons::-webkit-scrollbar {
+    width: 8px;
+}
+nav.Buttons::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
     border-radius: 4px;
-    transition: all 0.3s ease; /* Smooth hover effect */
 }
 
-/* Hover and keyboard focus styling for nav links */
-.TopBar a:focus,
-.TopBar a:hover {
-    color: var(--hover-color);
-    background-color: rgba(0, 123, 138, 0.1);
-    outline: none;
-}
-
-/* Link Styling */
-
-a {
-    color: var(--accent-color);
-}
-
-/* Accessibility: show dashed outline when keyboard users tab to a link */
-a:focus {
-    outline: 2px dashed var(--accent-color);
-    outline-offset: 4px;
-}
-
-/* Layout */
-
-/* Content wrapper */
-main {
-    padding: 20px;
-    max-width: 960px;
-    margin: auto;
-}
-
-/* List styling */
-ul {
-    list-style-type: square;
-    padding-left: 20px;
-}
-
-/* Paragraph styling */
-p {
-    font-size: 1.1rem;
-    margin: 1em 0;
-}
-
-/* Mobile Devices */
-
-@media (max-width: 768px) {
-    /* Scale down headings for smaller screens */
-    h1 {
-        font-size: 2rem;
-    }
-
-    /* Stack nav links vertically on phones */
-    .TopBar {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .TopBar h3 {
-        font-size: 1.2rem;
-    }
-
-    body {
-        padding: 10px;
-    }
-}
-
-/* Accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
-    }
-}
-
-.Center {
+/* Buttons */
+nav.Buttons a {
+    text-decoration: none;
+    display: block;
     text-align: center;
+    font-size: 1.2rem;
+}
+
+nav.Buttons h3 {
+    margin: 0;
+}
+
+/* Container effect for each button */
+.container {
+    font-size: 1rem;
+    padding: 0.6em 0.8em;
+    border-radius: 0.5em;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px #000000b4;
+    transition: all 0.3s ease;
+}
+
+/* Hover & focus for accessibility */
+nav.Buttons a:focus .container,
+nav.Buttons a:hover .container {
+    background-color: var(--hover-color);
+    outline: 2px solid var(--accent-color); /* Visible focus for keyboard users */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav.Buttons {
+        max-width: 90%;
+        margin: 20px auto;
+    }
 }

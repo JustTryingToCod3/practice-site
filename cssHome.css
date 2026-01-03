@@ -62,43 +62,43 @@ nav.Buttons h3 {
 
 /* Background images for buttons */
 #btn-badtherapy {
-    background-image: url("images/badtherapy-bg.jpg");
+    background-image: url("badtherapy.png");
     background-size: cover;
     background-position: center;
 }
 
 #btn-m8ball {
-    background-image: url("images/m8ball-bg.jpg");
+    background-image: url("m8ball.png");
     background-size: cover;
     background-position: center;
 }
 
 #btn-budget {
-    background-image: url("images/budget-bg.jpg");
+    background-image: url("budget.png");
     background-size: cover;
     background-position: center;
 }
 
 #btn-tarot {
-    background-image: url("images/tarot-bg.jpg");
+    background-image: url("tarotreading.png");
     background-size: cover;
     background-position: center;
 }
 
 #btn-horror {
-    background-image: url("images/horror-bg.jpg");
+    background-image: url("horrorgame.png");
     background-size: cover;
     background-position: center;
 }
 
 #btn-relax {
-    background-image: url("images/relax-bg.jpg");
+    background-image: url("relaxinggame.png");
     background-size: cover;
     background-position: center;
 }
 
 #btn-blog {
-    background-image: url("images/blog-bg.jpg");
+    background-image: url("blog.png");
     background-size: cover;
     background-position: center;
 }

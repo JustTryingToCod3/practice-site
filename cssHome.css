@@ -35,74 +35,72 @@ nav.Buttons::-webkit-scrollbar-thumb {
     border-radius: 4px;
 }
 
-/* Buttons */
-nav.Buttons a {
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-nav.Buttons h3 {
-    margin: 0;
-}
-
-/* Container effect for each button */
+/* Container effect for each button - match image size */
 .container {
-    font-size: 1rem;
-    padding: 0.6em 0.8em;
+    display: flex;                  /* Enable flex to center text */
+    justify-content: center;        /* Center horizontally */
+    align-items: center;            /* Center vertically */
+    width: 100%;                    /* Fill parent width */
+    max-width: 400px;               /* Optional: limit size */
+    height: auto;                   /* Let height adjust to image */
+    aspect-ratio: 3 / 2;            /* Adjust to your image aspect ratio (width:height) */
     border-radius: 0.5em;
     border: none;
-    background-color: #000;
     color: #fff;
     cursor: pointer;
     box-shadow: 2px 2px 3px #000000b4;
     transition: all 0.3s ease;
-}
-
-/* Background images for buttons */
-#btn-badtherapy {
-    background-image: url("badtherapy.png");
+    background-color: #000;         /* Fallback if image doesn't load */
     background-size: cover;
     background-position: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    font-size: 1rem;
+}
+
+/* Center text on top of image */
+.container h3 {
+    margin: 0;
+    padding: 0 0.5em;               /* Optional padding for long text */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+/* Optional: make each button match the natural image size */
+#btn-badtherapy {
+    background-image: url("badtherapy.png");
+    aspect-ratio: 16 / 9;           /* Example: set to actual image ratio */
 }
 
 #btn-m8ball {
     background-image: url("m8ball.png");
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 1 / 1;            /* Square image */
 }
 
 #btn-budget {
     background-image: url("budget.png");
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 4 / 3;
 }
 
 #btn-tarot {
     background-image: url("tarotreading.png");
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 3 / 2;
 }
 
 #btn-horror {
-    background-image: url("horrorgame.png");
-    background-size: cover;
-    background-position: center;
+    background-image: url("horrorgames.png");
+    aspect-ratio: 16 / 9;
 }
 
 #btn-relax {
     background-image: url("relaxinggame.png");
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 3 / 2;
 }
 
 #btn-blog {
     background-image: url("blog.png");
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 4 / 3;
 }
-
 /* Optional: maintain text readability */
 .container h3 {
     text-shadow: 1px 1px 4px rgba(0,0,0,0.6);

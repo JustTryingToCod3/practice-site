@@ -1,9 +1,23 @@
-/* Body & background */
+/* Variables for consistent theming */
+:root {
+    --bg-color: #e0f7f9;         /* Light teal background */
+    --primary-text: #003344;     /* Deep teal text */
+    --accent-color: #007b8a;     /* Links & focus color */
+    --hover-color: #00a8b5;      /* Hover effect */
+    --font-heading: 'Orbitron', 'Bank Gothic', sans-serif;
+    --font-body: 'Orbitron', 'Bank Gothic', sans-serif;
+}
+
+/* Global style */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-image: url("Fashion.png");
     background-color: #cccccc;
-    background-size: cover;         /* Make background resize with window */
-    background-attachment: fixed;   /* Keep it fixed while scrolling */
+    background-size: cover;          /* Resizes with window */
+    background-attachment: fixed;    /* Stays in place while scrolling */
     background-position: center;
     color: var(--primary-text);
     font-family: var(--font-body);
@@ -11,22 +25,41 @@ body {
     padding: 0;
     line-height: 1.6;
     display: flex;
-    justify-content: center;        /* Center nav horizontally */
+    justify-content: center;         /* Center nav horizontally */
 }
 
-/* Navigation buttons container */
+/* Headers */
+h1 {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin: 40px 20px 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+h2, h3 {
+    font-family: var(--font-heading);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin: 0;
+}
+
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1rem; }
+
+/* Nav buttons  */
 nav.Buttons {
     display: flex;
-    flex-direction: column;         /* Stack buttons vertically */
-    gap: 20px;                      /* Space between buttons */
-    margin: 40px 0;                 /* Margin top/bottom */
-    width: 90%;
-    max-width: 400px;               /* Limit width on large screens */
-    overflow-y: auto;               /* Scroll if too tall for viewport */
+    flex-direction: column;          /* Stack buttons vertically */
+    gap: 20px;                       /* Space between buttons */
+    margin: 40px 0;
     padding: 10px;
+    width: 90%;
+    max-width: 500px;                /* Optional max width */
+    overflow-y: auto;                /* Scroll if content exceeds viewport */
+    align-items: center;             /* Center buttons horizontally */
 }
 
-/* Make nav scrollable smoothly on smaller screens */
+/* Scrollbar for Buttons */
 nav.Buttons::-webkit-scrollbar {
     width: 8px;
 }
@@ -35,90 +68,102 @@ nav.Buttons::-webkit-scrollbar-thumb {
     border-radius: 4px;
 }
 
-/* Container effect for each button - match image size */
+/* Buttons */
+nav.Buttons a {
+    text-decoration: none;
+    display: inline-block;           /* Shrinks to image */
+    text-align: center;
+    width: fit-content;              /* Button width fits image */
+}
+
 .container {
-    display: flex;                  /* Enable flex to center text */
-    justify-content: center;        /* Center horizontally */
-    align-items: center;            /* Center vertically */
-    width: 100%;                    /* Fill parent width */
-    max-width: 400px;               /* Optional: limit size */
-    height: auto;                   /* Let height adjust to image */
-    aspect-ratio: 3 / 2;            /* Adjust to your image aspect ratio (width:height) */
+    display: inline-flex;            /* Flex for text centering */
+    justify-content: center;
+    align-items: center;
+    width: auto;                     /* Adjust to image size */
+    height: auto;
     border-radius: 0.5em;
     border: none;
     color: #fff;
     cursor: pointer;
     box-shadow: 2px 2px 3px #000000b4;
     transition: all 0.3s ease;
-    background-color: #000;         /* Fallback if image doesn't load */
-    background-size: cover;
+    background-color: #000;          /* Fallback */
+    background-size: contain;        /* Entire image visible */
+    background-repeat: no-repeat;
     background-position: center;
     text-align: center;
-    overflow: hidden;
     position: relative;
-    font-size: 1rem;
+    overflow: hidden;
+    padding: 1em;                    /* Space for text */
 }
 
-/* Center text on top of image */
+/* Text on top of buttons */
 .container h3 {
     margin: 0;
-    padding: 0 0.5em;               /* Optional padding for long text */
+    padding: 0 0.5em;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
-/* Optional: make each button match the natural image size */
-#btn-badtherapy {
-    background-image: url("badtherapy.png");
-    aspect-ratio: 16 / 9;           /* Example: set to actual image ratio */
-}
+/* Button background */
+#btn-badtherapy { background-image: url("badtherapy.png"); }
+#btn-m8ball { background-image: url("m8ball.png"); }
+#btn-budget { background-image: url("budget.png"); }
+#btn-tarot { background-image: url("tarotreading.png"); }
+#btn-horror { background-image: url("horrorgames.png"); }
+#btn-relax { background-image: url("relaxinggame.png"); }
+#btn-blog { background-image: url("blog.png"); }
 
-#btn-m8ball {
-    background-image: url("m8ball.png");
-    aspect-ratio: 1 / 1;            /* Square image */
-}
-
-#btn-budget {
-    background-image: url("budget.png");
-    aspect-ratio: 4 / 3;
-}
-
-#btn-tarot {
-    background-image: url("tarotreading.png");
-    aspect-ratio: 3 / 2;
-}
-
-#btn-horror {
-    background-image: url("horrorgames.png");
-    aspect-ratio: 16 / 9;
-}
-
-#btn-relax {
-    background-image: url("relaxinggame.png");
-    aspect-ratio: 3 / 2;
-}
-
-#btn-blog {
-    background-image: url("blog.png");
-    aspect-ratio: 4 / 3;
-}
-/* Optional: maintain text readability */
-.container h3 {
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-}
-
-
-/* Hover & focus for accessibility */
+/* Hover */
 nav.Buttons a:focus .container,
 nav.Buttons a:hover .container {
-    background-color: var(--hover-color);
-    outline: 2px solid var(--accent-color); /* Visible focus for keyboard users */
+    outline: 2px solid var(--accent-color);
+    filter: brightness(1.1);          /* subtle highlight without hiding image */
 }
 
-/* Responsive adjustments */
+/* footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.5);
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+footer .back-home {
+    display: inline-block;
+    font-size: 0.9rem;
+    padding: 0.4em 0.6em;
+    border-radius: 0.4em;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 1px 1px 3px #000000b4;
+    transition: all 0.3s ease;
+}
+
+footer .back-home:hover,
+footer .back-home:focus {
+    background-color: var(--hover-color);
+    outline: 2px solid var(--accent-color);
+}
+
+/* responsiveness */
 @media (max-width: 768px) {
     nav.Buttons {
         max-width: 90%;
         margin: 20px auto;
     }
+    .container {
+        width: 80%;                  /* Scale buttons on mobile */
+        padding: 0.5em;
+    }
 }
 
+/* accesible */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

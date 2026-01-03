@@ -75,32 +75,3 @@ nav.Buttons a:hover .container {
     }
 }
 
-/* Footer styling */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(0,0,0,0.5); /* Slightly transparent to stand out */
-    position: sticky;       /* Keeps footer at bottom when scrolling */
-    bottom: 0;
-    width: 100%;
-}
-
-/* Footer back-home button */
-footer .back-home {
-    display: inline-block;
-    font-size: 0.9rem;           /* Smaller than main nav */
-    padding: 0.4em 0.6em;
-    border-radius: 0.4em;
-    background-color: #000;
-    color: #fff;
-    text-decoration: none;
-    box-shadow: 1px 1px 3px #000000b4;
-    transition: all 0.3s ease;
-}
-
-footer .back-home:hover,
-footer .back-home:focus {
-    background-color: var(--hover-color); /* Accent hover */
-    outline: 2px solid var(--accent-color); /* Visible focus for keyboard users */
-}
-

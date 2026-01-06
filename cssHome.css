@@ -1,104 +1,92 @@
-/* Overall theme  */
+/* Overall theme */
 :root {
     --font-main: 'Orbitron', sans-serif;
     --bg-dark: #000;
     --text-light: #ffffff;
+    --color-card: 255, 255, 255; /* default card color for gradients */
+    --quantity: 7; /* number of carousel items */
 }
 
-/*Global reset */
+/* Global reset */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* Body & Background */
 body {
-    margin: 0;
-    background: background-image: url("Fashion.png");
     font-family: var(--font-main);
     color: var(--text-light);
     overflow: hidden;
+    background-image: url("Fashion.png");
+    background-size: cover;
+    background-position: center;
 }
 
 /* Wrapper */
 .carousel-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px; /* give 3D depth */
+    position: relative;
 }
 
-/* Title */
-h1 {
-    margin-bottom: 40px;
-    font-size: 2rem;
-    letter-spacing: 2px;
-}
-
-/* Carousel logic */
+/* Carousel Container */
 .carousel {
-  --w: 100px;
-  --h: 150px;
-  --translateZ: calc((var(--w) + var(--h)) + 0px);
-  --rotateX: -15deg;
-  --perspective: 1000px;
-  position: absolute;
-  width: var(--w);
-  height: var(--h);
-  top: 25%;
-  left: calc(50% - (var(--w) / 2) - 2.5px);
-  z-index: 2;
-  transform-style: preserve-3d;
-  transform: perspective(var(--perspective));
-  animation: rotating 20s linear infinite; /* */
+    --w: 100px;
+    --h: 150px;
+    --translateZ: 400px; /* distance from center */
+    width: var(--w);
+    height: var(--h);
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotating 20s linear infinite;
 }
 
-/* Spin Animation  */
+/* Spin Animation (Horizontal Carousel) */
 @keyframes rotating {
-  from {
-    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
-      rotateY(0);
-  }
-  to {
-    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
-      rotateY(1turn);
-  }
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
 }
 
-/* Each Button  */
+/* Carousel Items */
 .carousel a {
-  position: absolute;
-  border: 2px solid rgba(var(--color-card));
-  border-radius: 12px;
-  overflow: hidden;
-  inset: 0;
-  transform: rotateY(calc((360deg / var(--quantity)) * var(--index)))
-    translateZ(var(--translateZ));
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+    top: 0;
+    left: 0;
+    border: 2px solid rgba(var(--color-card), 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Button Images */
-.container {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: #0000
-    radial-gradient(
-      circle,
-      rgba(var(--color-card), 0.2) 0%,
-      rgba(var(--color-card), 0.6) 80%,
-      rgba(var(--color-card), 0.9) 100%
+/* Button Images / Containers */
+.carousel a .container {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #0000 radial-gradient(
+        circle,
+        rgba(var(--color-card), 0.2) 0%,
+        rgba(var(--color-card), 0.6) 80%,
+        rgba(var(--color-card), 0.9) 100%
     );
 }
 
-/* Hover effect */
+/* Hover Effect */
 .carousel a:hover .container {
     transform: translateZ(40px) scale(1.06);
     box-shadow: 0 30px 65px rgba(0,0,0,0.85);
 }
 
-/* Background img */
+/* Individual Background Images */
 #btn-badtherapy { background-image: url("badtherapy.png"); }
 #btn-m8ball     { background-image: url("m8ball.png"); }
 #btn-budget     { background-image: url("budget.png"); }
@@ -107,7 +95,15 @@ h1 {
 #btn-relax      { background-image: url("relaxinggames.png"); }
 #btn-blog       { background-image: url("blog.png"); }
 
-/* Accessibility  */
+/* Title Styling */
+h1 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* Accessibility: Reduce Motion */
 @media (prefers-reduced-motion: reduce) {
     .carousel {
         animation: none;

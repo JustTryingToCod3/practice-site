@@ -1,97 +1,134 @@
-/*Theme Variables*/
+/* =========================
+   Theme Variables
+   ========================= */
 :root {
-    --primary-text: #003344;
-    --accent-color: #007b8a;
-    --hover-color: #00a8b5;
-    --font-heading: 'Orbitron', 'Bank Gothic', sans-serif;
-    --font-body: 'Orbitron', 'Bank Gothic', sans-serif;
+    --font-main: 'Orbitron', sans-serif;
+    --bg-dark: #000;
+    --text-light: #ffffff;
 }
 
-/* Global Reset */
+/* =========================
+   Global Reset
+   ========================= */
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-image: url("Fashion.png");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
     margin: 0;
-    font-family: var(--font-body);
-    color: var(--primary-text);
+    background: radial-gradient(circle at top, #111, #000);
+    font-family: var(--font-main);
+    color: var(--text-light);
+    overflow: hidden;
+}
+
+/* =========================
+   Wrapper
+   ========================= */
+.carousel-wrapper {
+    height: 100vh;
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
-main {
-    width: 100%;
-    max-width: 1000px;
-}
-
-/* Heading */
+/* =========================
+   Title
+   ========================= */
 h1 {
-    text-align: center;
+    margin-bottom: 40px;
     font-size: 2rem;
-    margin: 40px 0 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 2px;
 }
 
-/* Nav container  */
-nav.Buttons {
+/* =========================
+   Carousel Core
+   ========================= */
+.carousel {
+    --card-width: 260px;
+    --card-height: 150px;
+    --card-count: 7;
+    --radius: 420px;
+    --tilt: -12deg;
+    --perspective: 1200px;
+
+    position: relative;
+    width: var(--card-width);
+    height: var(--card-height);
+    transform-style: preserve-3d;
+    transform: perspective(var(--perspective));
+    animation: spin 28s linear infinite;
+}
+
+/* =========================
+   Spin Animation
+   ========================= */
+@keyframes spin {
+    from {
+        transform: perspective(var(--perspective))
+            rotateX(var(--tilt))
+            rotateY(0deg);
+    }
+    to {
+        transform: perspective(var(--perspective))
+            rotateX(var(--tilt))
+            rotateY(360deg);
+    }
+}
+
+/* =========================
+   Individual Buttons
+   ========================= */
+.carousel a {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform:
+        rotateY(calc((360deg / var(--card-count)) * var(--i)))
+        translateZ(var(--radius));
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    padding: 6px; /* reduced so padding no longer visually dominates */
     align-items: center;
-}
-
-/* Button links  */
-nav.Buttons a {
     text-decoration: none;
     color: inherit;
-    width: 75vw;
-    max-width: 700px; /* slightly wider so images feel bigger */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0; /* removes implicit padding feeling */
-    margin: 0;
 }
 
-/* Image container */
+/* =========================
+   Button Image
+   ========================= */
 .container {
-    width: 100%;
-    aspect-ratio: 16 / 9;        
-    background-size: cover; /* fills the container fully */
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 0.6em;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: var(--card-width);
+    height: var(--card-height);
+    border-radius: 14px;
+    background-size: cover;
+    background-position: center top;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Hover + focus */
-nav.Buttons a:hover .container,
-nav.Buttons a:focus .container {
-    transform: scale(1.03);
-    box-shadow: 0 18px 25px rgba(0,0,0,0.65);
-    outline: .5px solid var(--accent-color);
+/* Hover effect */
+.carousel a:hover .container {
+    transform: translateZ(40px) scale(1.06);
+    box-shadow: 0 30px 65px rgba(0,0,0,0.85);
 }
 
-/* Button description  */
+/* =========================
+   Button Descriptions
+   ========================= */
 .btn-desc {
-    margin-top: 6px; /* tightened so it hugs the image */
-    font-size: 0.9rem;
-    text-align: center;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 0.4em;
-    max-width: 70%;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    background: rgba(0,0,0,0.65);
+    padding: 6px 12px;
+    border-radius: 10px;
+    pointer-events: none;
 }
 
-/* Button Images */
+/* =========================
+   Background Images
+   ========================= */
 #btn-badtherapy { background-image: url("badtherapy.png"); }
 #btn-m8ball     { background-image: url("m8ball.png"); }
 #btn-budget     { background-image: url("budget.png"); }
@@ -100,16 +137,11 @@ nav.Buttons a:focus .container {
 #btn-relax      { background-image: url("relaxinggames.png"); }
 #btn-blog       { background-image: url("blog.png"); }
 
-/* Mobile devices  */
-@media (max-width: 768px) {
-    nav.Buttons a {
-        width: 90vw;
-    }
-}
-
-/* Accessibilty  */
+/* =========================
+   Accessibility
+   ========================= */
 @media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
+    .carousel {
+        animation: none;
     }
 }

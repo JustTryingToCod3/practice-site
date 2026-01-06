@@ -12,7 +12,7 @@
 
 body {
     margin: 0;
-    background: radial-gradient(circle at top, #111, #000);
+    background: background-image: url("Fashion.png");
     font-family: var(--font-main);
     color: var(--text-light);
     overflow: hidden;

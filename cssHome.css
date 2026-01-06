@@ -1,15 +1,11 @@
-/* =========================
-   Theme Variables
-   ========================= */
+/* Overall theme  */
 :root {
     --font-main: 'Orbitron', sans-serif;
     --bg-dark: #000;
     --text-light: #ffffff;
 }
 
-/* =========================
-   Global Reset
-   ========================= */
+/*Global reset */
 * {
     box-sizing: border-box;
 }
@@ -22,90 +18,78 @@ body {
     overflow: hidden;
 }
 
-/* =========================
-   Wrapper
-   ========================= */
+/* Wrapper */
 .carousel-wrapper {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* =========================
-   Title
-   ========================= */
+/* Title */
 h1 {
     margin-bottom: 40px;
     font-size: 2rem;
     letter-spacing: 2px;
 }
 
-/* =========================
-   Carousel Core
-   ========================= */
+/* Carousel logic */
 .carousel {
-    --card-width: 260px;
-    --card-height: 150px;
-    --card-count: 7;
-    --radius: 420px;
-    --tilt: -12deg;
-    --perspective: 1200px;
-
-    position: relative;
-    width: var(--card-width);
-    height: var(--card-height);
-    transform-style: preserve-3d;
-    transform: perspective(var(--perspective));
-    animation: spin 28s linear infinite;
+  --w: 100px;
+  --h: 150px;
+  --translateZ: calc((var(--w) + var(--h)) + 0px);
+  --rotateX: -15deg;
+  --perspective: 1000px;
+  position: absolute;
+  width: var(--w);
+  height: var(--h);
+  top: 25%;
+  left: calc(50% - (var(--w) / 2) - 2.5px);
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform: perspective(var(--perspective));
+  animation: rotating 20s linear infinite; /* */
 }
 
-/* =========================
-   Spin Animation
-   ========================= */
-@keyframes spin {
-    from {
-        transform: perspective(var(--perspective))
-            rotateX(var(--tilt))
-            rotateY(0deg);
-    }
-    to {
-        transform: perspective(var(--perspective))
-            rotateX(var(--tilt))
-            rotateY(360deg);
-    }
+/* Spin Animation  */
+@keyframes rotating {
+  from {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+      rotateY(0);
+  }
+  to {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+      rotateY(1turn);
+  }
 }
 
-/* =========================
-   Individual Buttons
-   ========================= */
+/* Each Button  */
 .carousel a {
-    position: absolute;
-    inset: 0;
-    transform-style: preserve-3d;
-    transform:
-        rotateY(calc((360deg / var(--card-count)) * var(--i)))
-        translateZ(var(--radius));
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
+  position: absolute;
+  border: 2px solid rgba(var(--color-card));
+  border-radius: 12px;
+  overflow: hidden;
+  inset: 0;
+  transform: rotateY(calc((360deg / var(--quantity)) * var(--index)))
+    translateZ(var(--translateZ));
 }
 
-/* =========================
-   Button Image
-   ========================= */
+/* Button Images */
 .container {
-    width: var(--card-width);
-    height: var(--card-height);
-    border-radius: 14px;
-    background-size: cover;
-    background-position: center top;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #0000
+    radial-gradient(
+      circle,
+      rgba(var(--color-card), 0.2) 0%,
+      rgba(var(--color-card), 0.6) 80%,
+      rgba(var(--color-card), 0.9) 100%
+    );
 }
 
 /* Hover effect */
@@ -114,21 +98,7 @@ h1 {
     box-shadow: 0 30px 65px rgba(0,0,0,0.85);
 }
 
-/* =========================
-   Button Descriptions
-   ========================= */
-.btn-desc {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    background: rgba(0,0,0,0.65);
-    padding: 6px 12px;
-    border-radius: 10px;
-    pointer-events: none;
-}
-
-/* =========================
-   Background Images
-   ========================= */
+/* Background img */
 #btn-badtherapy { background-image: url("badtherapy.png"); }
 #btn-m8ball     { background-image: url("m8ball.png"); }
 #btn-budget     { background-image: url("budget.png"); }
@@ -137,9 +107,7 @@ h1 {
 #btn-relax      { background-image: url("relaxinggames.png"); }
 #btn-blog       { background-image: url("blog.png"); }
 
-/* =========================
-   Accessibility
-   ========================= */
+/* Accessibility  */
 @media (prefers-reduced-motion: reduce) {
     .carousel {
         animation: none;

@@ -1,49 +1,111 @@
 <!DOCTYPE html>
-<!-- File Declaration -->
 <html lang="en">
-<!-- Original Language -->
 <head>
     <meta charset="UTF-8">
-    <!-- Make sure all characters are displayed correctly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Responsiveness for phones  -->
-    <title>🏠👨‍💻 Home 👨‍💻🏠</title>
-    <!-- Browser Tab Text -->
-    <link rel="stylesheet" href="cssHome.css" type="text/css">
-    <!-- Link to css  -->
+
+    <title>Life Lounge</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="cssHome.css">
+
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom google font -->
 </head>
-    
+
 <body>
-    <!-- Visible page content -->
+<main>
 
-<div> <h1> Life Lounge </h1> </div>
-<nav class="Buttons">
-    <a href="html/therapy/badtherapy.html" aria-label="Play Bad Therapy Game">
-        <div class="container" id="btn-badtherapy"></div>
-    </a>
-    <a href="html/m8/m8ball.html" aria-label="Play Magic 8 Ball Game">
-        <div class="container" id="btn-m8ball"></div>
-    </a>
-    <a href="html/budget/budget.html" aria-label="Open Budget Tool">
-        <div class="container" id="btn-budget"></div>
-    </a>
-    <a href="html/tarot/tarot.html" aria-label="Do a Tarot Reading">
-        <div class="container" id="btn-tarot"></div>
-    </a>
-    <a href="html/horror/horror.html" aria-label="Play Horror Game">
-        <div class="container" id="btn-horror"></div>
-    </a>
-    <a href="html/relax/relax.html" aria-label="Play Relaxing Games">
-        <div class="container" id="btn-relax"></div>
-    </a>
-    <a href="html/blog/blog.html" aria-label="Read Blog">
-        <div class="container" id="btn-blog"></div>
-    </a>
-</nav>
+    <h1>Life Lounge</h1>
 
+    <nav class="Buttons" aria-label="Life Lounge main navigation">
 
+        <a href="html/therapy/badtherapy.html" aria-labelledby="badtherapy-desc">
+            <div
+                class="container"
+                id="btn-badtherapy"
+                role="img"
+                aria-label="Satirical AI therapy game"
+            ></div>
+            <p class="btn-desc" id="badtherapy-desc">
+                Satirical AI therapy with questionable advice
+            </p>
+        </a>
+
+        <a href="html/m8/m8ball.html" aria-labelledby="m8ball-desc">
+            <div
+                class="container"
+                id="btn-m8ball"
+                role="img"
+                aria-label="Magic 8 Ball game"
+            ></div>
+            <p class="btn-desc" id="m8ball-desc">
+                Ask the universe, receive vague answers
+            </p>
+        </a>
+
+        <a href="html/budget/budget.html" aria-labelledby="budget-desc">
+            <div
+                class="container"
+                id="btn-budget"
+                role="img"
+                aria-label="Personal budgeting tool"
+            ></div>
+            <p class="btn-desc" id="budget-desc">
+                Gentle budgeting without shame
+            </p>
+        </a>
+
+        <a href="html/tarot/tarot.html" aria-labelledby="tarot-desc">
+            <div
+                class="container"
+                id="btn-tarot"
+                role="img"
+                aria-label="Tarot card reading experience"
+            ></div>
+            <p class="btn-desc" id="tarot-desc">
+                Digital tarot readings and spreads
+            </p>
+        </a>
+
+        <a href="html/horror/horror.html" aria-labelledby="horror-desc">
+            <div
+                class="container"
+                id="btn-horror"
+                role="img"
+                aria-label="Psychological horror game"
+            ></div>
+            <p class="btn-desc" id="horror-desc">
+                Uncomfortable psychological horror
+            </p>
+        </a>
+
+        <a href="html/relax/relax.html" aria-labelledby="relax-desc">
+            <div
+                class="container"
+                id="btn-relax"
+                role="img"
+                aria-label="Relaxing mini games collection"
+            ></div>
+            <p class="btn-desc" id="relax-desc">
+                Calm, low-pressure relaxation games
+            </p>
+        </a>
+
+        <a href="html/blog/blog.html" aria-labelledby="blog-desc">
+            <div
+                class="container"
+                id="btn-blog"
+                role="img"
+                aria-label="Life Lounge blog"
+            ></div>
+            <p class="btn-desc" id="blog-desc">
+                Essays, thoughts, and experiments
+            </p>
+        </a>
+
+    </nav>
+
+</main>
 </body>
-
 </html>

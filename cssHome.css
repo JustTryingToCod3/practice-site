@@ -1,6 +1,4 @@
-/* =========================
-   Theme Variables
-   ========================= */
+/*Theme Variables*/
 :root {
     --primary-text: #003344;
     --accent-color: #007b8a;
@@ -9,9 +7,7 @@
     --font-body: 'Orbitron', 'Bank Gothic', sans-serif;
 }
 
-/* =========================
-   Global Reset
-   ========================= */
+/* Global Reset */
 * {
     box-sizing: border-box;
 }
@@ -33,9 +29,7 @@ main {
     max-width: 1000px;
 }
 
-/* =========================
-   Headings
-   ========================= */
+/* Heading */
 h1 {
     text-align: center;
     font-size: 2rem;
@@ -43,9 +37,7 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-/* =========================
-   Navigation Container
-   ========================= */
+/* Nav container  */
 nav.Buttons {
     display: flex;
     flex-direction: column;
@@ -54,9 +46,7 @@ nav.Buttons {
     align-items: center;
 }
 
-/* =========================
-   Button Links
-   ========================= */
+/* Button links  */
 nav.Buttons a {
     text-decoration: none;
     color: inherit;
@@ -67,13 +57,11 @@ nav.Buttons a {
     align-items: center;
 }
 
-/* =========================
-   Image Button
-   ========================= */
+
 .container {
     width: 100%;
-    aspect-ratio: 16 / 9;        /* 🔑 critical fix */
-    background-size: cover;
+    aspect-ratio: 16 / 9;        
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 0.6em;
@@ -89,9 +77,7 @@ nav.Buttons a:focus .container {
     outline: 2px solid var(--accent-color);
 }
 
-/* =========================
-   Button Description
-   ========================= */
+/* Button description  */
 .btn-desc {
     margin-top: 8px;
     font-size: 0.9rem;
@@ -103,9 +89,7 @@ nav.Buttons a:focus .container {
     max-width: 90%;
 }
 
-/* =========================
-   Button Background Images
-   ========================= */
+/* Button Images */
 #btn-badtherapy { background-image: url("badtherapy.png"); }
 #btn-m8ball     { background-image: url("m8ball.png"); }
 #btn-budget     { background-image: url("budget.png"); }
@@ -114,18 +98,14 @@ nav.Buttons a:focus .container {
 #btn-relax      { background-image: url("relaxinggames.png"); }
 #btn-blog       { background-image: url("blog.png"); }
 
-/* =========================
-   Mobile
-   ========================= */
+/* Mobile devices  */
 @media (max-width: 768px) {
     nav.Buttons a {
         width: 90vw;
     }
 }
 
-/* =========================
-   Accessibility
-   ========================= */
+/* Accessibilty  */
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;

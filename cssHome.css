@@ -63,7 +63,7 @@ body {
     border: 2px solid rgba(var(--color-card), 0.5);
     border-radius: 12px;
     overflow: hidden;
-    transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+    transform: rotateY(calc((360deg / var(--quantity)) * var(--i))) translateZ(var(--translateZ));
     transition: transform 0.3s, box-shadow 0.3s;
 }
 

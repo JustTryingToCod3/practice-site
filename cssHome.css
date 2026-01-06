@@ -42,7 +42,7 @@ nav.Buttons {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    padding: 10px;
+    padding: 6px; /* reduced so padding no longer visually dominates */
     align-items: center;
 }
 
@@ -51,17 +51,19 @@ nav.Buttons a {
     text-decoration: none;
     color: inherit;
     width: 75vw;
-    max-width: 600px;
+    max-width: 700px; /* slightly wider so images feel bigger */
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0; /* removes implicit padding feeling */
+    margin: 0;
 }
 
-
+/* Image container */
 .container {
     width: 100%;
     aspect-ratio: 16 / 9;        
-    background-size: contain;
+    background-size: cover; /* fills the container fully */
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 0.6em;
@@ -79,7 +81,7 @@ nav.Buttons a:focus .container {
 
 /* Button description  */
 .btn-desc {
-    margin-top: 8px;
+    margin-top: 6px; /* tightened so it hugs the image */
     font-size: 0.9rem;
     text-align: center;
     background: rgba(0,0,0,0.6);

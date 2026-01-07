@@ -27,6 +27,35 @@ Add dynnamic menu buttons in containers on various sectious of the page
     padding: 0;
 }
 
+/* Nav links */
+.TopBar a {
+    text-decoration: none;
+    color: var(--primary-text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover and keyboard focus styling for nav links */
+.TopBar a:focus,
+.TopBar a:hover {
+    color: var(--hover-color);
+    background-color: rgba(0, 123, 138, 0.1);
+    outline: none;
+}
+
+/* Link Styling */
+
+a {
+    color: var(--accent-color);
+}
+
+/* Accessibility: show dashed outline when keyboard users tab to a link */
+a:focus {
+    outline: 2px dashed var(--accent-color);
+    outline-offset: 4px;
+}
+
 /* Body & Background Lets get to the page */
 body {
     font-family: var(--font-main);

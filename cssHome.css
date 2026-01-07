@@ -65,8 +65,6 @@ body {
     position: absolute;
     width: var(--w);
     height: var(--h);
-    top: 0;
-    left: 0;
     border: 2px solid rgba(var(--color-card), 0.5);
     border-radius: 12px;
     overflow: hidden;

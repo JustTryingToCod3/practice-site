@@ -1,3 +1,16 @@
+/*Ideas:  Allow people to stop and start the carousel 
+Have an actual menu that is not the carousel. 
+Have the user click the button to go to a random site. */
+
+/*Next Steps for ADHD brain 
+
+Center the images in the button container
+Make the container a bit smaller
+Add the start/Stop
+Add dynnamic menu buttons in containers on various sectious of the page 
+
+*/ 
+
 /* Overall theme and The CSS of the page if everything goes to shit  */
 :root {
     --font-main: 'Orbitron', sans-serif;
@@ -37,8 +50,8 @@ body {
 
 /* Carousel Container wolding the contents and the visualsfor the carousel (inner layer) (Wrapper > Container > content) */
 .carousel {
-    --w: 400px;
-    --h: 450px;
+    --w: 300px;
+    --h: 350px;
     --translateZ: 400px; /* distance from center */
     width: var(--w);
     height: var(--h);

@@ -1,4 +1,4 @@
-/* Overall theme */
+/* Overall theme and The CSS of the page if everything goes to shit  */
 :root {
     --font-main: 'Orbitron', sans-serif;
     --bg-dark: #000;
@@ -7,14 +7,14 @@
     --quantity: 7; /* number of carousel items */
 }
 
-/* Global reset */
+/* Global reset fix browser's degault settigns to the one I need */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Body & Background */
+/* Body & Background Lets get to the page */
 body {
     font-family: var(--font-main);
     color: var(--text-light);
@@ -24,7 +24,7 @@ body {
     background-position: center;
 }
 
-/* Wrapper */
+/* Wrapper for the carousel layout  */
 .carousel-wrapper {
     width: 100%;
     height: 100vh;
@@ -35,7 +35,7 @@ body {
     position: relative;
 }
 
-/* Carousel Container */
+/* Carousel Container wolding the contents and the visualsfor the carousel (inner layer) (Wrapper > Container > content) */
 .carousel {
     --w: 100px;
     --h: 150px;

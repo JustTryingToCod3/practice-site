@@ -22,7 +22,8 @@ Add dynnamic menu buttons in containers on various sectious of the page
 
 /* Global reset fix browser's degault settigns to the one I need */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /*property defines how to calculate the width and height of an element: 
+    should the calculation include padding and borders, or not*/
     margin: 0;
     padding: 0;
 }

@@ -31,7 +31,7 @@ Add dynnamic menu buttons in containers on various sectious of the page
 /* Body & Background Lets get to the page */
 body {
     font-family: var(--font-main);
-    color: var(--text-light);
+    color: var(--text-dark);
     overflow: hidden;
     background-image: url("Fashion.png");
     background-size: cover;

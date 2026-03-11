@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -17,7 +17,6 @@ body{
 margin:0;
 font-family:'Orbitron',sans-serif;
 
-/* darker rain atmosphere */
 background:
 linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
 url("rain.jpg");
@@ -27,7 +26,6 @@ background-position:center;
 
 color:white;
 
-/* vertical centering */
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -69,7 +67,6 @@ justify-content:center;
 text-decoration:none;
 color:white;
 
-/* glass cafe style */
 background:rgba(0,0,0,0.55);
 border:1px solid rgba(255,255,255,0.2);
 border-radius:15px;
@@ -110,25 +107,12 @@ margin-top:10px;
 
 }
 
-/* center last item if odd */
-
-.object:last-child{
-grid-column:1 / span 2;
-max-width:300px;
-justify-self:center;
-}
-
 /* ---------- Mobile ---------- */
 
 @media(max-width:700px){
 
 .cafe{
 grid-template-columns:1fr;
-}
-
-.object:last-child{
-grid-column:auto;
-max-width:none;
 }
 
 .object{
@@ -159,7 +143,7 @@ font-size:40px;
 
 <a href="html/m8/m8ball.html" class="object">
 🎱
-<span class="label">Fortune Machine</span>
+<span class="label">Fortune Teller</span>
 </a>
 
 <a href="html/relax/relax.html" class="object">
@@ -169,12 +153,12 @@ font-size:40px;
 
 <a href="html/horror/horror.html" class="object">
 🚪
-<span class="label">Basement</span>
+<span class="label">Horror Basement</span>
 </a>
 
 <a href="html/blog/blog.html" class="object">
 📓
-<span class="label">Journal Table</span>
+<span class="label"> BLOG </span>
 </a>
 
 <a href="html/budget/budget.html" class="object">

@@ -16,19 +16,30 @@
 body{
 margin:0;
 font-family:'Orbitron',sans-serif;
-background-image:url("rain.jpg");
+
+/* darker rain atmosphere */
+background:
+linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+url("rain.jpg");
+
 background-size:cover;
 background-position:center;
+
 color:white;
+
+/* vertical centering */
+display:flex;
+flex-direction:column;
+align-items:center;
+min-height:100vh;
 }
 
 /* ---------- Title ---------- */
 
 h1{
-text-align:center;
 letter-spacing:3px;
 font-size:2rem;
-padding-top:30px;
+margin-top:40px;
 }
 
 /* ---------- Cafe Layout ---------- */
@@ -36,13 +47,13 @@ padding-top:30px;
 .cafe{
 
 max-width:800px;
-margin:60px auto;
+width:90%;
+
+margin-top:40px;
 
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:30px;
-
-padding:20px;
+gap:25px;
 
 }
 
@@ -58,9 +69,12 @@ justify-content:center;
 text-decoration:none;
 color:white;
 
-background:rgba(0,0,0,0.6);
-border:2px solid rgba(255,255,255,0.2);
+/* glass cafe style */
+background:rgba(0,0,0,0.55);
+border:1px solid rgba(255,255,255,0.2);
 border-radius:15px;
+
+backdrop-filter:blur(4px);
 
 height:150px;
 
@@ -77,7 +91,7 @@ background .25s;
 
 .object:hover{
 
-transform:translateY(-5px) scale(1.05);
+transform:translateY(-6px) scale(1.05);
 
 background:rgba(0,0,0,0.75);
 
@@ -91,10 +105,17 @@ box-shadow:
 
 .label{
 
-display:block;
 font-size:14px;
 margin-top:10px;
 
+}
+
+/* center last item if odd */
+
+.object:last-child{
+grid-column:1 / span 2;
+max-width:300px;
+justify-self:center;
 }
 
 /* ---------- Mobile ---------- */
@@ -103,6 +124,11 @@ margin-top:10px;
 
 .cafe{
 grid-template-columns:1fr;
+}
+
+.object:last-child{
+grid-column:auto;
+max-width:none;
 }
 
 .object{

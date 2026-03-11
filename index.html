@@ -11,144 +11,103 @@
 
 <style>
 
-/*Global*/
+/* ---------- Global ---------- */
 
 body{
 margin:0;
-background-image: url(rain.jpg);
 font-family:'Orbitron',sans-serif;
-background:linear-gradient(#1c1c1c,#000);
-overflow:hidden;
+background-image:url("rain.jpg");
+background-size:cover;
+background-position:center;
 color:white;
 }
 
-/*Title  */
+/* ---------- Title ---------- */
 
 h1{
-position:absolute;
-top:20px;
-width:100%;
 text-align:center;
 letter-spacing:3px;
 font-size:2rem;
-z-index:10;
+padding-top:30px;
 }
 
-/* Cafe Room - */
+/* ---------- Cafe Layout ---------- */
 
 .cafe{
-height:100vh;
-width:100%;
-position:relative;
+
+max-width:800px;
+margin:60px auto;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+
+padding:20px;
+
 }
 
-/* Object styling */
+/* ---------- Object Boxes ---------- */
 
 .object{
 
-position:absolute;
-text-align:center;
-font-size:50px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
 text-decoration:none;
 color:white;
-cursor:pointer;
+
+background:rgba(0,0,0,0.6);
+border:2px solid rgba(255,255,255,0.2);
+border-radius:15px;
+
+height:150px;
+
+font-size:50px;
 
 transition:
 transform .25s,
-filter .25s,
-text-shadow .25s;
+box-shadow .25s,
+background .25s;
 
 }
 
-/* hover glow */
+/* ---------- Hover Effects ---------- */
 
 .object:hover{
 
-transform:scale(1.25);
+transform:translateY(-5px) scale(1.05);
 
-text-shadow:
-0 0 10px white,
-0 0 20px #00eaff,
-0 0 40px #00eaff;
+background:rgba(0,0,0,0.75);
 
-filter:brightness(1.2);
+box-shadow:
+0 0 15px rgba(255,255,255,0.5),
+0 0 30px #00eaff;
 
 }
 
-/* labels */
+/* ---------- Labels ---------- */
 
 .label{
+
 display:block;
 font-size:14px;
-margin-top:5px;
-}
-
-/*Object positions */
-
-.tarot{
-bottom:40%;
-left:30%;
-}
-
-.therapy{
-bottom:38%;
-left:60%;
-}
-
-.fortune{
-bottom:45%;
-left:48%;
-}
-
-.relax{
-bottom:20%;
-left:25%;
-}
-
-.basement{
-bottom:28%;
-left:82%;
-}
-
-.blog{
-bottom:50%;
-left:15%;
-}
-
-.budget{
-bottom:20%;
-left:50%;
-}
-
-/* Atmosphere */
-
-.cafe::after{
-
-content:"";
-position:absolute;
-
-width:100%;
-height:100%;
-
-background:
-radial-gradient(circle at center,
-rgba(255,255,255,0.05),
-transparent 70%);
-
-pointer-events:none;
+margin-top:10px;
 
 }
 
-/* Mobile devices - */
+/* ---------- Mobile ---------- */
 
 @media(max-width:700px){
 
-.object{
-font-size:38px;
+.cafe{
+grid-template-columns:1fr;
 }
 
-h1{
-font-size:1.5rem;
+.object{
+height:130px;
+font-size:40px;
 }
 
 }
@@ -156,44 +115,43 @@ font-size:1.5rem;
 </style>
 </head>
 
-
 <body>
 
 <h1>☕ Life Lounge Café</h1>
 
 <div class="cafe">
 
-<a href="html/tarot/tarot.html" class="object tarot">
-🔮 <a href="https://www.flaticon.com/free-icons/tarot" title="tarot icons">Tarot icons created by Freepik - Flaticon</a>
+<a href="html/tarot/tarot.html" class="object">
+🔮
 <span class="label">Tarot Reading</span>
 </a>
 
-<a href="html/therapy/badtherapy.html" class="object therapy">
+<a href="html/therapy/badtherapy.html" class="object">
 🛋
 <span class="label">Bad Therapist</span>
 </a>
 
-<a href="html/m8/m8ball.html" class="object fortune">
+<a href="html/m8/m8ball.html" class="object">
 🎱
 <span class="label">Fortune Machine</span>
 </a>
 
-<a href="html/relax/relax.html" class="object relax">
+<a href="html/relax/relax.html" class="object">
 🌿
 <span class="label">Relax Corner</span>
 </a>
 
-<a href="html/horror/horror.html" class="object basement">
+<a href="html/horror/horror.html" class="object">
 🚪
 <span class="label">Basement</span>
 </a>
 
-<a href="html/blog/blog.html" class="object blog">
+<a href="html/blog/blog.html" class="object">
 📓
 <span class="label">Journal Table</span>
 </a>
 
-<a href="html/budget/budget.html" class="object budget">
+<a href="html/budget/budget.html" class="object">
 💰
 <span class="label">Budget Desk</span>
 </a>

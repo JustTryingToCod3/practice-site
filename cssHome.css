@@ -33,7 +33,7 @@ body {
     font-family: var(--font-main);
     color: var(--text-dark);
     overflow: hidden;
-    background-image: url("Fashion.png");
+    background-image: url("rain.jpg");
     background-size: cover;
     background-position: center;
 }

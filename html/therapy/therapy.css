@@ -1,16 +1,82 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Orbitron', sans-serif;
 }
 
+/* 🛋️ BACKGROUND */
 #therapy-room {
-  background-image: url("therapy.jpg"); 
+  background-image: url("therapy.jpg"); /* make sure path is correct */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  height: 100vh; 
+  height: 100vh;
   width: 100%;
 
   position: relative;
+}
+
+/* ✨ LAYOUT */
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* top / middle / bottom */
+  align-items: center;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+}
+
+/* 🧠 TITLE */
+.title {
+  font-size: 4rem;
+  color: black;
+}
+
+/* 🎯 BUTTON */
+#start-btn {
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#start-btn:hover {
+  background: #444;
+}
+
+/* 🧾 TEXT */
+.disclaimer {
+  font-size: 0.9rem;
+  max-width: 600px;
+  color: black;
+}
+
+/* 🧠 QUIZ SECTION */
+#quiz-screen {
+  padding: 40px;
+  text-align: center;
+}
+
+/* 🔲 FORM STYLE */
+form {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* 📋 DROPDOWNS */
+select {
+  padding: 8px;
+  margin-top: 5px;
+}
+
+/* 🎯 RESULT */
+#therapy-output {
+  margin-top: 20px;
+  font-weight: bold;
 }

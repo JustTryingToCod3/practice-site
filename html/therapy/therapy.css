@@ -1,1 +1,15 @@
+body {
+  margin: 0
+  padding: 0;
+}
 
+#therapy-room {
+  background-image: url("therapy.jpg") 
+  background-size: cover;
+  background-position: center;
+  
+}
+
+#therapy-room {
+    position: relative;
+}

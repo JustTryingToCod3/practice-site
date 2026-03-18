@@ -1,15 +1,16 @@
 body {
-  margin: 0
+  margin: 0;
   padding: 0;
 }
 
 #therapy-room {
-  background-image: url("therapy.jpg") 
+  background-image: url("therapy.jpg"); 
   background-size: cover;
   background-position: center;
-  
-}
+  background-repeat: no-repeat;
 
-#therapy-room {
-    position: relative;
+  height: 100vh; 
+  width: 100%;
+
+  position: relative;
 }

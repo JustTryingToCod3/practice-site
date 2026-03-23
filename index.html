@@ -1,133 +1,39 @@
+<!-- Docyment type -->
 <!DOCTYPE html> 
+<!-- Language -->
 <html lang="en">
+<style>
+    /* Apply background to the entire page */
+    body {
+        margin: 0; /* Remove default margin */
+        height: 100vh; /* Full viewport height */
+        
+        /* Fallback background color */
+        background-color: #222;
 
+        /* Background image settings */
+        background-image: url('Coffee.png'); 
+        background-size: cover; /* Scale to cover entire area */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Prevent tiling */
+        background-attachment: fixed; /* Keep image fixed on scroll */
+        
+    }
+</style>
+  
 <head>
+<!-- Page Description -->  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<!-- This goes on the tab -->
 <title>Life Lounge: A break for your brain</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-
-/* ---------- Global ---------- */
-
-body{
-margin:0;
-font-family:'Orbitron',sans-serif;
-
-background:
-linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
-url("rain.jpg");
-
-background-size:cover;
-background-position:center;
-
-color:white;
-
-display:flex;
-flex-direction:column;
-align-items:center;
-min-height:100vh;
-}
-
-/* ---------- Title ---------- */
-
-h1{
-letter-spacing:3px;
-font-size:2rem;
-margin-top:40px;
-}
-
-/* ---------- Cafe Layout ---------- */
-
-.cafe{
-
-max-width:800px;
-width:90%;
-
-margin-top:40px;
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:25px;
-
-}
-
-/* ---------- Object Boxes ---------- */
-
-.object{
-
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-
-text-decoration:none;
-color:white;
-
-background:rgba(0,0,0,0.55);
-border:1px solid rgba(255,255,255,0.2);
-border-radius:15px;
-
-backdrop-filter:blur(4px);
-
-height:150px;
-
-font-size:50px;
-
-transition:
-transform .25s,
-box-shadow .25s,
-background .25s;
-
-}
-
-/* ---------- Hover Effects ---------- */
-
-.object:hover{
-
-transform:translateY(-6px) scale(1.05);
-
-background:rgba(0,0,0,0.75);
-
-box-shadow:
-0 0 15px rgba(255,255,255,0.5),
-0 0 30px #00eaff;
-
-}
-
-/* ---------- Labels ---------- */
-
-.label{
-
-font-size:14px;
-margin-top:10px;
-
-}
-
-/* ---------- Mobile ---------- */
-
-@media(max-width:700px){
-
-.cafe{
-grid-template-columns:1fr;
-}
-
-.object{
-height:130px;
-font-size:40px;
-}
-
-}
-
-</style>
 </head>
 
+<!-- Page Visuals -->
 <body>
 
-<h1>☕ Life Lounge Café</h1>
+<h1> Life Lounge Café </h1>
 
 <div class="cafe">
 

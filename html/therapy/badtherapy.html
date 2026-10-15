@@ -1,271 +1,1108 @@
+
 <!DOCTYPE html>
-<!-- File Declaration -->
 <html lang="en">
-<!-- Original Language -->
 <head>
-    <meta charset="UTF-8">
-    <!-- Make sure all characters are displayed correctly -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Responsiveness for phones  -->
-    <title>📝🏫 Bad Therapy 🏫📝</title>
-    <!-- Browser Tab Text -->
-    <link rel="stylesheet" href="therapy.css" type="text/css">
-    <!-- Link to css  -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom google font -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🖤 Bad Therapy — The Advice You Don't Want to Hear</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #17090d;
+  --panel: #241015;
+  --red: #ed2949;
+  --rose: #ffb8c5;
+  --cream: #ffe8e8;
+  --line: #713044;
+  --shadow: 0 20px 60px #080205a8;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #12070a;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 75% 15%, #691126 0, transparent 45%),
+    radial-gradient(ellipse at 20% 85%, #3c101c 0, transparent 40%),
+    #12070a;
+}
+
+a { color: inherit; }
+
+.site-shell {
+  max-width: 1500px;
+  margin: auto;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* NAVIGATION — KEEP THESE RELATIVE PATHS */
+
+.topbar {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 16px 0;
+  padding: 10px 14px;
+  border: 1px solid #87334a;
+  border-radius: 22px;
+  background: #18090de8;
+  box-shadow: 0 10px 35px #0008;
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  color: var(--rose);
+  text-decoration: none;
+  font-size: 1rem;
+  margin-right: auto;
+  white-space: nowrap;
+}
+
+.nav-link {
+  font-size: .78rem;
+  text-decoration: none;
+  padding: 9px 11px;
+  border-radius: 999px;
+  color: #f8dce1;
+  transition: .2s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: linear-gradient(135deg, #d51e40, #81132b);
+  box-shadow: 0 0 20px #ed294955;
+  color: white;
+}
+
+/* HEADER */
+
+.hero {
+  padding: 35px 22px 18px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 7px 13px;
+  border: 1px solid #7c3043;
+  border-radius: 999px;
+  background: #220c13;
+  color: #ff9eb0;
+  font-size: .75rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.7rem, 6vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  margin: 14px 0 8px;
+  color: #ff8ca3;
+  text-shadow: 0 0 28px #f02d4c55;
+}
+
+h1 .heart { color: #ef2445; }
+
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #ffd5dc;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  margin: 0;
+}
+
+.hero-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  color: #ed2949;
+  margin: 20px auto 0;
+  max-width: 360px;
+}
+
+.hero-rule::before,
+.hero-rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, #a82a43);
+}
+
+/* MAIN LAYOUT */
+
+.main-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, .78fr) minmax(0, 1.5fr);
+  gap: 22px;
+  padding: 0 22px 36px;
+  align-items: start;
+}
+
+/* CHARACTER */
+
+.character-card {
+  position: sticky;
+  top: 90px;
+  min-height: 650px;
+  overflow: hidden;
+  border: 1px solid #783044;
+  border-radius: 28px;
+  background: #1a0a10;
+  box-shadow: var(--shadow);
+}
+
+.character-art {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, #13060a00 45%, #17090df2 96%),
+    url("therapy-character.webp");
+  background-size: cover;
+  background-position: center top;
+}
+
+.character-card::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #e6425b4f;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.speech-bubble {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  right: 18px;
+  z-index: 1;
+  padding: 15px 17px;
+  border: 1px solid #e74a65;
+  border-radius: 18px 18px 18px 5px;
+  background: #1a080ee8;
+  color: #ffb0bd;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  box-shadow: 0 8px 24px #0005;
+}
+
+.speech-bubble strong {
+  display: block;
+  color: #ff4b6b;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  margin-bottom: 4px;
+}
+
+.character-caption {
+  position: absolute;
+  z-index: 1;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  text-align: center;
+  padding: 17px;
+  border: 1px solid #713044;
+  border-radius: 18px;
+  background: #18090de8;
+  backdrop-filter: blur(8px);
+}
+
+.character-caption b {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: #ff8fa4;
+  display: block;
+}
+
+.character-caption span {
+  display: block;
+  color: #d9adb6;
+  font-size: .82rem;
+  margin-top: 5px;
+}
+
+/* QUIZ AND RESULT CARDS */
+
+.content { min-width: 0; }
+
+.notice,
+.quiz-card,
+.result-card,
+.chat-card {
+  border: 1px solid #7c3044;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #2b1119f5, #1b0a10f7);
+  box-shadow: var(--shadow);
+}
+
+.notice {
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  text-align: center;
+  color: #f4d6dc;
+  line-height: 1.65;
+}
+
+.notice strong { color: #ff8097; }
+
+.notice .warning {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #50121f;
+  color: #ffb4c0;
+  font-size: .78rem;
+}
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 21px 24px 17px;
+  border-bottom: 1px solid #562233;
+}
+
+.card-heading .sigil {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 14px;
+  background: #5a1426;
+  color: #ff91a6;
+  font-size: 1.2rem;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  margin: 0;
+  color: #ff8fa4;
+}
+
+.card-heading p {
+  margin: 4px 0 0;
+  color: #cba0aa;
+  font-size: .85rem;
+}
+
+.progress-track {
+  height: 4px;
+  background: #411521;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #9c1732, #ff5977);
+  transition: width .25s;
+}
+
+form { padding: 8px 24px 24px; }
+
+.question {
+  padding: 15px 0 13px;
+  border-bottom: 1px solid #49202c;
+}
+
+.question:last-of-type { border-bottom: 0; }
+
+.question label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: .95rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #ffe2e6;
+  margin-bottom: 10px;
+}
+
+.question-number {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 27px;
+  height: 27px;
+  border-radius: 9px;
+  background: #4c1424;
+  color: #ff9aac;
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+select {
+  width: 100%;
+  background: #17090e;
+  color: #fbe3e7;
+  border: 1px solid #783044;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: .9rem;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+select:focus {
+  border-color: #ff5875;
+  box-shadow: 0 0 0 3px #ed294927;
+}
+
+select option {
+  background: #1b0a10;
+  color: #ffe8e8;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 22px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 24px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .18s, box-shadow .18s;
+}
+
+button:hover { transform: translateY(-2px); }
+
+.submit-btn {
+  flex: 1;
+  min-width: 150px;
+  background: linear-gradient(135deg, #f23b59, #9d1230);
+  color: white;
+  box-shadow: 0 8px 22px #d41e3d35;
+}
+
+.reset-btn {
+  background: #1b0a10;
+  border: 1px solid #b62b48;
+  color: #ff9bae;
+}
+
+.under-note {
+  text-align: center;
+  color: #cba0aa;
+  font-size: .82rem;
+  font-style: italic;
+  margin: 16px 0 20px;
+}
+
+.result-card {
+  padding: 22px;
+  margin-top: 18px;
+  scroll-margin-top: 100px;
+}
+
+.result-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Playfair Display', serif;
+  color: #ff829a;
+  font-size: 1.4rem;
+  margin: 0 0 15px;
+}
+
+.result-title::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #61253a;
+}
+
+.result-output {
+  white-space: pre-line;
+  min-height: 105px;
+  border: 1px dashed #8c344b;
+  border-radius: 17px;
+  padding: 19px;
+  background: #14070b;
+  color: #ffe1e6;
+  line-height: 1.8;
+}
+
+.result-output:empty::before {
+  content: "Your questionable wisdom will appear here...";
+  color: #8f6570;
+  font-style: italic;
+}
+
+/* SCRIPTED CHATBOT */
+
+.chat-card {
+  margin-top: 18px;
+  overflow: hidden;
+  scroll-margin-top: 100px;
+}
+
+.chat-window {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px 24px 12px;
+}
+
+.chat-avatar {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #541426;
+  border: 1px solid #a7354d;
+  font-size: 1.35rem;
+}
+
+.chat-bubble {
+  border: 1px solid #6c2b3e;
+  background: #17090e;
+  border-radius: 5px 18px 18px 18px;
+  padding: 14px 16px;
+  max-width: 650px;
+  color: #f6dce1;
+  line-height: 1.65;
+}
+
+.chat-name {
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #ff8fa4;
+  font-weight: 700;
+}
+
+.chat-bubble p { margin: 6px 0 0; }
+
+.chat-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 8px 24px 20px 78px;
+}
+
+.chat-option {
+  background: #35111d;
+  border: 1px solid #8e3047;
+  color: #ffdce2;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: .83rem;
+}
+
+.chat-option:hover,
+.chat-option:focus-visible {
+  background: #8d1832;
+  border-color: #ff708b;
+  box-shadow: 0 0 18px #ed294933;
+}
+
+.chat-footnote {
+  margin: 0;
+  padding: 0 24px 20px 78px;
+  color: #a77e88;
+  font-size: .76rem;
+}
+
+.footer {
+  padding: 0 22px 30px;
+  text-align: center;
+  color: #9f7580;
+  font-size: .78rem;
+}
+
+.footer a {
+  color: #ff9bae;
+  text-decoration: none;
+}
+
+/* RESPONSIVE LAYOUT */
+
+@media (max-width: 980px) {
+  .main-layout { grid-template-columns: 1fr; }
+
+  .character-card {
+    position: relative;
+    top: auto;
+    min-height: 360px;
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .character-art { background-position: center 35%; }
+  .character-caption { max-width: 330px; margin: auto; }
+}
+
+@media (max-width: 620px) {
+  .topbar {
+    position: relative;
+    top: auto;
+    margin: 8px;
+    padding: 10px;
+    gap: 4px;
+  }
+
+  .brand {
+    width: 100%;
+    text-align: center;
+    padding: 4px;
+  }
+
+  .nav-link { font-size: .72rem; padding: 8px; }
+  .hero { padding: 28px 16px 18px; }
+  .main-layout { padding: 0 12px 26px; gap: 14px; }
+  .character-card { min-height: 330px; }
+  .notice { padding: 17px; font-size: .9rem; }
+  .card-heading { padding: 17px; }
+  form { padding: 7px 16px 18px; }
+  .question { padding: 13px 0; }
+  .question label { font-size: .9rem; }
+  .actions { flex-direction: column; }
+  .submit-btn, .reset-btn { width: 100%; }
+  .result-card { padding: 17px; }
+  .chat-window { padding: 17px; }
+
+  .chat-options {
+    padding: 8px 17px 18px;
+    flex-direction: column;
+  }
+
+  .chat-option {
+    width: 100%;
+    text-align: left;
+  }
+
+  .chat-footnote { padding: 0 17px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
 </head>
+
 <body>
-<div id="therapy-room">
-    <div class="overlay">
+<div class="site-shell">
 
-  <p class="disclaimer">
-    This quiz is for entertainment purposes only. Do not take the advice seriously.
-  </p>
-    </div>
+  <!-- NAVIGATION: THESE LINKS CONNECT YOUR EXISTING PAGES -->
+  <nav class="topbar" aria-label="Main navigation">
+    <a class="brand" href="../../index.html">☕ Life Lounge</a>
+    <a class="nav-link" href="../../index.html">🏠👨‍💻 Home 👨‍💻🏠</a>
+    <a class="nav-link active" href="../therapy/badtherapy.html">📝🏫 Bad Therapy 🏫📝</a>
+    <a class="nav-link" href="../m8/m8ball.html">🔮🎱 Magic 8 Ball 🎱🔮</a>
+    <a class="nav-link" href="../budget/budget.html">💸😊 Budget 😊💸</a>
+    <a class="nav-link" href="../tarot/tarot.html">♠️🃏 Tarot Reading 🃏♠️</a>
+    <a class="nav-link" href="../horror/horror.html">👹👻 Horror Game 👻👹</a>
+    <a class="nav-link" href="../relax/relax.html">🌤️😌 Relaxing Games 😌🌤️</a>
+    <a class="nav-link" href="../blog/blog.html">📝💬 Blog 💬📝</a>
+  </nav>
 
-    <nav class="TopBar">
-        <!-- Navigation Bar -->
-        <a id="Home" href="../../index.html"><h3>🏠👨‍💻 Home 👨‍💻🏠</h3></a>
-        <!-- Homepage link -->
-        <a id="practiceexam" href="../therapy/badtherapy.html"><h3>📝🏫 Bad Therapy 🏫📝</h3></a>
-        <a id="m8ball" href="../m8/m8ball.html"><h3>🔮🎱 Magic 8 Ball 🎱🔮</h3></a>
-        <a id="budget" href="../budget/budget.html"><h3>💸😊 Budget 😊💸</h3></a>
-        <a id="tarot" href="../tarot/tarot.html"><h3>♠️🃏  Tarot Reading 🃏♠️</h3></a>
-        <a id="horror" href="../horror/horror.html"><h3>👹👻 Horror Game 👻👹</h3></a>
-        <a id="relax" href="../relax/relax.html"><h3>🌤️😌Relaxing Games😌🌤️</h3></a>
-        <a id="blog" href="../blog/blog.html"><h3>📝💬Blog💬📝</h3></a>
-        <!-- Link to other HTML pages -->
-    </nav>
-        <h3 style="text-align: center;"> Bad Therapy: The Advice You Don't Want to Hear</h3>
-    <div style="text-align: center;">
-        <p> This quiz is for entertainment purposes only and the diagnosis it not true or reflective of real therapy. 🙈🙉🙊 Do not take the advice seriously. 🙅‍♂️
-            Don't come crying to me if you were stupid enough to try it. 😆 </p>
-        <p> ⚠️ Discretion advised. ⚠️</p>
-        <p>Based on the answers you provide to the personality assessment below, your therapist 🧑‍⚕️ will provide you with a shitty diagnosis ✍️📝, and some bad advice 🗣️. Enjoy! </p>
-    </div>
+  <header class="hero">
+    <span class="eyebrow">✦ Your session starts now ✦</span>
+    <h1>Bad Therapy <span class="heart">♥</span></h1>
+    <p class="subtitle">The Advice You Don't Want to Hear</p>
+    <div class="hero-rule">✦ ♡ ✦</div>
+  </header>
 
+  <main class="main-layout">
 
-    <h3 style="text-align: center;">Personality Assessment</h3><br>
+    <aside class="character-card" aria-label="Chibi villain therapist illustration">
+      <div class="character-art" role="img" aria-label="A mischievous chibi therapist in a candlelit gothic room"></div>
+      <div class="speech-bubble">
+        <strong>Dr. Absolutely Not</strong>
+        “Spill it. I can handle it… probably.” 🖤
+      </div>
+      <div class="character-caption">
+        <b>Your therapist-ish is in.</b>
+        <span>Licensed in vibes. Unlicensed in everything else.</span>
+      </div>
+    </aside>
 
+    <section class="content">
 
-<form id="persquiz" style="text-align: center;">
-  <label for="ques1">1. I am surrounded by people I love 🤗🫂.</label><br>
-  <select id="ques1" name="ques1" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
+      <div class="notice">
+        <strong>⚠️ A tiny disclaimer from a terrible professional ⚠️</strong><br>
+        This quiz is for entertainment only. The “diagnosis” is fictional and is not a real assessment or a substitute for professional care.<br>
+        <span class="warning">Please do not take this advice seriously. Seriously. 😈</span>
+        <p style="margin:12px 0 0">
+          Answer honestly (or dishonestly — this therapist has no standards).
+          Your questionable consultation awaits.
+        </p>
+      </div>
 
-  <label for="ques2">2. If could control time I would.... ⌛⌚</label><br>
-  <select id="ques2" name="ques2" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Freeze it every time I needed a break 😪😴</option>
-    <option value="2">Re-live every moment regretted 🥲😭</option>
-    <option value="3">Skip to my Death 💀🪦</option>
-    <option value="4">Change my birth date 📅👶</option>
-    <option value="5">Live only specific parts of my life⏪🔂</option>
-  </select><br><br>
+      <section class="quiz-card">
+        <div class="card-heading">
+          <div class="sigil">♥</div>
+          <div>
+            <h2>Personality Assessment</h2>
+            <p>20 questions. Zero credentials. Immaculate audacity.</p>
+          </div>
+        </div>
 
-  <label for="ques3">3. If I had telepathy I would be most curious about... 🤔</label><br>
-  <select id="ques3" name="ques3" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Reading my own heart to understand myself 🧘‍♂️</option>
-    <option value="2">Listening to what people thought about me 🕵️</option>
-    <option value="3">Manipulating the environment 🪄</option>
-    <option value="4">Winning every argument 🗣️</option>
-    <option value="5">Try to make money with this skill 🤑</option>
-  </select><br><br>
+        <div class="progress-track">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
 
-  <label for="ques4">4. If I was in a fairytale, I would be... 🪄🧝</label><br>
-  <select id="ques4" name="ques4" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Traveler 🎒</option>
-    <option value="2">Mage 🧙</option>
-    <option value="3">Fairy 🧚</option>
-    <option value="4">Warrior ⚔️</option>
-    <option value="5">Royal 👑</option>
-  </select><br><br>
+        <form id="persquiz">
+          <div id="questions"></div>
 
-  <label for="ques5">5. When I make mistakes I... 👎❌</label><br>
-  <select id="ques5" name="ques5" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Laugh it off 😅</option>
-    <option value="2">Am a bit critical to myself but that's okay 🙂</option>
-    <option value="3">Tell myself it is fine 🥲</option>
-    <option value="4">Warn others not to do the same thing ⚠️</option>
-    <option value="5">Pretend it did not happen 🤐</option>
-  </select><br><br>
+          <div class="actions">
+            <button class="submit-btn" type="submit" id="result">
+              Get My Questionable Diagnosis ✦
+            </button>
+            <button class="reset-btn" type="reset" id="reset">↺ Reset Quiz</button>
+          </div>
+        </form>
+      </section>
 
-  <label for="ques6">6. I have always had hobbies ever since I was a kid. 🎮🏸</label><br>
-  <select id="ques6" name="ques6" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
+      <p class="under-note">
+        Wow. You actually made it to the end. How suspiciously competent of you. 🖤
+      </p>
 
-  <label for="ques7">7. I find it effortless to maintain relationships. 🥰🤗</label><br>
-  <select id="ques7" name="ques7" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
+      <section class="result-card" id="result-card" aria-live="polite">
+        <h2 class="result-title">Your Result! 🤡</h2>
+        <p id="therapy-output" class="result-output"></p>
+      </section>
 
-  <label for="ques8">8. I have a purpose in life. 💪🧠</label><br>
-  <select id="ques8" name="ques8" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
+      <!-- SCRIPTED CHAT: CLICK A PROMPT TO HEAR THE THERAPIST RESPOND -->
+      <section class="chat-card" id="therapist-chat" aria-live="polite">
+        <div class="card-heading">
+          <div class="sigil">☏</div>
+          <div>
+            <h2>One More Thing…</h2>
+            <p>Choose a prompt to talk to your deeply unqualified therapist.</p>
+          </div>
+        </div>
 
-  <label for="ques9">9. If I could describe my life using a genre it would be... 🎥🍿🎞️</label><br>
-  <select id="ques9" name="ques9" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Comedy 😁</option>
-    <option value="2">Horror 😱</option>
-    <option value="3">Drama 🎭</option>
-    <option value="4">Adventure 🛣️</option>
-    <option value="5">Fantasy 🧙</option>
-  </select><br><br>
+        <div class="chat-window">
+          <div class="chat-avatar" aria-hidden="true">😈</div>
+          <div class="chat-bubble">
+            <span class="chat-name">Dr. Absolutely Not</span>
+            <p id="chat-message">
+              Well, well. You survived my assessment. Want to discuss your
+              extremely unofficial result, or are we pretending everything is fine?
+            </p>
+          </div>
+        </div>
 
-  <label for="ques10">10. I consider myself an easygoing person. 😎🌅</label><br>
-  <select id="ques10" name="ques10" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
+        <div class="chat-options" id="chat-options">
+          <button type="button" class="chat-option" data-chat="meaning">
+            What does my result mean?
+          </button>
+          <button type="button" class="chat-option" data-chat="defend">
+            I would like to defend myself.
+          </button>
+          <button type="button" class="chat-option" data-chat="advice">
+            Give me terrible advice.
+          </button>
+          <button type="button" class="chat-option" data-chat="comfort">
+            Can you be nice for once?
+          </button>
+          <button type="button" class="chat-option" data-chat="again">
+            Change the subject.
+          </button>
+        </div>
 
-  <label for="ques11">11. I try to be honest as much as I can. 🤞🤫</label><br>
-  <select id="ques11" name="ques11" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
+        <p class="chat-footnote">
+          This is a scripted character, not an AI therapist. No free-text chat,
+          no real diagnosis, and absolutely no credentials. 🖤
+        </p>
+      </section>
 
-  <label for="ques12">12. When someone says something that makes me angry I. 💢😡</label><br>
-  <select id="ques12" name="ques12" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Brush it off 🙄</option>
-    <option value="2">Calmly address the situation 🤝</option>
-    <option value="3">Crash Out 💢</option>
-    <option value="4">Yell 🤬</option>
-    <option value="5">Strategic Revenge 🤫</option>
-  </select><br><br>
+    </section>
+  </main>
 
-  <label for="ques13">13. I love myself. 💞😍</label><br>
-  <select id="ques13" name="ques13" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
-
-  <label for="ques14">14. I would rather eat out than cook at home if I could. 🍳🧑‍🍳</label><br>
-  <select id="ques14" name="ques14" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
-
-  <label for="ques15">15. I have goals and dreams for the future. 🔮🗓️🏃‍➡️</label><br>
-  <select id="ques15" name="ques15" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
-
-  <label for="ques16">16. If I could make people understand exactly how I feel, I would... 🎭🎩🪄</label><br>
-  <select id="ques16" name="ques16" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Use this to empathize with others 🫂</option>
-    <option value="2">Make the people I love happy when I can 🤗</option>
-    <option value="3">Take emotional revenge 🔁</option>
-    <option value="4">Revel in the potential chaos 🤭</option>
-    <option value="5">Give people intrusive emotions at inappropriate times 💥</option>
-  </select><br><br>
-
-  <label for="ques17">17. I usually respond respectfully regardless of how things affect me emotionally. 🙎🤦</label><br>
-  <select id="ques17" name="ques17" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
-
-  <label for="ques18">18. It is usually easy for me to brainstorm ideas. 🤯💡</label><br>
-  <select id="ques18" name="ques18" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
-
-  <label for="ques19">19. I communicate clearly to others in a way they understand. 😕😬</label><br>
-  <select id="ques19" name="ques19" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
-
-  <label for="ques20">20. I have been told I am a deep feeler. 🥹🫨😵‍💫</label><br>
-  <select id="ques20" name="ques20" required>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Strongly Agree 😃</option>
-    <option value="2">Agree 😊</option>
-    <option value="3">Neutral 😐</option>
-    <option value="4">Disagree 😡</option>
-    <option value="5">Strongly Disagree 🤬</option>
-  </select><br><br>
-
-  <button type="submit" id="result">Submit</button>
-  <button type="reset" id="reset">Reset Quiz</button>
-    <p>Wow! You actually made it all the way to the end... Good job! Brace Yourself...</p>
-   <h4>Your Result! 🤡</h4>
-    <br></br>
-<p id="therapy-output" style="margin-top: 1em; font-weight: bold; style="text-align: center;"></p>
-    
-</form>
-    <script src="badtherapy.js"></script>
-    
-    <div>
-    <footer>
-      <!-- Back to Home -->
-    <a href="../../index.html" class="back-home">🏠👨‍💻 Home 👨‍💻🏠</a>
+  <footer class="footer">
+    Made with questionable judgment and a suspicious amount of red velvet.
+    <a href="../../index.html">← Back to Life Lounge</a>
   </footer>
- </div>
 </div>
+
+<script>
+// =======================================================
+// QUIZ QUESTIONS
+// The original 20 questions and answer choices are retained.
+// =======================================================
+
+const questions = [
+  {
+    text: "I am surrounded by people I love 🤗🫂.",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "If I could control time I would.... ⌛⌚",
+    options: [
+      "Freeze it every time I needed a break 😪😴",
+      "Re-live every moment regretted 🥲😭",
+      "Skip to my Death 💀🪦",
+      "Change my birth date 📅👶",
+      "Live only specific parts of my life ⏪🔂"
+    ]
+  },
+  {
+    text: "If I had telepathy I would be most curious about... 🤔",
+    options: [
+      "Reading my own heart to understand myself 🧘‍♂️",
+      "Listening to what people thought about me 🕵️",
+      "Manipulating the environment 🪄",
+      "Winning every argument 🗣️",
+      "Try to make money with this skill 🤑"
+    ]
+  },
+  {
+    text: "If I was in a fairytale, I would be... 🪄🧝",
+    options: ["Traveler 🎒", "Mage 🧙", "Fairy 🧚", "Warrior ⚔️", "Royal 👑"]
+  },
+  {
+    text: "When I make mistakes I... 👎❌",
+    options: [
+      "Laugh it off 😅",
+      "Am a bit critical to myself but that's okay 🙂",
+      "Tell myself it is fine 🥲",
+      "Warn others not to do the same thing ⚠️",
+      "Pretend it did not happen 🤐"
+    ]
+  },
+  {
+    text: "I have always had hobbies ever since I was a kid. 🎮🏸",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "I find it effortless to maintain relationships. 🥰🤗",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "I have a purpose in life. 💪🧠",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "If I could describe my life using a genre it would be... 🎥🍿🎞️",
+    options: ["Comedy 😁", "Horror 😱", "Drama 🎭", "Adventure 🛣️", "Fantasy 🧙"]
+  },
+  {
+    text: "I consider myself an easygoing person. 😎🌅",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "I try to be honest as much as I can. 🤞🤫",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "When someone says something that makes me angry I... 💢😡",
+    options: [
+      "Brush it off 🙄",
+      "Calmly address the situation 🤝",
+      "Crash Out 💢",
+      "Yell 🤬",
+      "Strategic Revenge 🤫"
+    ]
+  },
+  {
+    text: "I love myself. 💞😍",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "I would rather eat out than cook at home if I could. 🍳🧑‍🍳",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "I have goals and dreams for the future. 🔮🗓️🏃‍➡️",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "If I could make people understand exactly how I feel, I would... 🎭🎩🪄",
+    options: [
+      "Use this to empathize with others 🫂",
+      "Make the people I love happy when I can 🤗",
+      "Take emotional revenge 🔁",
+      "Revel in the potential chaos 🤭",
+      "Give people intrusive emotions at inappropriate times 💥"
+    ]
+  },
+  {
+    text: "I usually respond respectfully regardless of how things affect me emotionally. 🙎🤦",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "It is usually easy for me to brainstorm ideas. 🤯💡",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "I communicate clearly to others in a way they understand. 😕😬",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  },
+  {
+    text: "I have been told I am a deep feeler. 🥹🫨😵‍💫",
+    options: [
+      "Strongly Agree 😃", "Agree 😊", "Neutral 😐",
+      "Disagree 😡", "Strongly Disagree 🤬"
+    ]
+  }
+];
+
+// Build the dropdowns from the question list.
+const questionContainer = document.getElementById("questions");
+
+questions.forEach((question, index) => {
+  const wrapper = document.createElement("div");
+  wrapper.className = "question";
+
+  const label = document.createElement("label");
+  label.htmlFor = `ques${index + 1}`;
+
+  const number = document.createElement("span");
+  number.className = "question-number";
+  number.textContent = String(index + 1).padStart(2, "0");
+
+  label.appendChild(number);
+  label.appendChild(document.createTextNode(" " + question.text));
+
+  const select = document.createElement("select");
+  select.id = `ques${index + 1}`;
+  select.name = `ques${index + 1}`;
+  select.required = true;
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  placeholder.textContent = "Select an option...";
+  select.appendChild(placeholder);
+
+  question.options.forEach((optionText, optionIndex) => {
+    const option = document.createElement("option");
+    option.value = String(optionIndex + 1);
+    option.textContent = optionText;
+    select.appendChild(option);
+  });
+
+  wrapper.appendChild(label);
+  wrapper.appendChild(select);
+  questionContainer.appendChild(wrapper);
+});
+
+// =======================================================
+// DIAGNOSIS MESSAGES
+// The original score ranges and messages are retained.
+// =======================================================
+
+function BadTherapy(score) {
+  const messages = [
+    { min: 20, max: 24, text: "Diagnosis: Unassuming; negligible.\nAdvice: Even your responses were predictable. Go ahead... Try again... I dare you..." },
+    { min: 25, max: 28, text: "Diagnosis: Cooked\nAdvice: There is nothing anyone can do to help you. You are absolutely mentally fucked." },
+    { min: 29, max: 32, text: "Diagnosis: Irrelevant\nAdvice: You can't cope with how irrelevant you are and you never will. You are only good enough to be a disappointment." },
+    { min: 33, max: 36, text: "Diagnosis: Self-proclaimed Altruist.\nAdvice: You love to be the hero, but you'd rather pretend to be the victim than accept when you're the villain. It's alright, everyone lies to themselves." },
+    { min: 37, max: 40, text: "Diagnosis: Masochist\nAdvice: You tell people you love working hard, but you really just enjoy the hard part of it. Never take a break, you're better than that." },
+    { min: 41, max: 44, text: "Diagnosis: Codependent\nAdvice: You enable bad behavior because want to see people destroy themselves so you can save them. There is no saving you, you sadist." },
+    { min: 45, max: 48, text: "Diagnosis: Not what I asked for\nAdvice: If there was a refund policy on relationships, you'd be a frequently returned item." },
+    { min: 49, max: 52, text: "Diagnosis: Mean\nAdvice: You secretly enjoy the pain of others. Stop pretending to be sad and just laugh in their face already." },
+    { min: 53, max: 56, text: "Diagnosis: Shame\nAdvice: I know your kinks are rare, but there's nothing to be ashamed of..." },
+    { min: 57, max: 60, text: "Diagnosis: Sad\nAdvice: Happiness is chasing you, but you are fast." },
+    { min: 61, max: 64, text: "Diagnosis: Broke\nAdvice: Why even try? You will never escape the broke mentality." },
+    { min: 65, max: 68, text: "Diagnosis: What's the point?\nAdvice: I know you secretly want someone to save you. Grow up or give up." },
+    { min: 69, max: 72, text: "Diagnosis: Holy Liar\nAdvice: There is no reason to pretend you are a person of virtue. Everyone knows the truth of what you did. Go ahead, keep pretending." },
+    { min: 73, max: 76, text: "Diagnosis: Reject\nAdvice: People talk to you because they feel bad. Just never talk to anyone ever again." },
+    { min: 77, max: 80, text: "Diagnosis: Underachiever\nAdvice: Give up on your dreams. You will never achieve what you want in life. You already know that." },
+    { min: 81, max: 84, text: "Diagnosis: Overachiever\nAdvice: Everyone already knows you're an imposter. They all just accept that you will continue to pretend like you know what you're doing." },
+    { min: 85, max: 88, text: "Diagnosis: Defensive\nAdvice: You lie to others, lie to yourself, and even your heart lies to you. You can deny that if you want." },
+    { min: 89, max: 92, text: "Diagnosis: Ticking Time Bomb\nAdvice: Everyone walks on eggshells around you. Just crash out already so they know what to expect." },
+    { min: 93, max: 96, text: "Diagnosis: Glass human\nAdvice: Unfortunately you are so transparent, others can see more of you than you can see of yourself. Marry someone oblivious." },
+    { min: 97, max: 100, text: "Diagnosis: Try-hard\nAdvice: You care too much. Stop fucking around and get a personality." }
+  ];
+
+  const match = messages.find(
+    message => score >= message.min && score <= message.max
+  );
+
+  return match ? match.text : "You are beyond help.";
+}
+
+// =======================================================
+// QUIZ FUNCTIONALITY
+// =======================================================
+
+const quiz = document.getElementById("persquiz");
+const output = document.getElementById("therapy-output");
+const progress = document.getElementById("progress-bar");
+
+let lastResult = null;
+
+const chatMessage = document.getElementById("chat-message");
+const chatOptions = document.getElementById("chat-options");
+
+quiz.addEventListener("change", () => {
+  const selects = [...quiz.querySelectorAll("select")];
+  const answered = selects.filter(select => select.value !== "").length;
+  progress.style.width = `${answered / questions.length * 100}%`;
+});
+
+quiz.addEventListener("submit", event => {
+  event.preventDefault();
+
+  if (!quiz.reportValidity()) return;
+
+  const total = [...quiz.querySelectorAll("select")].reduce(
+    (sum, select) => sum + Number(select.value),
+    0
+  );
+
+  output.textContent = BadTherapy(total);
+  lastResult = getDiagnosis(output.textContent);
+
+  chatMessage.textContent =
+    `Ah. Your result is “${lastResult.diagnosis}.” ` +
+    "I have thoughts. Several of them are even legal to say out loud. " +
+    "Pick a topic below, and try not to look so concerned.";
+
+  document.getElementById("result-card").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+});
+
+quiz.addEventListener("reset", () => {
+  setTimeout(() => {
+    output.textContent = "";
+    progress.style.width = "0%";
+    lastResult = null;
+
+    chatMessage.textContent =
+      "Well, well. You survived my assessment. Want to discuss your " +
+      "extremely unofficial result, or are we pretending everything is fine?";
+  }, 0);
+});
+
+// =======================================================
+// SCRIPTED CHATBOT — DEFINED PROMPTS AND RESPONSES
+// =======================================================
+
+const chatReplies = {
+  meaning: () => lastResult
+    ? `Your result says “${lastResult.diagnosis}.” Does that scientifically mean anything? Absolutely not. It means you clicked some dropdowns and I got to feel important for 11 seconds.`
+    : "You want an interpretation before giving me the data? Bold. Submit the quiz first, darling. My imaginary clipboard is empty.",
+
+  defend: () => [
+    "Objection noted. Rejected on the grounds that I am wearing a dramatic outfit and therefore cannot be wrong. Continue.",
+    "You make a compelling argument. Unfortunately, my office accepts neither evidence nor accountability.",
+    "You may defend yourself all you like. I have already written “spirited” in the margin of your completely fictional file."
+  ][Math.floor(Math.random() * 3)],
+
+  advice: () => [
+    "My advice? Drink some water, take a breath, and stop letting a quiz made by a suspicious little gremlin run your life. Ugh. That was almost healthy.",
+    "Make a tiny plan, do one manageable thing, then reward yourself. Disgusting. I may have accidentally given you decent advice.",
+    "Perhaps consider communicating clearly. Or dramatically stare out of a rainy window. Your choice, protagonist."
+  ][Math.floor(Math.random() * 3)],
+
+  comfort: () => [
+    "Oh, fine. 🖤 A quiz cannot define you. You are a whole person, not a score range. Do not make me repeat this; I have a reputation.",
+    "Come here, metaphorically. One silly result does not cancel out your good qualities. There. That's your complimentary crumb of kindness.",
+    "You made it through 20 questions. That's commitment, sweetheart. Be a little gentler with yourself today. I will deny saying that."
+  ][Math.floor(Math.random() * 3)],
+
+  again: () =>
+    "Excellent choice. Let's discuss something less revealing: if I had a tiny evil lair, would it have a velvet chaise lounge or a throne shaped like a heart?"
+};
+
+chatOptions.addEventListener("click", event => {
+  const button = event.target.closest("button[data-chat]");
+  if (!button) return;
+
+  const reply = chatReplies[button.dataset.chat];
+  if (reply) chatMessage.textContent = reply();
+});
+
+// Extract the diagnosis title from the quiz result.
+function getDiagnosis(text) {
+  const match = text.match(/^Diagnosis:\s*(.+)$/m);
+
+  return {
+    diagnosis: match ? match[1].trim() : "Mystery",
+    text
+  };
+}
+</script>
 </body>
 </html>
-

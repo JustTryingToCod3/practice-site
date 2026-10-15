@@ -24,6 +24,20 @@ main{max-width:1380px;padding:42px 34px 60px}.hero{grid-template-columns:minmax(
 @media(max-width:1050px){main{padding-top:30px}.seer-scene{min-height:560px;max-width:760px}.hero{gap:28px}.fortune-teller{transform:translateX(-50%) scale(1)}}
 @media(max-width:650px){.site-header{padding:15px 16px}.brand{font-size:24px}.TopBar{gap:2px}.TopBar a{padding:8px 9px;font-size:10px}main{padding:24px 14px 38px}.hero h1{font-size:61px}.hero-sub{font-size:20px}.seer-scene{min-height:470px;border-radius:120px 120px 18px 18px}.seer-scene:before{border-radius:110px 110px 12px 12px}.window-arch{height:285px;width:76%;top:58px}.fortune-teller{top:105px;transform:translateX(-50%) scale(.84)}.plant{font-size:42px}.plant-left{left:4px;bottom:100px}.plant-right{right:4px;bottom:100px}.table{height:98px}.table-cards{gap:6px;margin-top:12px}.table-cards span{width:41px;height:59px}.scene-caption{bottom:104px;font-size:16px}.reading-panel{padding:23px 14px}.section-heading h2{font-size:30px}.oracle-chat{grid-template-columns:1fr;padding:24px 15px}.oracle-chat:before{font-size:10px;letter-spacing:4px}.oracle-avatar{width:75px;height:75px}.chat-options{grid-template-columns:1fr 1fr}.chat-header h2{font-size:27px}footer{padding:18px 16px}}
 
+
+/* === ROOMIER TAROT CARDS FOR LONGER MESSAGES === */
+.cards-area{gap:20px;align-items:stretch}
+.tarot-card{width:clamp(225px,23%,270px);min-height:440px}
+.card-inner{min-height:440px;height:100%}
+.card-face{border-radius:17px}
+.card-front{padding:21px 20px;overflow:hidden}
+.card-symbol{width:68px;height:68px;margin:13px auto 10px;font-size:32px}
+.card-front h3{font-size:25px;line-height:1.08;margin:8px 0 10px}
+.card-advice{font-size:12px;line-height:1.65;margin:12px 0 15px;overflow-wrap:anywhere}
+.card-number{font-size:9px;padding-top:9px}
+@media(max-width:1050px){.tarot-card{width:clamp(230px,30%,280px);min-height:440px}.card-inner{min-height:440px}}
+@media(max-width:650px){.cards-area{gap:16px}.tarot-card{width:min(100%,320px);min-height:430px}.card-inner{min-height:430px}.card-front{padding:20px 19px}.card-advice{font-size:12px;line-height:1.7}}
+
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -100,7 +114,7 @@ let currentReading=null;
 let lastPrompt=null;
 function randomCard(pool){return pool[Math.floor(Math.random()*pool.length)];}
 function shuffleArray(arr){const copy=[...arr];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}return copy;}
-function getCategoryCards(category){const [min,max]=categoryRanges[category];return TAROT_CARDS.filter(card=>card.id>=min&&card.id<=max);}
+function getCategoryCards(category){return TAROT_CARDS.filter(card=>card.category===category);}
 function drawReading(category){
   const all=shuffleArray(TAROT_CARDS);
   if(category==='General Reading') return {category, cards:all.slice(0,4), leadingCategory:null};
@@ -136,16 +150,16 @@ function runReading(category){
 }
 function buildWelcome(reading){
  const first=reading.cards[0];
- if(reading.category==='General Reading') return `Your four-card reading is on the table, seeker. ${first.title} opens the conversation: ${first.advice} Read the other cards too—sometimes a repeated theme is the nudge worth noticing. What shall we untangle first? ✨`;
- return `Your leading card is ${first.title}. ${first.advice} The three supporting cards add other angles, not absolute answers. Let's see which part feels most relevant to your life right now. ✨`;
+ if(reading.category==='General Reading') return `All right, your four cards are here. ✨ The first one is ${first.title}, with this message: “${first.advice}” Take a look at the others too; sometimes they echo the same idea, and sometimes they offer a different perspective. What would you like to talk through first?`;
+ return `Your first card is ${first.title}, so we're starting with ${reading.category.toLowerCase()}. Its message is: “${first.advice}” The other three cards add a few more perspectives. No pressure to make everything fit—let's see what feels useful to you. 💙`;
 }
 const prompts=[
- {label:'What does this mean?',reply:(r)=>`In plain language, your spread is inviting you to pause and notice a pattern—not predicting an unavoidable outcome. The leading card says: “${r.cards[0].advice}” Which part of that message feels familiar, even a little?`},
- {label:'Can you elaborate?',reply:(r)=>`Let's zoom in gently. “${r.cards[0].advice}” could show up in a small everyday choice, a boundary, or a habit you keep returning to. Your supporting cards are extra lenses, not extra rules. Try connecting one message to something happening this week.`},
- {label:'How does this affect me?',reply:(r)=>`The cards can't know your circumstances better than you do. Think of the message as a question: where might “${r.cards[0].advice}” touch your current choices? If it doesn't fit, you are allowed to set it aside. Your own context gets the final say.`},
- {label:'What should I focus on?',reply:(r)=>{const c=r.cards[1]||r.cards[0];return `Pick one manageable thing rather than trying to transform your whole life by Thursday. Your supporting card, ${c.title}, says: “${c.advice}” What is one small action that would honor that message without overwhelming you?`;}},
- {label:'Any advice?',reply:(r)=>{const c=r.cards[r.cards.length-1];return `Oracle advice, with a tiny sprinkle of drama: do not hand your whole life over to one card. ✨ Your ${c.title} message is “${c.advice}” Choose one useful piece, make it practical, and let the rest remain mysterious wallpaper.`;}},
- {label:'Give me a summary.',reply:(r)=>{const themes=r.cards.map(c=>c.title.replace(/^.*? of /,'')).join(' · ');return `Your spread's little headline is: ${themes}. The cards offer prompts around ${r.cards.map(c=>c.category.toLowerCase()).filter((x,i,a)=>a.indexOf(x)===i).join(', ')}. Look for a common thread, choose one thing you can influence, and remember: this reading is a mirror for reflection, not a fixed verdict.`;}}
+ {label:'What does this mean?',reply:(r)=>`Okay, let's unpack it together. Your first card, ${r.cards[0].title}, says: “${r.cards[0].advice}” One way to read that is as an invitation to notice where this might be showing up in your life—not as a rule you have to follow. Does any part of it ring true for you?`},
+ {label:'Can you elaborate?',reply:(r)=>{const lead=r.cards[0];const support=r.cards[1]||lead;return `Sure. 💙 The main message here is “${lead.advice}” Your supporting card, ${support.title}, adds another angle: “${support.advice}” You don't have to make the two messages fit perfectly. Maybe think about what's been on your mind lately and see whether either one gives you a useful way to look at it.`;}},
+ {label:'How does this affect me?',reply:(r)=>`That really depends on what's happening in your life right now. The cards can't know your circumstances, but they can give you a question to sit with: where might “${r.cards[0].advice}” connect with something you're dealing with? If it doesn't fit your situation, it's completely okay to leave it behind.`},
+ {label:'What should I focus on?',reply:(r)=>{const c=r.cards[1]||r.cards[0];return `Let's keep it small and doable. Your supporting card, ${c.title}, offers this thought: “${c.advice}” Rather than trying to fix everything at once, is there one little step you could take today that feels helpful? Even a small step counts.`;}},
+ {label:'Any advice?',reply:(r)=>{const c=r.cards[r.cards.length-1]||r.cards[0];return `If we were chatting over a cup of tea, I'd say: take what helps and don't put pressure on yourself to make every card fit. ☕ The ${c.title} says, “${c.advice}” Is there a practical part of that message you can use right now? Start there; you don't need to figure everything out today.`;}},
+ {label:'Give me a summary.',reply:(r)=>{const themes=r.cards.map(c=>c.title).join(', ');const categories=r.cards.map(c=>c.category.toLowerCase()).filter((x,i,a)=>a.indexOf(x)===i).join(', ');return `Here's the short version: your cards are ${themes}. Together, they touch on ${categories}. I'd look for a theme that keeps coming up, then choose one small thing you can actually influence. This is a prompt for reflection, not a verdict about your future—and you get the final say.`;}}
 ];
 function setChatEnabled(enabled){chatOptions.querySelectorAll('button').forEach((button,i)=>{button.disabled=!enabled||!currentReading;button.textContent=prompts[i].label;});}
 function initChat(){chatOptions.innerHTML='';prompts.forEach((prompt,i)=>{const button=document.createElement('button');button.type='button';button.textContent=prompt.label;button.disabled=true;button.addEventListener('click',()=>{if(!currentReading)return;lastPrompt=i;chatMessage.textContent=prompt.reply(currentReading);chatOptions.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('chosen',j===i));});chatOptions.appendChild(button);});}

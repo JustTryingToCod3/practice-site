@@ -1,45 +1,334 @@
 <!DOCTYPE html>
-<!-- File Declaration -->
 <html lang="en">
-<!-- Original Language -->
 <head>
-    <meta charset="UTF-8">
-    <!-- Make sure all characters are displayed correctly -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Responsiveness for phones  -->
-    <title>👹👻 Horror Game 👻👹</title>
-    <!-- Browser Tab Text -->
-    <link rel="stylesheet" href="../../css_ALL.css" type="text/css">
-    <!-- Link to css  -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom google font -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101012">
+<title>Enter the Ring with What If | Life Lounge</title>
+<style>
+:root{--black:#0b0b0d;--panel:#151518;--panel2:#202024;--white:#f4f4f5;--silver:#c5c5cb;--muted:#888890;--line:#414147;--red:#a52b35;--red2:#e14b56;--mist:#dedee5}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0,#303035 0,transparent 45rem),linear-gradient(150deg,#111113,#050506 72%);color:var(--white);font-family:Georgia,"Times New Roman",serif}
+button,a,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #eee;outline-offset:3px}
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px clamp(14px,4vw,52px);border-bottom:1px solid #29292e;background:#0a0a0ce8}
+.brand{text-decoration:none;font-family:Arial,sans-serif;font-size:1.03rem;font-weight:900;letter-spacing:.04em}.brand span{color:#aaaab2}
+nav{display:flex;flex-wrap:wrap;gap:7px}nav a{font-family:Arial,sans-serif;text-decoration:none;color:#b6b6bd;padding:8px 10px;border-radius:8px;font-size:.82rem}nav a:hover,nav a[aria-current=page]{background:#29292e;color:#fff}
+main{width:min(1020px,93vw);margin:0 auto;padding:22px 0 50px}
+.screen{display:none;animation:appear .45s ease both}.screen.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.kicker{font:800 .72rem Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#a5a5ad}
+.title-screen{text-align:center;padding:clamp(15px,4vw,42px) 0}
+h1{font-size:clamp(2.5rem,7vw,5.6rem);line-height:.92;letter-spacing:-.065em;text-transform:uppercase;margin:17px 0 18px;text-shadow:0 5px 35px #000}
+h1 span{display:block;color:#a7a7ae;font-size:.74em;letter-spacing:.02em;margin-top:12px}
+.lede{max-width:680px;margin:0 auto;color:#bdbdc4;font:1rem/1.7 Arial,sans-serif}
+.art{position:relative;overflow:hidden;border:1px solid #48484e;border-radius:17px;background:linear-gradient(180deg,#242428,#09090b);margin:25px auto;max-width:760px;min-height:220px;display:flex;align-items:center;justify-content:center}
+.art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#ffffff05 4px 5px),radial-gradient(ellipse at 50% 70%,#b9b9c013,transparent 55%)}
+.ring{position:relative;width:min(78%,500px);height:180px;margin-top:24px;perspective:500px}
+.rope{position:absolute;left:0;right:0;height:3px;background:#9b9ba2;box-shadow:0 0 9px #ddd5;transform:rotateX(-12deg)}
+.rope.r1{top:40px}.rope.r2{top:83px}.rope.r3{top:127px}
+.ring:before,.ring:after{content:"";position:absolute;top:0;bottom:0;width:5px;background:#77777e;box-shadow:0 0 10px #fff2}
+.ring:before{left:0}.ring:after{right:0}
+.ghost{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:100px;height:135px;filter:drop-shadow(0 0 18px #e9e9f022)}
+.ghost-head{position:absolute;top:0;left:25px;width:50px;height:54px;border-radius:48% 48% 42% 42%;background:linear-gradient(90deg,#242428,#a3a3aa 45%,#333338);box-shadow:inset -8px -5px 12px #0008}
+.ghost-head:before,.ghost-head:after{content:"";position:absolute;top:22px;width:9px;height:12px;background:#050506;border-radius:50%;box-shadow:0 0 6px #000}
+.ghost-head:before{left:10px}.ghost-head:after{right:10px}
+.ghost-body{position:absolute;top:44px;left:8px;width:84px;height:88px;background:linear-gradient(90deg,#18181c,#aaaab0 48%,#29292d);clip-path:polygon(20% 0,80% 0,100% 100%,76% 83%,61% 100%,43% 82%,21% 100%,0 88%);border-radius:45% 45% 0 0}
+.ghost-arm{position:absolute;top:56px;width:32px;height:65px;background:linear-gradient(90deg,#202024,#9999a0);border-radius:20px;transform-origin:top}
+.ghost-arm.left{left:5px;transform:rotate(24deg)}.ghost-arm.right{right:2px;transform:rotate(-28deg)}
+.primary,.secondary,.danger,.choice{border:1px solid #5c5c63;border-radius:11px;padding:13px 17px;font-weight:800;transition:transform .15s,background .2s,border-color .2s}
+.primary{background:#efeff1;color:#111114;border-color:#efeff1;font-family:Arial,sans-serif;letter-spacing:.02em}
+.primary:hover{background:#fff;transform:translateY(-2px)}
+.secondary{background:#222226;color:#eee}.secondary:hover{background:#333338}
+.danger{background:#571c22;border-color:#a83b44;color:#fff}.danger:hover{background:#7b202a}
+.button-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.note{font: .8rem/1.6 Arial,sans-serif;color:#8e8e96;margin-top:14px}
+.section-head{text-align:center;margin:10px auto 22px}.section-head h2{font-size:clamp(1.8rem,4vw,3rem);margin:10px 0;letter-spacing:-.04em}.section-head p{font: .95rem/1.6 Arial,sans-serif;color:#aaaab2;max-width:650px;margin:0 auto}
+.category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.category{background:linear-gradient(145deg,#222226,#141417);border:1px solid #404047;border-radius:14px;padding:19px;text-align:left;color:#f0f0f3;min-height:135px}
+.category:hover{border-color:#b7b7bf;background:#29292e;transform:translateY(-2px)}
+.category .emoji{font-size:1.65rem;display:block;margin-bottom:12px;filter:grayscale(1)}
+.category strong{display:block;font-size:1.1rem;margin-bottom:6px}.category small{font: .8rem/1.5 Arial,sans-serif;color:#a5a5ad}
+.game-panel{border:1px solid #414147;border-radius:17px;background:linear-gradient(145deg,#1b1b1f,#101012);overflow:hidden;box-shadow:0 20px 60px #0008}
+.game-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid #37373d;background:#17171a;font:800 .75rem Arial,sans-serif;letter-spacing:.1em;color:#aaaab2;text-transform:uppercase}
+.round-label{color:#eee}.game-content{padding:clamp(20px,4vw,42px)}
+.mini-art{height:95px;position:relative;margin:0 auto 15px;max-width:400px;overflow:hidden}
+.mini-art:before{content:"";position:absolute;left:10%;right:10%;bottom:14px;height:48px;border:2px solid #6d6d75;transform:perspective(120px) rotateX(12deg);box-shadow:0 0 22px #fff1}
+.mini-art:after{content:"";position:absolute;left:15%;right:15%;bottom:38px;height:2px;background:#aaaab1;box-shadow:0 -20px #55555b,0 20px #55555b}
+.scenario-label{text-align:center;color:#aaaab2;font:800 .73rem Arial,sans-serif;letter-spacing:.17em;text-transform:uppercase}
+.scenario-title{text-align:center;font-size:clamp(1.75rem,4vw,3rem);line-height:1.1;margin:15px auto;max-width:750px;letter-spacing:-.04em}
+.scenario-copy{text-align:center;color:#c4c4cb;font:1rem/1.75 Arial,sans-serif;max-width:700px;margin:0 auto 25px}
+.choice-list{display:grid;gap:10px;max-width:760px;margin:0 auto}
+.choice{display:flex;align-items:flex-start;gap:12px;text-align:left;background:#252529;color:#f3f3f5;padding:15px 16px;line-height:1.45}
+.choice:hover{background:#36363c;border-color:#aaaab2;transform:translateX(3px)}
+.choice .letter{flex:0 0 29px;height:29px;border-radius:8px;background:#44444b;display:grid;place-items:center;font:800 .83rem Arial,sans-serif;color:#fff}
+.choice .choice-text{flex:1}
+.game-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:23px;padding-top:18px;border-top:1px solid #37373d}
+.tap-copy{font: .78rem/1.5 Arial,sans-serif;color:#aaaab2;max-width:420px}
+.end-screen{max-width:800px;margin:0 auto;text-align:center;padding:20px 0}
+.end-screen h2{font-size:clamp(2.2rem,6vw,4rem);letter-spacing:-.05em;line-height:1;margin:12px 0}
+.end-screen .elapsed{font:900 clamp(1.15rem,3vw,1.6rem) Arial,sans-serif;letter-spacing:.06em;color:#f0f0f2;border:1px solid #55555c;background:#202024;padding:17px;border-radius:12px;margin:22px auto;max-width:620px}
+.end-message{font:1rem/1.8 Arial,sans-serif;color:#c5c5cc;max-width:680px;margin:0 auto}
+.encouragement{margin:24px auto;padding:22px;border:1px solid #45454b;border-radius:15px;background:linear-gradient(135deg,#202024,#111114);max-width:690px;text-align:left}
+.encouragement h3{margin:0 0 10px;font-size:1.15rem}.encouragement p{font: .95rem/1.8 Arial,sans-serif;color:#c5c5cc;margin:0}
+.stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}.stat{border:1px solid #44444a;border-radius:10px;padding:10px 14px;color:#bbb;font: .8rem Arial,sans-serif}.stat strong{display:block;color:#fff;font-size:1.2rem;margin-top:5px}
+.footer{text-align:center;color:#66666e;font: .78rem Arial,sans-serif;padding:28px 10px}
+@media(max-width:650px){.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.site-header{justify-content:center}.brand{width:100%;text-align:center}nav{justify-content:center}.art{min-height:190px}.ring{height:150px}.ghost{transform:translateX(-50%) scale(.85);transform-origin:bottom center}}
+@media(max-width:390px){.category-grid{grid-template-columns:1fr}.category{min-height:auto}.game-actions{align-items:stretch}.game-actions button{flex:1}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-    <!-- Visible page content -->
-    <h1>👹👻 Horror Game 👻👹</h1>
-    <!-- Page Heading -->
+<header class="site-header">
+  <a class="brand" href="../../index.html">☁ LIFE <span>LOUNGE</span></a>
+  <nav aria-label="Main navigation">
+    <a href="../../index.html">Home</a>
+    <a href="../therapy/badtherapy.html">Bad Therapy</a>
+    <a href="../m8/m8ball.html">Magic 8 Ball</a>
+    <a href="../budget/budget.html">Budget Buddy</a>
+    <a href="../tarot/tarot.html">Tarot</a>
+    <a href="../horror/horror.html">Horror</a>
+    <a href="relax.html" aria-current="page">Relaxing Games</a>
+    <a href="../blog/blog.html">Blog</a>
+  </nav>
+</header>
 
-    <nav class="TopBar">
-        <!-- Navigation Bar -->
-        <a id="Home" href="../../index.html"><h3>🏠👨‍💻 Home 👨‍💻🏠</h3></a>
-        <!-- Homepage link -->
-        <a id="practiceexam" href="../therapy/badtherapy.html"><h3>📝🏫 Bad Therapy 🏫📝</h3></a>
-        <a id="m8ball" href="../m8/m8ball.html"><h3>🔮🎱 Magic 8 Ball 🎱🔮</h3></a>
-        <a id="budget" href="../budget/budget.html"><h3>💸😊 Budget 😊💸</h3></a>
-        <a id="tarot" href="../tarot/tarot.html"><h3>♠️🃏  Tarot Reading 🃏♠️</h3></a>
-        <a id="horror" href="../horror/horror.html"><h3>👹👻 Horror Game 👻👹</h3></a>
-        <a id="relax" href="../relax/relax.html"><h3>🌤️😌Relaxing Games😌🌤️</h3></a>
-        <a id="blog" href="../blog/blog.html"><h3>📝💬Blog💬📝</h3></a>
-        <!-- Link to other HTML pages -->
-    </nav>
-    
-    
+<main>
+  <section id="titleScreen" class="screen active title-screen">
+    <div class="kicker">A Life Lounge psychological horror game</div>
+    <h1>Enter the Ring <span>with What If</span></h1>
+    <p class="lede">Your brain has entered the chat. Unfortunately, it brought a microphone. Step into the ring with the What-If Warrior and see how long you can go before you tap out.</p>
+    <div class="art" aria-label="A ghostly figure stands inside a shadowy boxing ring">
+      <div class="ring"><div class="rope r1"></div><div class="rope r2"></div><div class="rope r3"></div></div>
+      <div class="ghost"><div class="ghost-head"></div><div class="ghost-body"></div><div class="ghost-arm left"></div><div class="ghost-arm right"></div></div>
+    </div>
+    <div class="button-row"><button class="primary" id="enterButton">🥊 ENTER THE RING</button></div>
+    <p class="note">The clock starts when you enter. You won't see it until the game ends. You can tap out at any time.</p>
+  </section>
+
+  <section id="categoryScreen" class="screen">
+    <div class="section-head"><div class="kicker">Round 1 · Choose your haunting</div><h2>What's taking up space in your head?</h2><p>Pick the worry the What-If Warrior is trying to turn into a whole horror franchise.</p></div>
+    <div class="category-grid" id="categoryGrid"></div>
+    <div class="button-row"><button class="secondary" id="backTitle">← Back to title</button></div>
+  </section>
+
+  <section id="gameScreen" class="screen">
+    <div class="game-panel">
+      <div class="game-top"><span id="roundLabel" class="round-label">ROUND 01</span><span id="categoryLabel">RELATIONSHIPS</span><span>TIME HIDDEN</span></div>
+      <div class="game-content">
+        <div class="mini-art" aria-hidden="true"></div>
+        <div class="scenario-label" id="scenarioLabel">THE FIRST PUNCH</div>
+        <h2 class="scenario-title" id="scenarioTitle">What if they don't like you?</h2>
+        <p class="scenario-copy" id="scenarioCopy"></p>
+        <div class="choice-list" id="choiceList"></div>
+        <div class="game-actions">
+          <span class="tap-copy">The What-If Warrior wants another round. You decide when the fight is over.</span>
+          <button class="danger" id="tapOutButton">🏳️ TAP OUT</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="endScreen" class="screen">
+    <div class="end-screen">
+      <div class="kicker" id="endingKicker">THE BELL HAS RUNG</div>
+      <h2 id="endingTitle">YOU TAPPED OUT</h2>
+      <p class="end-message" id="endingIntro"></p>
+      <div class="elapsed" id="elapsedText">YOU WASTED 0 MINUTES ON WHAT IF</div>
+      <div class="stats">
+        <div class="stat">ROUNDS FOUGHT<strong id="roundsStat">0</strong></div>
+        <div class="stat">YOUR HAUNTING<strong id="categoryStat">—</strong></div>
+        <div class="stat">ENDING<strong id="endingStat">TAP OUT</strong></div>
+      </div>
+      <div class="encouragement"><h3 id="encouragementTitle">💜 A message from Life Lounge</h3><p id="encouragementText"></p></div>
+      <div class="button-row"><button class="primary" id="playAgainButton">🥊 FIGHT AGAIN</button><a class="secondary" href="../../index.html" style="text-decoration:none;display:inline-flex;align-items:center">RETURN TO LIFE LOUNGE</a></div>
+      <p class="note">This is a game, not a clinical tool. You don't have to chase every thought to its worst possible ending.</p>
+    </div>
+  </section>
+  <div class="footer">The shadows are fictional. Your choice to step away is real. · LIFE LOUNGE</div>
+</main>
+
+<script>
+(() => {
+  "use strict";
+  const categories = {
+    money:{name:"Money",emoji:"💸",desc:"Bills, jobs, stability, the future.",start:"What if you never have enough money?",setup:"The numbers on the page begin to crawl. The What-If Warrior taps a calculator like it's a tiny, ominous drum.",threads:[
+      ["What if one unexpected bill ruins your whole month?","What if three unexpected bills form a committee?","What if the committee hires a lawyer who charges by the sigh?","What if the lawyer bills you in ancient coins that only the moon accepts?"],
+      ["What if you never get the job?","What if every job interviewer is secretly the same person wearing different wigs?","What if the wigs have a union and vote you off the hiring island?","What if the island is a floating office park governed by sentient staplers?"],
+      ["What if you spend money on the wrong thing?","What if the thing becomes a financial influencer and critiques your choices?","What if it starts a podcast called Your Wallet, Your Problem?","What if the podcast wins a Nobel Prize in accounting from a raccoon government?"],
+      ["What if you can't afford your future?","What if your future sends you a very stern invoice?","What if the invoice is delivered by a horse wearing a tiny banker's visor?","What if the horse repossesses the concept of Tuesday?"]
+    ]},
+    relationships:{name:"Relationships",emoji:"🖤",desc:"Rejection, awkward moments, and people.",start:"What if they don't like you?",setup:"The audience goes silent. Somewhere in the shadows, a ghost clears its throat like it has gossip.",threads:[
+      ["What if they were just being polite?","What if everyone has a secret group chat about you?","What if the group chat is moderated by their dog?","What if the dog gets adopted by the CIA and becomes your handler?"],
+      ["What if you said something awkward?","What if the awkward sentence is replayed at a secret awards show?","What if the judges are all pigeons wearing reading glasses?","What if the pigeons subpoena your dreams as evidence?"],
+      ["What if they don't text back?","What if their phone fell into a wormhole?","What if the wormhole is run by a customer service team with a 900-year wait time?","What if the hold music becomes the national anthem of Mars?"],
+      ["What if you misunderstood their tone?","What if their punctuation contains a hidden message?","What if the period at the end of the text is a tiny villain?","What if the villain's evil lair is inside a suspiciously judgmental lasagna?"]
+    ]},
+    time:{name:"Time",emoji:"⌛",desc:"Deadlines, aging, and feeling behind.",start:"What if you're running out of time?",setup:"The clock ticks once. The sound echoes like a spoon dropped in an abandoned cathedral.",threads:[
+      ["What if you're falling behind everyone else?","What if everyone else is secretly following a different calendar?","What if their calendar has 19 extra Wednesdays?","What if Wednesday has become a monarch and demands tribute in sandwiches?"],
+      ["What if you waste a whole day?","What if the day files a complaint against you?","What if the complaint is heard by a jury of tiny pocket watches?","What if the pocket watches hire a time-traveling goose as their attorney?"],
+      ["What if you never reach your goals in time?","What if your goals are on a train that left five minutes early?","What if the train is driven by a ghost who refuses to use GPS?","What if GPS is actually three hamsters operating a celestial abacus?"],
+      ["What if you're getting older without figuring it out?","What if age is just a subscription service you forgot to cancel?","What if the cancellation department exists outside linear time?","What if the receptionist is your future self, but as a moth?"]
+    ]},
+    living:{name:"Living & existence",emoji:"🌑",desc:"Purpose, uncertainty, and big life questions.",start:"What if you have no idea what you're doing with your life?",setup:"The lights dim. The universe clears its throat and offers absolutely no useful clarification.",threads:[
+      ["What if you never find your purpose?","What if purpose is hiding under the couch?","What if the couch is an ancient oracle with terrible posture?","What if the oracle only answers in interpretive tap dance?"],
+      ["What if you make the wrong life choice?","What if every path leads to a different version of a grocery store?","What if all the grocery stores are run by philosophical skeletons?","What if the skeletons put existence itself on aisle seven?"],
+      ["What if nothing makes sense?","What if reality is a badly organized group project?","What if the project manager is a sleepy moon with email anxiety?","What if the moon's inbox contains 80,000 messages from sentient soup?"],
+      ["What if you never become the person you imagined?","What if imaginary-you has been leaving passive-aggressive sticky notes?","What if the notes are written in a language invented by haunted turnips?","What if the turnips have a tiny parliament and one very dramatic opera singer?"]
+    ]},
+    work:{name:"Work & purpose",emoji:"💼",desc:"Jobs, performance, expectations, and failure.",start:"What if you mess everything up at work?",setup:"A fluorescent light flickers overhead. The office printer makes a sound that feels legally threatening.",threads:[
+      ["What if you make a mistake?","What if the mistake gets its own employee badge?","What if the badge grants it access to the executive elevator?","What if the elevator only travels sideways into a dimension of sentient spreadsheets?"],
+      ["What if they realize you're still learning?","What if your training manual is actually a 900-page escape room?","What if every page is guarded by a tiny HR goblin?","What if the goblin schedules a performance review with a volcano?"],
+      ["What if you don't get promoted?","What if the promotion is being held hostage by a very small dragon?","What if the dragon demands a PowerPoint about workplace synergy?","What if the PowerPoint achieves sentience and becomes your new manager?"],
+      ["What if you picked the wrong career?","What if your career takes you to a crossroads with twelve identical doors?","What if every door opens into a different version of Monday morning?","What if Monday morning is a final boss with a clipboard and roller skates?"]
+    ]},
+    health:{name:"Health & safety",emoji:"🫀",desc:"Uncertainty, mistakes, and feeling in control.",start:"What if something goes wrong?",setup:"A shadow moves behind the curtain. It turns out to be another shadow, somehow wearing a lab coat.",threads:[
+      ["What if you missed an important detail?","What if the detail is hiding in a haystack of paperwork?","What if the haystack has hired 300 suspicious scarecrows?","What if the scarecrows are all licensed detectives from Neptune?"],
+      ["What if you can't control every outcome?","What if control is a remote with one button and no batteries?","What if the batteries are on a quest guarded by a sentient vending machine?","What if the vending machine accepts only riddles and expired coupons?"],
+      ["What if you make the wrong decision?","What if the decision grows legs and runs away?","What if it joins a circus of anxious acrobats?","What if the circus is hosted by a ghost who reviews everyone's posture?"],
+      ["What if you don't know what will happen next?","What if the future is written on a very long receipt?","What if the receipt is printed by a printer from the underworld?","What if the printer is out of ink and starts predicting things through interpretive jazz?"]
+    ]}
+  };
+  const categoryOrder=Object.keys(categories);
+  const $=id=>document.getElementById(id);
+  let activeCategory=null,round=0,startedAt=0,scenarioIndex=0,branchIndex=0,history=[],usedKeys=new Set(),ending=null;
+  const screens=["titleScreen","categoryScreen","gameScreen","endScreen"];
+  function showScreen(id){screens.forEach(s=>$(s).classList.toggle("active",s===id));window.scrollTo({top:0,behavior:"smooth"});}
+  function buildCategories(){
+    $("categoryGrid").innerHTML=categoryOrder.map(key=>{const c=categories[key];return `<button class="category" data-category="${key}"><span class="emoji">${c.emoji}</span><strong>${c.name}</strong><small>${c.desc}</small></button>`}).join("");
+    $("categoryGrid").querySelectorAll("[data-category]").forEach(btn=>btn.addEventListener("click",()=>startGame(btn.dataset.category)));
+  }
+  function startGame(key){
+    activeCategory=key;round=1;startedAt=performance.now();scenarioIndex=0;branchIndex=0;history=[];usedKeys=new Set();ending=null;
+    showScreen("gameScreen");renderScenario(true);
+  }
+  function currentThread(){
+    const threads=categories[activeCategory].threads;
+    return threads[scenarioIndex%threads.length];
+  }
+  function escalatingFallback(){
+    const c=categories[activeCategory].name.toLowerCase();
+    const seeds=[
+      `What if the original worry about ${c} gets entered into a courtroom run by ghosts?`,
+      `What if the ghosts appoint a raccoon as the chief justice of ${c}?`,
+      `What if the raccoon demands that every argument be submitted as a tap-dancing musical?`,
+      `What if the musical gets reviewed by a council of immortal garden gnomes?`,
+      `What if the gnomes put the entire universe on probation for excessive dramatic flair?`,
+      `What if probation is enforced by a time-traveling pigeon with a tiny clipboard?`,
+      `What if the pigeon is secretly three smaller pigeons in a trench coat?`,
+      `What if the trench coat is elected mayor of a city made entirely of haunted cheese?`
+    ];
+    const absurdNouns=["a suspiciously judgmental toaster","the ghost union","a council of anxious otters","an intergalactic bake sale","a haunted vending machine","a courtroom inside a snow globe","a tiny dragon with tax questions","a committee of sentient socks","a moon-sized hamster wheel","the Department of Unnecessary Prophecies"];
+    const verbs=["files a complaint against","challenges","adopts","puts on trial","sends an invoice to","appoints itself guardian of","opens a portal beneath","demands a written apology from"];
+    const n=round+branchIndex;
+    return n<seeds.length?seeds[n]:`What if ${absurdNouns[(n*7)%absurdNouns.length]} ${verbs[(n*3)%verbs.length]} ${absurdNouns[(n*5+2)%absurdNouns.length]}, and the whole thing is somehow blamed on your original worry about ${c}?`;
+  }
+  function renderScenario(first){
+    const c=categories[activeCategory];const thread=currentThread();
+    let title,copy,label;
+    if(first){title=c.start;copy=c.setup;label="THE FIRST PUNCH";}
+    else{
+      const local=branchIndex;
+      if(local<thread.length){title=thread[local];label=round<3?"THE SPIRAL DEEPENS":round<7?"LOGIC LEAVES THE BUILDING":"FULL WHAT-IF WARFARE";copy=round<3?"The What-If Warrior leans over the ropes. “Okay, but hear me out…”":round<7?"The shadows nod like this is a perfectly reasonable chain of events. It is not.":"Reality has left the building. The What-If Warrior has stolen its coat.";}
+      else{title=escalatingFallback();label=round<7?"THE SPIRAL DEEPENS":"THE ABSURDITY ENGINE";copy="The scenario has escaped the original premise and is now being investigated by several fictional authorities.";}
+    }
+    $("roundLabel").textContent=`ROUND ${String(round).padStart(2,"0")}`;$("categoryLabel").textContent=c.name.toUpperCase();$("scenarioLabel").textContent=label;$("scenarioTitle").textContent=title;$("scenarioCopy").textContent=copy;
+    const options=makeChoices(title,round);
+    $("choiceList").innerHTML=options.map((opt,i)=>`<button class="choice" data-choice="${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span class="choice-text">${opt}</span></button>`).join("");
+    $("choiceList").querySelectorAll("[data-choice]").forEach(btn=>btn.addEventListener("click",()=>choose(Number(btn.dataset.choice),options[Number(btn.dataset.choice)])));
+  }
+  function makeChoices(title,level){
+    const t=title.toLowerCase();
+    const c=categories[activeCategory];
+    let base;
+    if(activeCategory==="relationships")base=[
+      "What if they were only being polite?",
+      "What if their dog has a confidential file on me?",
+      "What if the dog is now an undercover CIA agent?",
+      "What if the CIA agent dog becomes my assigned life coach?"
+    ];
+    else if(activeCategory==="money")base=[
+      "What if one unexpected expense changes everything?",
+      "What if my bills start holding secret meetings?",
+      "What if the bills hire a ghost accountant?",
+      "What if the ghost accountant demands payment in moon cheese?"
+    ];
+    else if(activeCategory==="time")base=[
+      "What if I fall behind?",
+      "What if the calendar adds a secret extra month?",
+      "What if that month is ruled by a tyrannical clock?",
+      "What if the clock is wanted in 14 dimensions?"
+    ];
+    else if(activeCategory==="living")base=[
+      "What if I never figure it all out?",
+      "What if the universe is an unfinished group project?",
+      "What if the project manager is a haunted moon?",
+      "What if the moon is being audited by sentient soup?"
+    ];
+    else if(activeCategory==="work")base=[
+      "What if I make a mistake?",
+      "What if the mistake gets promoted over me?",
+      "What if my new manager is a haunted printer?",
+      "What if the printer demands a sacrifice of three spreadsheets?"
+    ];
+    else base=[
+      "What if I can't know every outcome?",
+      "What if uncertainty has a customer service desk?",
+      "What if the desk is run by a raccoon in a lab coat?",
+      "What if the raccoon has filed a 900-page report about my thoughts?"
+    ];
+    const idx=(level-1)%4;
+    const first=base[idx];
+    const follow=[
+      "What if that possibility has its own dramatic documentary?",
+      "What if the documentary is narrated by a deeply suspicious pigeon?",
+      "What if the pigeon has appointed itself minister of your hypothetical future?",
+      "What if the minister's office is inside a haunted vending machine?",
+      "What if the vending machine only dispenses prophecies and damp socks?",
+      "What if the socks are witnesses in a courtroom run by the moon?",
+      "What if the moon's lawyer is a tiny dragon who bills by the burp?",
+      "What if the dragon sends the invoice to every alternate version of Tuesday?"
+    ];
+    const absurd=follow[Math.min(Math.floor((level-1)/2),follow.length-1)];
+    const contextual=level<3?first:level<6?absurd:`What if ${["the original worry is investigated by a ghostly committee","a raccoon declares the whole situation a matter of national importance","the moon files a formal complaint about your hypothetical timeline","your thought becomes a contestant on an intergalactic game show","a haunted toaster demands that you testify before the Council of What Ifs"][level%5]}?`;
+    const choices=[
+      first,
+      level<3?`What if ${c.name.toLowerCase()} gets even more complicated?`:contextual,
+      level<4?follow[Math.min(level,follow.length-1)]:`What if a ${["ghost lawyer","time-traveling goose","sentient spreadsheet","tiny dragon","committee of judgmental otters"][level%5]} turns up and makes it official?`,
+      level<5?`What if the whole thing is secretly controlled by ${["the CIA dog","a ghost with a clipboard","a council of haunted pigeons","a moon accountant","three hamsters in a trench coat"][level%5]}?`:`What if this entire disaster is ruled on by a Supreme Court of raccoons who only communicate through interpretive dance?`
+    ];
+    // Progressively absurd options remain available; each selection determines the next round's branch flavor.
+    return choices.map((x,i)=>escapeHTML(x));
+  }
+  function choose(index,choice){
+    history.push({round,category:activeCategory,choice});
+    branchIndex=(branchIndex+1+index)%Math.max(1,currentThread().length+2);
+    scenarioIndex=(scenarioIndex+index+(round>4?1:0))%categories[activeCategory].threads.length;
+    round++;
+    if(round>=24){endGame("win");return;}
+    renderScenario(false);
+  }
+  function endGame(type){
+    ending=type;const elapsed=Math.max(0,Math.floor((performance.now()-startedAt)/1000));const minutes=Math.floor(elapsed/60);const seconds=elapsed%60;
+    const c=categories[activeCategory];
+    $("elapsedText").textContent=`YOU WASTED ${minutes} MINUTE${minutes===1?"":"S"} ON WHAT IF`;
+    if(minutes===0)$("elapsedText").textContent=`YOU WASTED LESS THAN A MINUTE ON WHAT IF`;
+    $("endingKicker").textContent=type==="win"?"THE FINAL BELL":"THE BELL HAS RUNG";
+    $("endingTitle").textContent=type==="win"?"YOU BEAT THE WHAT-IF WARRIOR":"YOU TAPPED OUT";
+    $("endingIntro").textContent=type==="win"?"You made it through every round. The What-If Warrior has been defeated by an increasingly questionable series of hypotheticals. But here's the final question: was it worth the time you spent battling your thoughts?":"You faced the What-If Warrior and decided when enough was enough. You don't owe every worry an endless rematch.";
+    $("roundsStat").textContent=round;$("categoryStat").textContent=c.name;$("endingStat").textContent=type==="win"?"CHAMPION":"TAP OUT";
+    $("encouragementTitle").textContent=type==="win"?"🏆 Congrats, What-If Warrior Slayer":"💜 Congrats on facing the What-If Warrior";
+    $("encouragementText").textContent=type==="win"?"You reached the end of the what-if war. And maybe you also noticed how far a single thought can travel when you keep feeding it. You don't have to follow every fear all the way to the end. Your attention is precious; you get to decide where it goes next. Come back any time you want another round — or choose peace instead.":"You stepped into the ring, faced the spiral, and chose to stop. That's not losing. If you ever need to battle it out with your brain again, come back. Remember: a thought is not a prophecy, and you don't have to solve every imaginary disaster tonight.";
+    showScreen("endScreen");
+  }
+  $("enterButton").addEventListener("click",()=>showScreen("categoryScreen"));
+  $("backTitle").addEventListener("click",()=>showScreen("titleScreen"));
+  $("tapOutButton").addEventListener("click",()=>endGame("tapout"));
+  $("playAgainButton").addEventListener("click",()=>{activeCategory=null;showScreen("categoryScreen")});
+  buildCategories();
+})();
+</script>
 </body>
-
-    <div>
-    <footer>
-      <!-- Back to Home -->
-    <a href="../../index.html" class="back-home">🏠👨‍💻 Home 👨‍💻🏠</a>
-  </footer>
-</div>
 </html>

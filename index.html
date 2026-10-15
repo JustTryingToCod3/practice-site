@@ -1,76 +1,932 @@
-<!-- Docyment type -->
-<!DOCTYPE html> 
-<!-- Language -->
+
+<!DOCTYPE html>
 <html lang="en">
-<style>
-    /* Apply background to the entire page */
-    body {
-        margin: 0; /* Remove default margin */
-        height: 100vh; /* Full viewport height */
-        
-        /* Fallback background color */
-        background-color: #222;
-
-        /* Background image settings */
-        background-image: url('Coffee.png'); 
-        background-size: cover; /* Scale to cover entire area */
-        background-position: center; /* Center the image */
-        background-repeat: no-repeat; /* Prevent tiling */
-        
-    }
-</style>
-  
 <head>
-<!-- Page Description -->  
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- This goes on the tab -->
-<title>Life Lounge: A break for your brain</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Life Lounge — a little corner of the internet where your brain can take a break.">
+  <meta name="theme-color" content="#f7f1e8">
+  <title>Life Lounge: A break for your brain</title>
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+    :root {
+      --cream: #f7f1e8;
+      --paper: #fffdf8;
+      --ink: #263b32;
+      --muted: #66736a;
+      --green: #365b49;
+      --green-dark: #244536;
+      --sage: #dce6d8;
+      --peach: #f2d8c6;
+      --lavender: #e7e0f0;
+      --yellow: #f4e7b9;
+      --line: rgba(38, 59, 50, .12);
+      --shadow: 0 18px 50px rgba(49, 61, 48, .09);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(242, 216, 198, .42), transparent 28rem),
+        radial-gradient(circle at 92% 26%, rgba(220, 230, 216, .7), transparent 30rem),
+        var(--cream);
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #a06e4d;
+      outline-offset: 4px;
+    }
+
+    .site-shell {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      font-size: 1.2rem;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      background: var(--green);
+      color: white;
+      font-size: 1.3rem;
+      box-shadow: 0 7px 18px rgba(36, 69, 54, .16);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-top: 2px;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #526258;
+      font-size: .92rem;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+
+    .top-nav a:hover {
+      color: var(--green-dark);
+    }
+
+    .nav-cta {
+      padding: 10px 17px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .72);
+    }
+
+    /* Hero section */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: clamp(36px, 6vw, 76px);
+      padding: clamp(58px, 9vw, 108px) 0 76px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 19px;
+      padding: 7px 12px;
+      color: var(--green-dark);
+      background: rgba(220, 230, 216, .78);
+      border: 1px solid rgba(54, 91, 73, .08);
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1, h2, .feature-title {
+      font-family: "Playfair Display", Georgia, serif;
+      letter-spacing: -.045em;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin-bottom: 22px;
+      font-size: clamp(3rem, 6.5vw, 5.6rem);
+      font-weight: 600;
+      line-height: .99;
+    }
+
+    h1 em {
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    .hero-copy {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.4vw, 1.16rem);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 49px;
+      padding: 12px 19px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .94rem;
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #fffdf8;
+      background: var(--green);
+      box-shadow: 0 9px 20px rgba(36, 69, 54, .17);
+    }
+
+    .button-primary:hover {
+      background: var(--green-dark);
+    }
+
+    .button-secondary {
+      color: var(--green-dark);
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, .7);
+    }
+
+    .hero-note {
+      margin: 20px 0 0;
+      color: #7b837a;
+      font-size: .84rem;
+    }
+
+    /* CSS-drawn cafe illustration */
+
+    .hero-art {
+      position: relative;
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+    }
+
+    .art-backdrop {
+      position: absolute;
+      inset: 8% 5% 6% 8%;
+      border-radius: 48% 48% 30px 30px;
+      background: #e2e9dc;
+      transform: rotate(3deg);
+    }
+
+    .cafe-window {
+      position: relative;
+      width: min(100%, 390px);
+      min-height: 365px;
+      overflow: hidden;
+      padding: 26px;
+      border: 8px solid #fffdf8;
+      border-radius: 46% 46% 25px 25px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,0)),
+        linear-gradient(150deg, #d5e1d0 0 45%, #c3d2c0 45% 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .window-sun {
+      position: absolute;
+      top: 38px;
+      right: 45px;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: #f4e7b9;
+    }
+
+    .window-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 8px;
+      background: rgba(255, 253, 248, .92);
+      transform: translateX(-50%);
+    }
+
+    .window-horizon {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 56%;
+      height: 8px;
+      background: rgba(255, 253, 248, .92);
+    }
+
+    .plant {
+      position: absolute;
+      left: 30px;
+      bottom: 25px;
+      width: 110px;
+      height: 150px;
+    }
+
+    .plant-pot {
+      position: absolute;
+      bottom: 0;
+      left: 25px;
+      width: 65px;
+      height: 60px;
+      border-radius: 8px 8px 24px 24px;
+      background: #c68f70;
+      box-shadow: inset -8px 0 rgba(113, 67, 48, .1);
+    }
+
+    .leaf {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+      width: 28px;
+      height: 65px;
+      border-radius: 100% 0 100% 0;
+      background: #567c5d;
+      transform-origin: bottom center;
+    }
+
+    .leaf.one {
+      transform: rotate(-42deg);
+    }
+
+    .leaf.two {
+      transform: rotate(35deg);
+      left: 57px;
+      height: 78px;
+      background: #739577;
+    }
+
+    .leaf.three {
+      transform: rotate(-5deg);
+      left: 35px;
+      height: 82px;
+      background: #426c50;
+    }
+
+    .leaf.four {
+      transform: rotate(58deg);
+      left: 61px;
+      height: 55px;
+      background: #8ba989;
+    }
+
+    .coffee-cup {
+      position: absolute;
+      right: 33px;
+      bottom: 30px;
+      display: grid;
+      place-items: center;
+      width: 105px;
+      height: 88px;
+      border-radius: 12px 12px 32px 32px;
+      background: #fffaf0;
+      box-shadow: 0 13px 20px rgba(47, 65, 46, .14);
+      font-size: 2.6rem;
+    }
+
+    .coffee-cup::after {
+      content: "";
+      position: absolute;
+      right: -23px;
+      top: 18px;
+      width: 30px;
+      height: 34px;
+      border: 8px solid #fffaf0;
+      border-left: 0;
+      border-radius: 0 18px 18px 0;
+    }
+
+    .floating-note {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      border: 1px solid rgba(38, 59, 50, .07);
+      border-radius: 17px;
+      background: rgba(255, 253, 248, .96);
+      box-shadow: 0 12px 28px rgba(49, 61, 48, .1);
+      font-size: .83rem;
+      font-weight: 700;
+    }
+
+    .floating-note span {
+      font-size: 1.4rem;
+    }
+
+    .note-top {
+      top: 45px;
+      left: -15px;
+      transform: rotate(-4deg);
+    }
+
+    .note-bottom {
+      right: -12px;
+      bottom: 40px;
+      transform: rotate(3deg);
+    }
+
+    /* Lounge cards */
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 27px;
+    }
+
+    .section-kicker {
+      margin-bottom: 7px;
+      color: #7b897c;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+    }
+
+    .section-intro {
+      max-width: 400px;
+      margin-bottom: 2px;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+
+    .spaces {
+      padding: 26px 0 92px;
+      scroll-margin-top: 25px;
+    }
+
+    .cafe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .space-card {
+      position: relative;
+      display: flex;
+      min-height: 224px;
+      flex-direction: column;
+      align-items: flex-start;
+      overflow: hidden;
+      padding: 25px;
+      border: 1px solid rgba(38, 59, 50, .08);
+      border-radius: var(--radius);
+      background: var(--paper);
+      text-decoration: none;
+      box-shadow: 0 7px 22px rgba(49, 61, 48, .035);
+      transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        border-color .22s ease;
+    }
+
+    .space-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: rgba(54, 91, 73, .22);
+    }
+
+    .space-card::after {
+      content: "↗";
+      position: absolute;
+      top: 22px;
+      right: 23px;
+      display: grid;
+      place-items: center;
+      width: 33px;
+      height: 33px;
+      border-radius: 50%;
+      color: var(--green);
+      background: rgba(255,255,255,.65);
+      font-size: 1.05rem;
+      opacity: .7;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    .space-card:hover::after {
+      transform: translate(2px, -2px);
+      opacity: 1;
+    }
+
+    .space-icon {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      margin-bottom: 22px;
+      border-radius: 20px;
+      font-size: 1.95rem;
+    }
+
+    .sage { background: var(--sage); }
+    .peach { background: var(--peach); }
+    .lavender { background: var(--lavender); }
+    .yellow { background: var(--yellow); }
+    .mint { background: #d8e9e4; }
+    .rose { background: #f0dce0; }
+
+    .space-card h3 {
+      margin: 0 0 7px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -.025em;
+    }
+
+    .space-card p {
+      max-width: 280px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .91rem;
+      line-height: 1.6;
+    }
+
+    /* Closing banner */
+
+    .bottom-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 76px;
+      padding: clamp(25px, 5vw, 45px);
+      border-radius: 30px;
+      background: var(--green);
+      color: #fffdf8;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bottom-banner::after {
+      content: "✳";
+      position: absolute;
+      right: 26%;
+      top: -75px;
+      color: rgba(255,255,255,.06);
+      font-size: 18rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .bottom-banner h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 580px;
+      margin-bottom: 10px;
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+    }
+
+    .bottom-banner p {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      margin-bottom: 0;
+      color: rgba(255, 253, 248, .78);
+    }
+
+    .bottom-banner .button {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      color: var(--green-dark);
+      background: #fffdf8;
+    }
+
+    /* Footer */
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 23px 0 30px;
+      border-top: 1px solid var(--line);
+      color: #7a857b;
+      font-size: .82rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Tablet */
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 65px;
+      }
+
+      .hero-content {
+        max-width: 680px;
+      }
+
+      .hero-art {
+        min-height: 350px;
+      }
+
+      .cafe-window {
+        min-height: 330px;
+        width: min(100%, 350px);
+      }
+
+      .cafe-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-intro {
+        max-width: 560px;
+      }
+
+      .bottom-banner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 560px) {
+      .site-shell {
+        width: min(100% - 28px, 1160px);
+      }
+
+      .topbar {
+        padding: 16px 0;
+      }
+
+      .top-nav {
+        gap: 12px;
+      }
+
+      .top-nav a:not(.nav-cta) {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 9px 12px;
+        font-size: .82rem !important;
+      }
+
+      .brand {
+        font-size: 1.05rem;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero {
+        gap: 25px;
+        padding: 54px 0 48px;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 14vw, 4rem);
+      }
+
+      .hero-art {
+        min-height: 320px;
+      }
+
+      .cafe-window {
+        min-height: 300px;
+        width: min(100%, 320px);
+      }
+
+      .note-top {
+        left: -2px;
+        top: 25px;
+      }
+
+      .note-bottom {
+        right: -1px;
+        bottom: 22px;
+      }
+
+      .floating-note {
+        padding: 10px 12px;
+        font-size: .75rem;
+      }
+
+      .cafe-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .space-card {
+        min-height: 175px;
+        padding: 21px;
+      }
+
+      .space-icon {
+        width: 54px;
+        height: 54px;
+        margin-bottom: 16px;
+      }
+
+      .spaces {
+        padding-bottom: 60px;
+      }
+
+      .bottom-banner {
+        margin-bottom: 50px;
+        border-radius: 24px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 7px;
+      }
+    }
+
+    /* Respect reduced-motion preferences */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
 </head>
 
-<!-- Page Visuals -->
 <body>
+  <div class="site-shell">
 
+    <!-- Navigation -->
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Life Lounge home">
+        <span class="brand-mark" aria-hidden="true">☕</span>
+        <span>
+          Life Lounge
+          <small>A break for your brain</small>
+        </span>
+      </a>
 
-<div class="cafe">
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#spaces">Explore the lounge</a>
+        <a class="nav-cta" href="#spaces">Find your corner&nbsp; ↘</a>
+      </nav>
+    </header>
 
-<a href="html/tarot/tarot.html" class="object">
-🔮
-<span class="label">Tarot Reading</span>
-</a>
+    <main id="home">
 
-<a href="html/therapy/badtherapy.html" class="object">
-🛋
-<span class="label">Bad Therapist</span>
-</a>
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">
+            <span aria-hidden="true">✦</span>
+            Your little corner of the internet
+          </p>
 
-<a href="html/m8/m8ball.html" class="object">
-🎱
-<span class="label">Fortune Teller</span>
-</a>
+          <h1 id="hero-title">
+            Life gets loud.<br>
+            Come take a <em>breather.</em>
+          </h1>
 
-<a href="html/relax/relax.html" class="object">
-🌿
-<span class="label">Relax Corner</span>
-</a>
+          <p class="hero-copy">
+            Welcome to Life Lounge — a cozy place to wander, unwind, get curious,
+            or give your brain something else to think about for a while.
+            No pressure. No perfect version of you required.
+          </p>
 
-<a href="html/horror/horror.html" class="object">
-🚪
-<span class="label">Horror Basement</span>
-</a>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#spaces">
+              Find your corner <span aria-hidden="true">→</span>
+            </a>
+            <a class="button button-secondary" href="#about">
+              What is Life Lounge?
+            </a>
+          </div>
 
-<a href="html/blog/blog.html" class="object">
-📓
-<span class="label"> BLOG </span>
-</a>
+          <p class="hero-note">
+            ☁️ Take what you need. Stay as long as you like.
+          </p>
+        </div>
 
-<a href="html/budget/budget.html" class="object">
-💰
-<span class="label">Budget Desk</span>
-</a>
+        <!-- Decorative cafe illustration made with CSS -->
+        <div class="hero-art" aria-label="Illustration of a calm cafe window, a leafy plant, and a cup of coffee">
+          <div class="art-backdrop"></div>
 
-</div>
+          <div class="cafe-window">
+            <div class="window-sun"></div>
+            <div class="window-line"></div>
+            <div class="window-horizon"></div>
 
+            <div class="plant" aria-hidden="true">
+              <div class="leaf one"></div>
+              <div class="leaf two"></div>
+              <div class="leaf three"></div>
+              <div class="leaf four"></div>
+              <div class="plant-pot"></div>
+            </div>
+
+            <div class="coffee-cup" aria-hidden="true">☕</div>
+          </div>
+
+          <div class="floating-note note-top">
+            <span aria-hidden="true">🌿</span>
+            Slow down a little
+          </div>
+
+          <div class="floating-note note-bottom">
+            <span aria-hidden="true">✨</span>
+            You can just be here
+          </div>
+        </div>
+      </section>
+
+      <!-- Explore cards -->
+      <section class="spaces" id="spaces" aria-labelledby="spaces-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Pull up a chair</p>
+            <h2 id="spaces-title">What sounds good today?</h2>
+          </div>
+
+          <p class="section-intro">
+            Pick a mood, follow your curiosity, and step into whichever
+            little corner calls to you.
+          </p>
+        </div>
+
+        <div class="cafe-grid">
+
+          <a href="html/tarot/tarot.html" class="space-card">
+            <span class="space-icon lavender" aria-hidden="true">🔮</span>
+            <h3>Tarot Reading</h3>
+            <p>Turn over a card, reflect, and see what ideas find you.</p>
+          </a>
+
+          <a href="html/therapy/badtherapy.html" class="space-card">
+            <span class="space-icon peach" aria-hidden="true">🛋️</span>
+            <h3>Bad Therapist</h3>
+            <p>For when you need a laugh and advice that absolutely did not pass peer review.</p>
+          </a>
+
+          <a href="html/m8/m8ball.html" class="space-card">
+            <span class="space-icon yellow" aria-hidden="true">🎱</span>
+            <h3>Fortune Teller</h3>
+            <p>Ask the universe a question. The universe may be feeling mysterious.</p>
+          </a>
+
+          <a href="html/relax/relax.html" class="space-card">
+            <span class="space-icon sage" aria-hidden="true">🌿</span>
+            <h3>Relax Corner</h3>
+            <p>A softer landing for busy thoughts. Exhale; you made it here.</p>
+          </a>
+
+          <a href="html/horror/horror.html" class="space-card">
+            <span class="space-icon rose" aria-hidden="true">🚪</span>
+            <h3>Horror Basement</h3>
+            <p>Feeling brave? There might be something down there. Probably.</p>
+          </a>
+
+          <a href="html/blog/blog.html" class="space-card">
+            <span class="space-icon mint" aria-hidden="true">📓</span>
+            <h3>The Blog</h3>
+            <p>Thoughts, stories, and little things worth putting into words.</p>
+          </a>
+
+          <a href="html/budget/budget.html" class="space-card">
+            <span class="space-icon yellow" aria-hidden="true">💰</span>
+            <h3>Budget Desk</h3>
+            <p>Give your money a plan without letting it run the whole show.</p>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Closing banner -->
+      <section class="bottom-banner" id="about" aria-labelledby="about-title">
+        <div>
+          <h2 id="about-title">
+            You don't have to be productive to deserve a pause.
+          </h2>
+          <p>
+            Sometimes a tiny reset is enough. Your next five minutes can be for you.
+          </p>
+        </div>
+
+        <a class="button" href="#spaces">
+          Take a little break&nbsp; →
+        </a>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>© <span id="year">2026</span> Life Lounge</p>
+      <p>Made for the moments when your brain needs a breather. ☕</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Keep the copyright year current automatically.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>

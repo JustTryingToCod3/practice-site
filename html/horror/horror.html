@@ -116,7 +116,7 @@ h1 span{display:block;color:#a7a7ae;font-size:.74em;letter-spacing:.02em;margin-
 
   <section id="gameScreen" class="screen">
     <div class="game-panel">
-      <div class="game-top"><span id="roundLabel" class="round-label">ROUND 01</span><span id="categoryLabel">RELATIONSHIPS</span><span>TIME HIDDEN</span></div>
+      <div class="game-top"><span id="roundLabel" class="round-label">ROUND 01</span><span id="categoryLabel">RELATIONSHIPS</span><span>TIME HIDDEN · 75 SCENARIOS IN THE GAME</span></div>
       <div class="game-content">
         <div class="mini-art" aria-hidden="true"></div>
         <div class="scenario-label" id="scenarioLabel">THE FIRST PUNCH</div>
@@ -153,180 +153,375 @@ h1 span{display:block;color:#a7a7ae;font-size:.74em;letter-spacing:.02em;margin-
 <script>
 (() => {
   "use strict";
+
   const categories = {
-    money:{name:"Money",emoji:"💸",desc:"Bills, jobs, stability, the future.",start:"What if you never have enough money?",setup:"The numbers on the page begin to crawl. The What-If Warrior taps a calculator like it's a tiny, ominous drum.",threads:[
-      ["What if one unexpected bill ruins your whole month?","What if three unexpected bills form a committee?","What if the committee hires a lawyer who charges by the sigh?","What if the lawyer bills you in ancient coins that only the moon accepts?"],
-      ["What if you never get the job?","What if every job interviewer is secretly the same person wearing different wigs?","What if the wigs have a union and vote you off the hiring island?","What if the island is a floating office park governed by sentient staplers?"],
-      ["What if you spend money on the wrong thing?","What if the thing becomes a financial influencer and critiques your choices?","What if it starts a podcast called Your Wallet, Your Problem?","What if the podcast wins a Nobel Prize in accounting from a raccoon government?"],
-      ["What if you can't afford your future?","What if your future sends you a very stern invoice?","What if the invoice is delivered by a horse wearing a tiny banker's visor?","What if the horse repossesses the concept of Tuesday?"]
-    ]},
-    relationships:{name:"Relationships",emoji:"🖤",desc:"Rejection, awkward moments, and people.",start:"What if they don't like you?",setup:"The audience goes silent. Somewhere in the shadows, a ghost clears its throat like it has gossip.",threads:[
-      ["What if they were just being polite?","What if everyone has a secret group chat about you?","What if the group chat is moderated by their dog?","What if the dog gets adopted by the CIA and becomes your handler?"],
-      ["What if you said something awkward?","What if the awkward sentence is replayed at a secret awards show?","What if the judges are all pigeons wearing reading glasses?","What if the pigeons subpoena your dreams as evidence?"],
-      ["What if they don't text back?","What if their phone fell into a wormhole?","What if the wormhole is run by a customer service team with a 900-year wait time?","What if the hold music becomes the national anthem of Mars?"],
-      ["What if you misunderstood their tone?","What if their punctuation contains a hidden message?","What if the period at the end of the text is a tiny villain?","What if the villain's evil lair is inside a suspiciously judgmental lasagna?"]
-    ]},
-    time:{name:"Time",emoji:"⌛",desc:"Deadlines, aging, and feeling behind.",start:"What if you're running out of time?",setup:"The clock ticks once. The sound echoes like a spoon dropped in an abandoned cathedral.",threads:[
-      ["What if you're falling behind everyone else?","What if everyone else is secretly following a different calendar?","What if their calendar has 19 extra Wednesdays?","What if Wednesday has become a monarch and demands tribute in sandwiches?"],
-      ["What if you waste a whole day?","What if the day files a complaint against you?","What if the complaint is heard by a jury of tiny pocket watches?","What if the pocket watches hire a time-traveling goose as their attorney?"],
-      ["What if you never reach your goals in time?","What if your goals are on a train that left five minutes early?","What if the train is driven by a ghost who refuses to use GPS?","What if GPS is actually three hamsters operating a celestial abacus?"],
-      ["What if you're getting older without figuring it out?","What if age is just a subscription service you forgot to cancel?","What if the cancellation department exists outside linear time?","What if the receptionist is your future self, but as a moth?"]
-    ]},
-    living:{name:"Living & existence",emoji:"🌑",desc:"Purpose, uncertainty, and big life questions.",start:"What if you have no idea what you're doing with your life?",setup:"The lights dim. The universe clears its throat and offers absolutely no useful clarification.",threads:[
-      ["What if you never find your purpose?","What if purpose is hiding under the couch?","What if the couch is an ancient oracle with terrible posture?","What if the oracle only answers in interpretive tap dance?"],
-      ["What if you make the wrong life choice?","What if every path leads to a different version of a grocery store?","What if all the grocery stores are run by philosophical skeletons?","What if the skeletons put existence itself on aisle seven?"],
-      ["What if nothing makes sense?","What if reality is a badly organized group project?","What if the project manager is a sleepy moon with email anxiety?","What if the moon's inbox contains 80,000 messages from sentient soup?"],
-      ["What if you never become the person you imagined?","What if imaginary-you has been leaving passive-aggressive sticky notes?","What if the notes are written in a language invented by haunted turnips?","What if the turnips have a tiny parliament and one very dramatic opera singer?"]
-    ]},
-    work:{name:"Work & purpose",emoji:"💼",desc:"Jobs, performance, expectations, and failure.",start:"What if you mess everything up at work?",setup:"A fluorescent light flickers overhead. The office printer makes a sound that feels legally threatening.",threads:[
-      ["What if you make a mistake?","What if the mistake gets its own employee badge?","What if the badge grants it access to the executive elevator?","What if the elevator only travels sideways into a dimension of sentient spreadsheets?"],
-      ["What if they realize you're still learning?","What if your training manual is actually a 900-page escape room?","What if every page is guarded by a tiny HR goblin?","What if the goblin schedules a performance review with a volcano?"],
-      ["What if you don't get promoted?","What if the promotion is being held hostage by a very small dragon?","What if the dragon demands a PowerPoint about workplace synergy?","What if the PowerPoint achieves sentience and becomes your new manager?"],
-      ["What if you picked the wrong career?","What if your career takes you to a crossroads with twelve identical doors?","What if every door opens into a different version of Monday morning?","What if Monday morning is a final boss with a clipboard and roller skates?"]
-    ]},
-    health:{name:"Health & safety",emoji:"🫀",desc:"Uncertainty, mistakes, and feeling in control.",start:"What if something goes wrong?",setup:"A shadow moves behind the curtain. It turns out to be another shadow, somehow wearing a lab coat.",threads:[
-      ["What if you missed an important detail?","What if the detail is hiding in a haystack of paperwork?","What if the haystack has hired 300 suspicious scarecrows?","What if the scarecrows are all licensed detectives from Neptune?"],
-      ["What if you can't control every outcome?","What if control is a remote with one button and no batteries?","What if the batteries are on a quest guarded by a sentient vending machine?","What if the vending machine accepts only riddles and expired coupons?"],
-      ["What if you make the wrong decision?","What if the decision grows legs and runs away?","What if it joins a circus of anxious acrobats?","What if the circus is hosted by a ghost who reviews everyone's posture?"],
-      ["What if you don't know what will happen next?","What if the future is written on a very long receipt?","What if the receipt is printed by a printer from the underworld?","What if the printer is out of ink and starts predicting things through interpretive jazz?"]
-    ]}
-  };
-  const categoryOrder=Object.keys(categories);
-  const $=id=>document.getElementById(id);
-  let activeCategory=null,round=0,startedAt=0,scenarioIndex=0,branchIndex=0,history=[],usedKeys=new Set(),ending=null;
-  const screens=["titleScreen","categoryScreen","gameScreen","endScreen"];
-  function showScreen(id){screens.forEach(s=>$(s).classList.toggle("active",s===id));window.scrollTo({top:0,behavior:"smooth"});}
-  function buildCategories(){
-    $("categoryGrid").innerHTML=categoryOrder.map(key=>{const c=categories[key];return `<button class="category" data-category="${key}"><span class="emoji">${c.emoji}</span><strong>${c.name}</strong><small>${c.desc}</small></button>`}).join("");
-    $("categoryGrid").querySelectorAll("[data-category]").forEach(btn=>btn.addEventListener("click",()=>startGame(btn.dataset.category)));
-  }
-  function startGame(key){
-    activeCategory=key;round=1;startedAt=performance.now();scenarioIndex=0;branchIndex=0;history=[];usedKeys=new Set();ending=null;
-    showScreen("gameScreen");renderScenario(true);
-  }
-  function currentThread(){
-    const threads=categories[activeCategory].threads;
-    return threads[scenarioIndex%threads.length];
-  }
-  function escalatingFallback(){
-    const c=categories[activeCategory].name.toLowerCase();
-    const seeds=[
-      `What if the original worry about ${c} gets entered into a courtroom run by ghosts?`,
-      `What if the ghosts appoint a raccoon as the chief justice of ${c}?`,
-      `What if the raccoon demands that every argument be submitted as a tap-dancing musical?`,
-      `What if the musical gets reviewed by a council of immortal garden gnomes?`,
-      `What if the gnomes put the entire universe on probation for excessive dramatic flair?`,
-      `What if probation is enforced by a time-traveling pigeon with a tiny clipboard?`,
-      `What if the pigeon is secretly three smaller pigeons in a trench coat?`,
-      `What if the trench coat is elected mayor of a city made entirely of haunted cheese?`
-    ];
-    const absurdNouns=["a suspiciously judgmental toaster","the ghost union","a council of anxious otters","an intergalactic bake sale","a haunted vending machine","a courtroom inside a snow globe","a tiny dragon with tax questions","a committee of sentient socks","a moon-sized hamster wheel","the Department of Unnecessary Prophecies"];
-    const verbs=["files a complaint against","challenges","adopts","puts on trial","sends an invoice to","appoints itself guardian of","opens a portal beneath","demands a written apology from"];
-    const n=round+branchIndex;
-    return n<seeds.length?seeds[n]:`What if ${absurdNouns[(n*7)%absurdNouns.length]} ${verbs[(n*3)%verbs.length]} ${absurdNouns[(n*5+2)%absurdNouns.length]}, and the whole thing is somehow blamed on your original worry about ${c}?`;
-  }
-  function renderScenario(first){
-    const c=categories[activeCategory];const thread=currentThread();
-    let title,copy,label;
-    if(first){title=c.start;copy=c.setup;label="THE FIRST PUNCH";}
-    else{
-      const local=branchIndex;
-      if(local<thread.length){title=thread[local];label=round<3?"THE SPIRAL DEEPENS":round<7?"LOGIC LEAVES THE BUILDING":"FULL WHAT-IF WARFARE";copy=round<3?"The What-If Warrior leans over the ropes. “Okay, but hear me out…”":round<7?"The shadows nod like this is a perfectly reasonable chain of events. It is not.":"Reality has left the building. The What-If Warrior has stolen its coat.";}
-      else{title=escalatingFallback();label=round<7?"THE SPIRAL DEEPENS":"THE ABSURDITY ENGINE";copy="The scenario has escaped the original premise and is now being investigated by several fictional authorities.";}
+    money: {
+      name: "Money", emoji: "💸", desc: "Bills, jobs, stability, the future.",
+      start: "What if you never have enough money?",
+      setup: "The numbers on the page begin to crawl. The What-If Warrior taps a calculator like it's a tiny, ominous drum.",
+      concerns: [
+        "an unexpected bill arrives just before payday",
+        "your savings grow more slowly than you hoped",
+        "you spend money on something you later regret",
+        "a job opportunity takes longer than expected",
+        "your car suddenly needs an expensive repair",
+        "your rent or utilities increase without warning",
+        "you compare your finances to someone else's",
+        "you make a mistake while planning your budget",
+        "an emergency costs more than you prepared for",
+        "you wonder whether you will ever feel financially secure"
+      ],
+      twists: [
+        "it brings nine smaller bills as emotional support",
+        "a committee of raccoons begins auditing your wallet",
+        "the receipt is long enough to qualify as a haunted scarf",
+        "your calculator starts speaking in ominous riddles",
+        "a tiny ghost accountant demands payment in moon cheese",
+        "the numbers hold a press conference about your choices",
+        "a sentient spreadsheet appoints itself your financial adviser",
+        "the bank sends a pigeon wearing a very stern little tie",
+        "the situation becomes a documentary narrated by a suspicious toaster",
+        "the What-If Warrior opens a tiny branch office inside your sock drawer"
+      ],
+      setupLines: [
+        "The calculator blinks. It looks judgmental, but it has no qualifications.",
+        "A receipt unfurls across the floor like a prophecy nobody requested.",
+        "The What-If Warrior whispers, “Let's make a spreadsheet about that.”",
+        "Somewhere, a tiny cash register rings in a completely empty room."
+      ]
+    },
+    relationships: {
+      name: "Relationships", emoji: "🖤", desc: "Rejection, awkward moments, and people.",
+      start: "What if they don't like you?",
+      setup: "The audience goes silent. Somewhere in the shadows, a ghost clears its throat like it has gossip.",
+      concerns: [
+        "someone takes longer than usual to text you back",
+        "you replay something awkward you said",
+        "a friend seems quieter than normal",
+        "you worry that someone misunderstood your tone",
+        "you meet someone new and fear making a bad impression",
+        "someone cancels plans at the last minute",
+        "you wonder whether a friendship has changed",
+        "you share something personal and feel exposed afterward",
+        "a message ends with a period instead of an emoji",
+        "you worry that you care more than the other person does"
+      ],
+      twists: [
+        "their dog starts a confidential investigation into your vibe",
+        "a pigeon in reading glasses is appointed head of the group chat",
+        "the punctuation is secretly a tiny villain with a cape",
+        "a council of ghosts rates the conversation using tiny scorecards",
+        "the silence gets a podcast and invites your anxiety as a guest",
+        "a wormhole customer-service team puts your question on a 900-year hold",
+        "the What-If Warrior creates a conspiracy board using glitter and pasta",
+        "three raccoons hold a press conference about your last sentence",
+        "the situation becomes a courtroom drama starring sentient houseplants",
+        "your hypothetical future is reviewed by a dog wearing a detective hat"
+      ],
+      setupLines: [
+        "A phone buzzes in the distance. It is not your phone. The Warrior looks delighted anyway.",
+        "The What-If Warrior produces a corkboard and far too much red string.",
+        "A ghostly audience leans forward as if your text message is a season finale.",
+        "Somewhere, a pigeon adjusts its tiny spectacles and prepares a theory."
+      ]
+    },
+    time: {
+      name: "Time", emoji: "⌛", desc: "Deadlines, aging, and feeling behind.",
+      start: "What if you're running out of time?",
+      setup: "The clock ticks once. The sound echoes like a spoon dropped in an abandoned cathedral.",
+      concerns: [
+        "you feel behind people your age",
+        "you lose a day to exhaustion or distraction",
+        "a deadline arrives faster than expected",
+        "you have too many goals competing for attention",
+        "you start something later than you planned",
+        "you worry that you are wasting your potential",
+        "your routine changes unexpectedly",
+        "you compare your timeline to someone else's",
+        "you need longer than expected to learn a skill",
+        "you wonder whether you have made enough progress"
+      ],
+      twists: [
+        "the calendar secretly adds nineteen extra Wednesdays",
+        "a jury of pocket watches files a formal complaint",
+        "Wednesday becomes a monarch and demands sandwiches as tribute",
+        "a time-traveling goose is hired as your personal scheduler",
+        "your to-do list develops legs and escapes into another century",
+        "a sleepy moon becomes project manager and misses every email",
+        "the clock starts charging rent for every minute it ticks",
+        "a moth wearing your future self's glasses gives a lecture on deadlines",
+        "the concept of Tuesday is repossessed by a tiny horse accountant",
+        "the What-If Warrior opens a portal to a Monday that lasts 400 years"
+      ],
+      setupLines: [
+        "The clock ticks twice. It seems pleased with itself.",
+        "A calendar page flutters to the floor even though there is no wind.",
+        "The Warrior rolls in a giant clock and refuses to explain where it came from.",
+        "A tiny hourglass is placed on the table. It is full of suspicious glitter."
+      ]
+    },
+    living: {
+      name: "Living & existence", emoji: "🌑", desc: "Purpose, uncertainty, and big life questions.",
+      start: "What if you have no idea what you're doing with your life?",
+      setup: "The lights dim. The universe clears its throat and offers absolutely no useful clarification.",
+      concerns: [
+        "you cannot identify one clear life purpose",
+        "you make a decision and later question it",
+        "the future feels too uncertain to plan",
+        "you change your mind about what matters to you",
+        "you feel different from the person you used to be",
+        "you wonder whether you are on the right path",
+        "you do not have all the answers yet",
+        "your dreams change as you grow",
+        "you feel ordinary when you hoped to feel extraordinary",
+        "you wonder whether you are doing life correctly"
+      ],
+      twists: [
+        "purpose is hiding under a couch that claims to be an oracle",
+        "the universe turns out to be a badly organized group project",
+        "a sleepy moon with email anxiety becomes your life coach",
+        "philosophical skeletons put existence on aisle seven",
+        "haunted turnips leave passive-aggressive sticky notes on your soul",
+        "a parliament of garden gnomes debates your destiny in tap dance",
+        "sentient soup demands that reality submit a revised draft",
+        "a cosmic receptionist transfers you to the Department of Meaning",
+        "an ancient oracle answers every question with a kazoo solo",
+        "the What-If Warrior launches a game show called So, What's the Point?"
+      ],
+      setupLines: [
+        "The universe makes a noise like a printer trying to understand poetry.",
+        "A single spotlight appears, illuminating absolutely no answers.",
+        "The Warrior opens a book titled The Manual. Every page is a mirror.",
+        "A distant choir sings one confused note and then requests a snack break."
+      ]
+    },
+    work: {
+      name: "Work & purpose", emoji: "💼", desc: "Jobs, performance, expectations, and failure.",
+      start: "What if you mess everything up at work?",
+      setup: "A fluorescent light flickers overhead. The office printer makes a sound that feels legally threatening.",
+      concerns: [
+        "you make a mistake while learning a new task",
+        "an interviewer asks a question you did not expect",
+        "you need to ask someone for clarification",
+        "you worry that a coworker is judging your performance",
+        "you do not finish every task on your list",
+        "you receive feedback that feels uncomfortable",
+        "you are new and do not know every process yet",
+        "you wonder whether you chose the right career",
+        "you have to speak up in a meeting",
+        "you do not get the opportunity you wanted"
+      ],
+      twists: [
+        "the mistake receives an employee badge and applies for management",
+        "your training manual becomes a 900-page escape room",
+        "a tiny HR goblin schedules your performance review with a volcano",
+        "the office printer becomes sentient and demands three spreadsheets",
+        "a PowerPoint presentation achieves consciousness and becomes your boss",
+        "the executive elevator only travels sideways into Spreadsheet Dimension",
+        "Monday morning becomes a final boss wearing roller skates",
+        "a committee of haunted staplers votes on your professional destiny",
+        "a tiny dragon asks you to present a report on workplace synergy",
+        "the What-If Warrior launches an all-hands meeting inside a snow globe"
+      ],
+      setupLines: [
+        "The printer whirs ominously. Nobody has asked it to print anything.",
+        "A calendar invitation appears titled “A Quick Chat” and then vanishes.",
+        "The Warrior clips on a visitor badge and starts inspecting your imaginary desk.",
+        "A fluorescent light flickers in Morse code. It appears to spell “probably fine.”"
+      ]
+    },
+    health: {
+      name: "Health & safety", emoji: "🫀", desc: "Uncertainty, mistakes, and feeling in control.",
+      start: "What if something goes wrong?",
+      setup: "A shadow moves behind the curtain. It turns out to be another shadow, somehow wearing a lab coat.",
+      concerns: [
+        "you notice a sensation you cannot immediately explain",
+        "you worry that you forgot an important detail",
+        "you cannot control every possible outcome",
+        "you have to wait for information before deciding what to do",
+        "you feel nervous about an unfamiliar situation",
+        "you make a small mistake in your routine",
+        "you do not know what will happen next",
+        "you worry about someone you care about",
+        "you need help instead of handling everything alone",
+        "you cannot get complete certainty before moving forward"
+      ],
+      twists: [
+        "uncertainty opens a customer-service desk staffed by a raccoon in a lab coat",
+        "a haystack of paperwork hires 300 suspicious scarecrows",
+        "control turns out to be a remote with one button and no batteries",
+        "a sentient vending machine demands riddles and expired coupons",
+        "a circus of anxious acrobats asks your worry to perform a backflip",
+        "a ghostly committee investigates the situation using a magnifying glass the size of a car",
+        "a printer from the underworld tries to predict the future through interpretive jazz",
+        "three hamsters in a trench coat claim to be certified outcome managers",
+        "a tiny dragon requests a 900-page report on every possible timeline",
+        "the What-If Warrior puts the entire hypothetical on trial before the Moon Court"
+      ],
+      setupLines: [
+        "The Warrior adjusts its lab coat and admits it has never attended medical school.",
+        "A clipboard appears. It contains a checklist titled “Things We Cannot Know Yet.”",
+        "A tiny warning bell rings, then a second tiny bell apologizes for overreacting.",
+        "The shadows gather around a table and begin a very unqualified committee meeting."
+      ]
     }
-    $("roundLabel").textContent=`ROUND ${String(round).padStart(2,"0")}`;$("categoryLabel").textContent=c.name.toUpperCase();$("scenarioLabel").textContent=label;$("scenarioTitle").textContent=title;$("scenarioCopy").textContent=copy;
-    const options=makeChoices(title,round);
-    $("choiceList").innerHTML=options.map((opt,i)=>`<button class="choice" data-choice="${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span class="choice-text">${opt}</span></button>`).join("");
-    $("choiceList").querySelectorAll("[data-choice]").forEach(btn=>btn.addEventListener("click",()=>choose(Number(btn.dataset.choice),options[Number(btn.dataset.choice)])));
+  };
+
+  const categoryOrder = Object.keys(categories);
+  const $ = id => document.getElementById(id);
+  let activeCategory = null, round = 0, startedAt = 0, history = [], ending = null;
+  const screens = ["titleScreen", "categoryScreen", "gameScreen", "endScreen"];
+
+  // Each category combines 10 tailored concerns with 10 category-flavored escalations:
+  // 10 x 10 = 100 distinct scenarios per category, 600 total.
+  for (const key of categoryOrder) {
+    const c = categories[key];
+    c.scenarios = c.concerns.flatMap((concern, concernIndex) =>
+      c.twists.map((twist, twistIndex) => ({
+        title: `What if ${concern}, and ${twist}?`,
+        concernIndex,
+        twistIndex
+      }))
+    );
   }
-  function makeChoices(title,level){
-    const t=title.toLowerCase();
-    const c=categories[activeCategory];
-    let base;
-    if(activeCategory==="relationships")base=[
-      "What if they were only being polite?",
-      "What if their dog has a confidential file on me?",
-      "What if the dog is now an undercover CIA agent?",
-      "What if the CIA agent dog becomes my assigned life coach?"
-    ];
-    else if(activeCategory==="money")base=[
-      "What if one unexpected expense changes everything?",
-      "What if my bills start holding secret meetings?",
-      "What if the bills hire a ghost accountant?",
-      "What if the ghost accountant demands payment in moon cheese?"
-    ];
-    else if(activeCategory==="time")base=[
-      "What if I fall behind?",
-      "What if the calendar adds a secret extra month?",
-      "What if that month is ruled by a tyrannical clock?",
-      "What if the clock is wanted in 14 dimensions?"
-    ];
-    else if(activeCategory==="living")base=[
-      "What if I never figure it all out?",
-      "What if the universe is an unfinished group project?",
-      "What if the project manager is a haunted moon?",
-      "What if the moon is being audited by sentient soup?"
-    ];
-    else if(activeCategory==="work")base=[
-      "What if I make a mistake?",
-      "What if the mistake gets promoted over me?",
-      "What if my new manager is a haunted printer?",
-      "What if the printer demands a sacrifice of three spreadsheets?"
-    ];
-    else base=[
-      "What if I can't know every outcome?",
-      "What if uncertainty has a customer service desk?",
-      "What if the desk is run by a raccoon in a lab coat?",
-      "What if the raccoon has filed a 900-page report about my thoughts?"
-    ];
-    const idx=(level-1)%4;
-    const first=base[idx];
-    const follow=[
-      "What if that possibility has its own dramatic documentary?",
-      "What if the documentary is narrated by a deeply suspicious pigeon?",
-      "What if the pigeon has appointed itself minister of your hypothetical future?",
-      "What if the minister's office is inside a haunted vending machine?",
-      "What if the vending machine only dispenses prophecies and damp socks?",
-      "What if the socks are witnesses in a courtroom run by the moon?",
-      "What if the moon's lawyer is a tiny dragon who bills by the burp?",
-      "What if the dragon sends the invoice to every alternate version of Tuesday?"
-    ];
-    const absurd=follow[Math.min(Math.floor((level-1)/2),follow.length-1)];
-    const contextual=level<3?first:level<6?absurd:`What if ${["the original worry is investigated by a ghostly committee","a raccoon declares the whole situation a matter of national importance","the moon files a formal complaint about your hypothetical timeline","your thought becomes a contestant on an intergalactic game show","a haunted toaster demands that you testify before the Council of What Ifs"][level%5]}?`;
-    const choices=[
-      first,
-      level<3?`What if ${c.name.toLowerCase()} gets even more complicated?`:contextual,
-      level<4?follow[Math.min(level,follow.length-1)]:`What if a ${["ghost lawyer","time-traveling goose","sentient spreadsheet","tiny dragon","committee of judgmental otters"][level%5]} turns up and makes it official?`,
-      level<5?`What if the whole thing is secretly controlled by ${["the CIA dog","a ghost with a clipboard","a council of haunted pigeons","a moon accountant","three hamsters in a trench coat"][level%5]}?`:`What if this entire disaster is ruled on by a Supreme Court of raccoons who only communicate through interpretive dance?`
-    ];
-    // Progressively absurd options remain available; each selection determines the next round's branch flavor.
-    return choices.map((x,i)=>escapeHTML(x));
+
+  function showScreen(id) {
+    screens.forEach(s => $(s).classList.toggle("active", s === id));
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
-  function choose(index,choice){
-    history.push({round,category:activeCategory,choice});
-    branchIndex=(branchIndex+1+index)%Math.max(1,currentThread().length+2);
-    scenarioIndex=(scenarioIndex+index+(round>4?1:0))%categories[activeCategory].threads.length;
+
+  function buildCategories() {
+    $("categoryGrid").innerHTML = categoryOrder.map(key => {
+      const c = categories[key];
+      return `<button class="category" data-category="${key}">
+        <span class="emoji">${c.emoji}</span><strong>${c.name}</strong>
+        <small>${c.desc}<br>100 scenarios</small>
+      </button>`;
+    }).join("");
+    $("categoryGrid").querySelectorAll("[data-category]").forEach(btn =>
+      btn.addEventListener("click", () => startGame(btn.dataset.category))
+    );
+  }
+
+  function startGame(key) {
+    activeCategory = key;
+    round = 0;
+    history = [];
+    ending = null;
+    startedAt = performance.now();
+    showScreen("gameScreen");
+    renderScenario();
+  }
+
+  function currentScenario() {
+    const c = categories[activeCategory];
+    return c.scenarios[round];
+  }
+
+  function renderScenario() {
+    const c = categories[activeCategory];
+    const scenario = currentScenario();
+    if (!scenario) {
+      endGame("win");
+      return;
+    }
+    const index = round;
+    const stage = index < 10 ? "THE FIRST PUNCHES"
+      : index < 30 ? "THE SPIRAL DEEPENS"
+      : index < 60 ? "LOGIC LEAVES THE BUILDING"
+      : index < 90 ? "FULL WHAT-IF WARFARE"
+      : "THE FINAL NIGHTMARE";
+    const copy = index === 0 ? c.setup
+      : history.length && history[history.length - 1].choice === 2
+        ? "You challenge the thought. The What-If Warrior looks offended and tries a new angle."
+        : history.length && history[history.length - 1].choice === 1
+          ? "The Warrior has added fog machines, dramatic lighting, and a completely unnecessary subplot."
+          : c.setupLines[index % c.setupLines.length];
+
+    $("roundLabel").textContent = `ROUND ${String(index + 1).padStart(3, "0")} / 100`;
+    $("categoryLabel").textContent = c.name.toUpperCase();
+    $("scenarioLabel").textContent = stage;
+    $("scenarioTitle").textContent = scenario.title;
+    $("scenarioCopy").textContent = copy;
+
+    const options = makeChoices(index);
+    $("choiceList").innerHTML = options.map((opt, i) =>
+      `<button class="choice" data-choice="${i}">
+        <span class="letter">${String.fromCharCode(65 + i)}</span>
+        <span class="choice-text">${opt}</span>
+      </button>`
+    ).join("");
+    $("choiceList").querySelectorAll("[data-choice]").forEach(btn =>
+      btn.addEventListener("click", () => choose(Number(btn.dataset.choice), options[Number(btn.dataset.choice)]))
+    );
+  }
+
+  function makeChoices(index) {
+    const c = categories[activeCategory];
+    const next = c.scenarios[(index + 1) % c.scenarios.length];
+    const absurd = c.twists[(index * 3 + 4) % c.twists.length];
+    const challengeLines = [
+      "What if this is only a thought, not a prediction?",
+      "What if I can take one useful step without solving every possibility?",
+      "What if uncertainty can exist without being an emergency?",
+      "What if I let this question remain unanswered for now?",
+      "What if I give my attention to what is actually happening?"
+    ];
+    return [
+      `SPIRAL: What if ${next.title.replace(/^What if /i, "").replace(/\?$/, "")}`,
+      `ESCALATE: What if ${absurd}, and the whole thing is blamed on the original worry?`,
+      `CHALLENGE: ${challengeLines[index % challengeLines.length]}`
+    ].map(escapeHTML);
+  }
+
+  function choose(index, choice) {
+    history.push({ round: round + 1, category: activeCategory, choice: index, text: choice });
     round++;
-    if(round>=24){endGame("win");return;}
-    renderScenario(false);
+    if (round >= categories[activeCategory].scenarios.length) {
+      endGame("win");
+      return;
+    }
+    renderScenario();
   }
-  function endGame(type){
-    ending=type;const elapsed=Math.max(0,Math.floor((performance.now()-startedAt)/1000));const minutes=Math.floor(elapsed/60);const seconds=elapsed%60;
-    const c=categories[activeCategory];
-    $("elapsedText").textContent=`YOU WASTED ${minutes} MINUTE${minutes===1?"":"S"} ON WHAT IF`;
-    if(minutes===0)$("elapsedText").textContent=`YOU WASTED LESS THAN A MINUTE ON WHAT IF`;
-    $("endingKicker").textContent=type==="win"?"THE FINAL BELL":"THE BELL HAS RUNG";
-    $("endingTitle").textContent=type==="win"?"YOU BEAT THE WHAT-IF WARRIOR":"YOU TAPPED OUT";
-    $("endingIntro").textContent=type==="win"?"You made it through every round. The What-If Warrior has been defeated by an increasingly questionable series of hypotheticals. But here's the final question: was it worth the time you spent battling your thoughts?":"You faced the What-If Warrior and decided when enough was enough. You don't owe every worry an endless rematch.";
-    $("roundsStat").textContent=round;$("categoryStat").textContent=c.name;$("endingStat").textContent=type==="win"?"CHAMPION":"TAP OUT";
-    $("encouragementTitle").textContent=type==="win"?"🏆 Congrats, What-If Warrior Slayer":"💜 Congrats on facing the What-If Warrior";
-    $("encouragementText").textContent=type==="win"?"You reached the end of the what-if war. And maybe you also noticed how far a single thought can travel when you keep feeding it. You don't have to follow every fear all the way to the end. Your attention is precious; you get to decide where it goes next. Come back any time you want another round — or choose peace instead.":"You stepped into the ring, faced the spiral, and chose to stop. That's not losing. If you ever need to battle it out with your brain again, come back. Remember: a thought is not a prophecy, and you don't have to solve every imaginary disaster tonight.";
+
+  function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, ch => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[ch]);
+  }
+
+  function endGame(type) {
+    ending = type;
+    const elapsed = Math.max(0, Math.floor((performance.now() - startedAt) / 1000));
+    const minutes = Math.floor(elapsed / 60);
+    const c = categories[activeCategory];
+    $("elapsedText").textContent = minutes === 0
+      ? "YOU WASTED LESS THAN A MINUTE ON WHAT IF"
+      : `YOU WASTED ${minutes} MINUTE${minutes === 1 ? "" : "S"} ON WHAT IF`;
+    $("endingKicker").textContent = type === "win" ? "THE FINAL BELL" : "THE BELL HAS RUNG";
+    $("endingTitle").textContent = type === "win" ? "YOU BEAT THE WHAT-IF WARRIOR" : "YOU TAPPED OUT";
+    $("endingIntro").textContent = type === "win"
+      ? "You faced all 100 scenarios in this category. The What-If Warrior has been defeated by your stamina, your choices, and an increasingly questionable parade of hypotheticals. Final question: was the time spent worrying worth it?"
+      : "You faced the What-If Warrior and decided when enough was enough. You don't owe every worry an endless rematch.";
+    $("roundsStat").textContent = history.length;
+    $("categoryStat").textContent = c.name;
+    $("endingStat").textContent = type === "win" ? "CHAMPION" : "TAP OUT";
+    $("encouragementTitle").textContent = type === "win"
+      ? "🏆 Congrats, What-If Warrior Slayer"
+      : "💜 Congrats on facing the What-If Warrior";
+    $("encouragementText").textContent = type === "win"
+      ? "You reached the end of the what-if war. Notice how far a single thought can travel when you keep feeding it. You don't have to follow every fear all the way to the end. Your attention is precious; you get to decide where it goes next. Come back for another category any time — or choose peace instead."
+      : "You stepped into the ring, faced the spiral, and chose to stop. That's not losing. A thought is not a prophecy, and you don't have to solve every imaginary disaster tonight. Come back whenever you want another round.";
     showScreen("endScreen");
   }
-  $("enterButton").addEventListener("click",()=>showScreen("categoryScreen"));
-  $("backTitle").addEventListener("click",()=>showScreen("titleScreen"));
-  $("tapOutButton").addEventListener("click",()=>endGame("tapout"));
-  $("playAgainButton").addEventListener("click",()=>{activeCategory=null;showScreen("categoryScreen")});
+
+  $("enterButton").addEventListener("click", () => showScreen("categoryScreen"));
+  $("backTitle").addEventListener("click", () => showScreen("titleScreen"));
+  $("tapOutButton").addEventListener("click", () => endGame("tapout"));
+  $("playAgainButton").addEventListener("click", () => {
+    activeCategory = null;
+    showScreen("categoryScreen");
+  });
   buildCategories();
 })();
 </script>

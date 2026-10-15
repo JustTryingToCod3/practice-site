@@ -1,45 +1,737 @@
 <!DOCTYPE html>
-<!-- File Declaration -->
 <html lang="en">
-<!-- Original Language -->
 <head>
-    <meta charset="UTF-8">
-    <!-- Make sure all characters are displayed correctly -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Responsiveness for phones  -->
-    <title>😌Relaxing Games😌🌤️</title>
-    <!-- Browser Tab Text -->
-    <link rel="stylesheet" href="../../relax.css" type="text/css">
-    <!-- Link to css  -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom google font -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eaf6ff">
+<title>Life Lounge | A Little Breathing Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky-50:#f5fbff;--sky-100:#eaf6ff;--sky-150:#dff1ff;--sky-200:#cde9ff;
+  --sky-300:#a9d9fa;--sky-400:#79c0ef;--sky-500:#4da5df;--sky-600:#287fb9;
+  --sky-700:#245f89;--ink:#25465f;--muted:#64839a;--white:#fff;
+  --line:#d8ebf8;--shadow:0 18px 50px rgba(61,131,177,.13);
+  --radius:24px;--focus:#165f96;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#eaf6ff 0%,#f7fbff 44%,#fff 100%);color:var(--ink);font-family:"Nunito",sans-serif;min-height:100vh;overflow-x:hidden}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #287fb9;outline-offset:3px}
+a{color:inherit}
+.sky-art{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.cloud{position:absolute;width:260px;height:75px;border-radius:100px;background:rgba(255,255,255,.7);filter:blur(.2px);animation:drift 32s ease-in-out infinite alternate}
+.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud:before{width:115px;height:115px;left:35px;bottom:5px}
+.cloud:after{width:145px;height:145px;left:105px;bottom:0}
+.cloud.c1{top:145px;left:-90px;transform:scale(.75)}
+.cloud.c2{top:470px;right:-100px;transform:scale(1.05);animation-delay:-12s}
+.cloud.c3{top:80%;left:8%;transform:scale(.55);animation-delay:-7s}
+.sparkle{position:absolute;color:#80c6ef;font-size:19px;opacity:.6;animation:twinkle 4s ease-in-out infinite}
+.sparkle.s1{top:190px;right:13%}.sparkle.s2{top:55%;left:5%;animation-delay:1s}.sparkle.s3{top:77%;right:8%;animation-delay:2s}
+@keyframes drift{from{translate:0 0}to{translate:45px 8px}}
+@keyframes twinkle{0%,100%{opacity:.28;transform:scale(.85)}50%{opacity:.9;transform:scale(1.1)}}
+@keyframes floatIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes bubble{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.site-header{width:min(1180px,calc(100% - 36px));margin:18px auto 0;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 18px;background:rgba(255,255,255,.83);border:1px solid rgba(255,255,255,.95);border-radius:22px;box-shadow:0 8px 28px rgba(60,130,175,.09);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.08rem;white-space:nowrap}
+.brand-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,#d9f0ff,#fff);color:var(--sky-600);font-size:1.3rem;box-shadow:inset 0 0 0 1px #d7edfb}
+.brand small{display:block;color:var(--muted);font-size:.68rem;font-weight:700;letter-spacing:.03em}
+.TopBar{display:flex;align-items:center;justify-content:flex-end;gap:4px;flex-wrap:wrap}
+.TopBar a{text-decoration:none;font-size:.82rem;font-weight:800;color:var(--muted);padding:9px 10px;border-radius:12px;transition:.2s}
+.TopBar a:hover,.TopBar a.active{background:var(--sky-100);color:var(--sky-700)}
+main{width:min(1120px,calc(100% - 32px));margin:0 auto}
+.hero{text-align:center;padding:62px 0 32px;position:relative}
+.hero-cloud{display:inline-grid;place-items:center;width:80px;height:68px;font-size:2.6rem;filter:drop-shadow(0 7px 7px rgba(69,145,195,.16));animation:bubble 4s ease-in-out infinite}
+.eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sky-600);font-weight:900}
+h1,h2,h3,p{margin-top:0}
+h1{font-family:"Quicksand",sans-serif;font-size:clamp(2.4rem,6vw,4.7rem);line-height:1.02;letter-spacing:-.055em;margin:12px 0;color:#235a80;font-weight:700}
+h1 span{color:var(--sky-500)}
+.hero-sub{font-size:1.12rem;font-weight:800;color:var(--sky-600);margin-bottom:14px}
+.hero-intro{max-width:640px;margin:0 auto;color:var(--muted);font-size:1.04rem;line-height:1.7}
+.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:880px;margin:30px auto 0;text-align:left}
+.mode-card{display:flex;align-items:flex-start;gap:15px;border:1px solid #d9edfa;background:rgba(255,255,255,.92);border-radius:22px;padding:20px;text-align:left;box-shadow:0 8px 22px rgba(59,128,171,.07);transition:transform .2s,box-shadow .2s,border-color .2s;color:var(--ink);min-height:132px}
+.mode-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--sky-300)}
+.mode-icon{flex:0 0 48px;width:48px;height:48px;display:grid;place-items:center;background:linear-gradient(145deg,var(--sky-100),#fff);border-radius:17px;font-size:1.5rem}
+.mode-card strong{display:block;font-family:"Quicksand",sans-serif;font-size:1.08rem;margin:2px 0 6px;color:#285e87}
+.mode-card small{display:block;font-size:.9rem;line-height:1.5;color:var(--muted)}
+.section{padding:28px 0 56px}
+.section-heading{text-align:center;margin-bottom:22px}
+.section-heading h2{font-family:"Quicksand",sans-serif;font-size:clamp(1.65rem,4vw,2.3rem);margin-bottom:8px;color:#285e87}
+.section-heading p{color:var(--muted);margin-bottom:0}
+.mini-note{max-width:760px;margin:0 auto;background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:18px;padding:17px 20px;color:var(--muted);font-size:.9rem;line-height:1.65}
+footer{border-top:1px solid var(--line);padding:26px 16px 35px;text-align:center;color:var(--muted);font-size:.85rem}
+footer p{margin:4px}
+.btn{border:0;border-radius:15px;padding:12px 17px;font-weight:900;background:linear-gradient(135deg,#63b7eb,#429bd6);color:#fff;box-shadow:0 8px 18px rgba(62,151,208,.2);transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.03);transform:translateY(-1px)}
+.btn.secondary{background:#edf7ff;color:#2b6d9b;box-shadow:none;border:1px solid #d5ebfa}
+.btn.ghost{background:transparent;color:var(--muted);box-shadow:none}
+.btn.danger{background:#fff0f0;color:#9c4141;box-shadow:none;border:1px solid #f3d5d5}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.action-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:20px}
+.action-row .right{display:flex;gap:9px;flex-wrap:wrap;margin-left:auto}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:99px;background:#e9f6ff;color:#2f79ad;font-size:.75rem;font-weight:900}
+.hidden{display:none!important}
+.overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(33,75,105,.38);backdrop-filter:blur(8px);overflow-y:auto;animation:floatIn .18s ease-out}
+.dialog{position:relative;width:min(660px,100%);max-height:min(90vh,900px);overflow:auto;background:linear-gradient(180deg,#fff 0%,#fafdff 100%);border:1px solid rgba(255,255,255,.96);border-radius:28px;padding:clamp(20px,4vw,34px);box-shadow:0 28px 90px rgba(28,77,111,.28);animation:floatIn .22s ease-out}
+.dialog.wide{width:min(840px,100%)}
+.close-x{position:absolute;right:15px;top:15px;border:0;width:38px;height:38px;border-radius:13px;background:#edf7ff;color:#4a7fa1;font-size:1.25rem}
+.dialog-kicker{font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:var(--sky-600);margin-bottom:8px}
+.dialog h2{font-family:"Quicksand",sans-serif;font-size:clamp(1.55rem,4vw,2.25rem);line-height:1.15;color:#285e87;margin:0 44px 10px 0}
+.dialog-intro{color:var(--muted);line-height:1.6;margin-bottom:18px}
+.progress-track{height:7px;background:#e8f4fc;border-radius:99px;overflow:hidden;margin:16px 0 22px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#a6ddfa,#4da5df);border-radius:99px;transition:width .25s}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.option{display:flex;align-items:center;gap:10px;text-align:left;padding:14px 15px;border:1px solid #dceefa;border-radius:16px;background:#f7fbff;color:var(--ink);font-weight:800;min-height:58px;transition:.18s}
+.option:hover{border-color:#9ed4f4;transform:translateY(-1px)}
+.option.selected{border-color:#58a9dd;background:#e7f5ff;box-shadow:inset 0 0 0 1px #8ecaf0}
+.option .option-dot{flex:0 0 22px;width:22px;height:22px;border:1.5px solid #a8cde5;border-radius:50%;display:grid;place-items:center;font-size:.75rem;color:#fff}
+.option.selected .option-dot{background:#4da5df;border-color:#4da5df}
+.text-answer{width:100%;border:1px solid #d6eafa;border-radius:15px;padding:13px 15px;resize:vertical;min-height:85px;color:var(--ink);background:#fbfdff}
+.question-help{font-size:.8rem;color:var(--muted);margin-top:9px;line-height:1.5}
+.focus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.focus-option{border:1px solid #d9edfa;background:#f8fcff;padding:17px;border-radius:18px;text-align:left;color:var(--ink)}
+.focus-option.selected{border-color:#58a9dd;background:#eaf7ff;box-shadow:inset 0 0 0 1px #8ecaf0}
+.focus-option strong{display:block;margin-bottom:5px;color:#285e87}.focus-option span{font-size:.86rem;color:var(--muted);line-height:1.45}
+.result-clues{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.clue{background:#eff8ff;border:1px solid #deeffb;border-radius:17px;padding:14px}
+.clue .clue-icon{font-size:1.25rem}.clue strong{display:block;margin:5px 0;color:#2d668d}.clue p{font-size:.86rem;line-height:1.45;color:var(--muted);margin:0}
+.connect-box{background:linear-gradient(135deg,#eaf7ff,#f8fcff);border:1px solid #cfe8f8;border-radius:19px;padding:18px;margin:16px 0}
+.connect-box h3{margin-bottom:7px;color:#2b688f;font-family:"Quicksand",sans-serif}.connect-box p{line-height:1.65;color:#4f748d;margin-bottom:0}
+.emotion-grid,.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:18px 0}
+.emotion-card,.skill-card{border:1px solid #dceefa;border-radius:18px;background:#fff;padding:16px 14px;text-align:left;color:var(--ink);transition:.18s;min-width:0}
+.emotion-card:hover,.skill-card:hover{transform:translateY(-2px);border-color:#8acaf0}
+.emotion-card.selected,.skill-card.selected{background:#eaf7ff;border-color:#4da5df;box-shadow:inset 0 0 0 1px #8acaf0}
+.emotion-card .emoji,.skill-card .emoji{font-size:1.55rem;display:block;margin-bottom:8px}
+.emotion-card strong,.skill-card strong{display:block;color:#285e87;margin-bottom:6px;line-height:1.25}
+.emotion-card small,.skill-card p{display:block;color:var(--muted);font-size:.82rem;line-height:1.45;margin:0}
+.skill-card .why{display:block;color:#2f7bab;font-size:.78rem;font-weight:900;margin-top:10px}
+.validation{font-size:1rem;line-height:1.75;color:#355b76}
+.validation p{margin:0 0 12px}
+.skill-step{border:1px solid #d7ecf9;background:linear-gradient(140deg,#f0f9ff,#fff);border-radius:22px;padding:22px;margin:18px 0}
+.step-count{color:#378bc2;text-transform:uppercase;font-size:.75rem;font-weight:900;letter-spacing:.12em}
+.step-title{font-family:"Quicksand",sans-serif;font-size:1.8rem;color:#285e87;margin:9px 0}
+.step-body{font-size:1.06rem;line-height:1.75;color:#355b76}
+.step-tip{font-size:.86rem;line-height:1.6;color:var(--muted);border-top:1px solid #dceefa;padding-top:12px}
+.encouragement-card{text-align:center;padding:12px 8px 8px}
+.encouragement-heart{font-size:3rem;display:block;margin-bottom:12px;animation:bubble 3s ease-in-out infinite}
+.encouragement-card blockquote{font-family:"Quicksand",sans-serif;font-size:clamp(1.35rem,4vw,2rem);font-weight:700;color:#285e87;line-height:1.4;margin:12px auto 18px;max-width:500px}
+.talk-options{display:grid;grid-template-columns:1fr;gap:9px}
+.talk-options .option{min-height:auto}
+.source-list{color:var(--muted);line-height:1.65;font-size:.9rem;padding-left:21px}
+.inline-alert{border:1px solid #f2d4d4;background:#fff7f7;border-radius:16px;padding:14px;color:#824747;line-height:1.55}
+.small-muted{font-size:.82rem;color:var(--muted);line-height:1.6}
+@media(max-width:850px){
+ .site-header{align-items:flex-start;flex-direction:column}.TopBar{justify-content:flex-start}.TopBar a{padding:8px}
+ .emotion-grid,.skill-grid{grid-template-columns:1fr}.emotion-card,.skill-card{display:block}
+}
+@media(max-width:620px){
+ .site-header{width:calc(100% - 20px);padding:12px;margin-top:10px}.TopBar{gap:2px}.TopBar a{font-size:.75rem;padding:7px}
+ main{width:calc(100% - 24px)}.hero{padding-top:38px}.mode-grid{grid-template-columns:1fr;gap:11px}.mode-card{min-height:auto;padding:16px}
+ .options,.focus-grid,.result-clues{grid-template-columns:1fr}.dialog{border-radius:22px;padding:22px 17px;max-height:92vh}
+ .action-row{align-items:stretch}.action-row .right{width:100%;margin-left:0}.action-row .btn{flex:1}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
-    <!-- Visible page content -->
-    <h1>🌤️😌Relaxing Games😌🌤️</h1>
-    <!-- Page Heading -->
-
-    <nav class="TopBar">
-        <!-- Navigation Bar -->
-        <a id="Home" href="../../index.html"><h3>🏠👨‍💻 Home 👨‍💻🏠</h3></a>
-        <!-- Homepage link -->
-        <a id="practiceexam" href="../therapy/badtherapy.html"><h3>📝🏫 Bad Therapy 🏫📝</h3></a>
-        <a id="m8ball" href="../m8/m8ball.html"><h3>🔮🎱 Magic 8 Ball 🎱🔮</h3></a>
-        <a id="budget" href="../budget/budget.html"><h3>💸😊 Budget 😊💸</h3></a>
-        <a id="tarot" href="../tarot/tarot.html"><h3>♠️🃏  Tarot Reading 🃏♠️</h3></a>
-        <a id="horror" href="../horror/horror.html"><h3>👹👻 Horror Game 👻👹</h3></a>
-        <a id="relax" href="../relax/relax.html"><h3>🌤️😌Relaxing Games😌🌤️</h3></a>
-        <a id="blog" href="../blog/blog.html"><h3>📝💬Blog💬📝</h3></a>
-        <!-- Link to other HTML pages -->
-    </nav>
-    
-    
-</body>
-
-    <div>
-    <footer>
-      <!-- Back to Home -->
-    <a href="../../index.html" class="back-home">🏠👨‍💻 Home 👨‍💻🏠</a>
-  </footer>
+<div class="sky-art" aria-hidden="true">
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+  <span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span>
 </div>
+<header class="site-header">
+  <a class="brand" href="../../index.html" aria-label="Life Lounge home"><span class="brand-mark">☁</span><span>Life Lounge<small>A break for your brain</small></span></a>
+  <nav class="TopBar" aria-label="Main navigation">
+    <a id="Home" href="../../index.html">⌂ <span>Home</span></a>
+    <a id="practiceexam" href="../therapy/badtherapy.html">♟ <span>Bad Therapy</span></a>
+    <a id="m8ball" href="../m8/m8ball.html">◉ <span>Magic 8 Ball</span></a>
+    <a id="budget" href="../budget/budget.html">♧ <span>Budget</span></a>
+    <a id="tarot" href="../tarot/tarot.html">✧ <span>Tarot Reading</span></a>
+    <a id="horror" href="../horror/horror.html">☾ <span>Horror Game</span></a>
+    <a id="relax" class="active" href="../relax/relax.html">☁ <span>Relaxing Games</span></a>
+    <a id="blog" href="../blog/blog.html">✎ <span>Blog</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-cloud" aria-hidden="true">☁️</div>
+    <div class="eyebrow">YOUR LITTLE POCKET OF CALM</div>
+    <h1>A Little <span>Breathing Room</span></h1>
+    <p class="hero-sub">Small steps. Soft landings. No perfect answers required.</p>
+    <p class="hero-intro">Whatever you're feeling, you can start right where you are. Get a coping skill, explore what might be going on, hear a little kindness, or talk through your next step. You don't have to figure everything out at once.</p>
+
+    <div class="mode-grid" aria-label="Choose how you'd like support">
+      <button class="mode-card" data-action="instant">
+        <span class="mode-icon" aria-hidden="true">⚡</span><span><strong>I need help right now</strong><small>One practical coping skill, right away. No quiz and no explanation required.</small></span>
+      </button>
+      <button class="mode-card" data-action="checkin">
+        <span class="mode-icon" aria-hidden="true">🧭</span><span><strong>Help me understand my feelings</strong><small>Take a quick check-in or connect the dots in more depth.</small></span>
+      </button>
+      <button class="mode-card" data-action="encourage">
+        <span class="mode-icon" aria-hidden="true">💗</span><span><strong>I just need encouraging words</strong><small>A little kindness, without having to explain yourself.</small></span>
+      </button>
+      <button class="mode-card" data-action="talk">
+        <span class="mode-icon" aria-hidden="true">💬</span><span><strong>I need to talk something through</strong><small>Sort through what feels hardest and choose a manageable next step.</small></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading"><h2>You can take this one step at a time.</h2><p>This is a place to explore, not a test you can fail.</p></div>
+    <div class="mini-note">This companion uses educational, DBT-informed coping skills and guided reflection. It isn't a diagnosis or a substitute for professional care. You can skip questions, change answers, revisit earlier steps, or stop whenever you want.</div>
+  </section>
+</main>
+
+<footer>
+  <p><strong>Life Lounge</strong> · A break for your brain ☁️</p>
+  <p>If you may be in immediate danger, contact emergency services. In the U.S., call or text 988 for crisis support.</p>
+</footer>
+
+<div class="overlay hidden" id="overlay" role="presentation">
+  <section class="dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+    <button class="close-x" id="closeDialog" aria-label="Close dialog">×</button>
+    <div id="dialogContent"></div>
+  </section>
+</div>
+
+<script>
+(() => {
+"use strict";
+const $ = (selector, root=document) => root.querySelector(selector);
+const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+const overlay = $("#overlay"), dialog = $("#dialog"), content = $("#dialogContent");
+const state = {
+  mode:"", depth:"quick", focus:"general", answers:{}, questionIndex:0,
+  selectedFeeling:"", customFeeling:"", selectedSkill:null, stepIndex:0, previousView:null,
+  talkIndex:0, checkinQuestions:[], lastView:""
+};
+
+const focusInfo = {
+  overwhelm:{label:"Overwhelm",desc:"When everything feels like too much"},
+  relationships:{label:"Relationships",desc:"Conflict, rejection, boundaries, or connection"},
+  rest:{label:"Rest and recovery",desc:"Exhaustion, low energy, or winding down"},
+  general:{label:"General reflection",desc:"When you're not sure where to start"}
+};
+
+const questionBank = {
+  situation:{
+    id:"situation",group:"Situation & recent stress",type:"multi",
+    prompt:"What's been going on lately?",
+    help:"Choose any that fit. It's okay if you aren't sure.",
+    options:[
+      ["career","Career, school, or money stress"],["conflict","A difficult interaction or conflict"],
+      ["pressure","Too many responsibilities at once"],["lonely","Feeling disconnected or alone"],
+      ["change","A change or uncertainty"],["health","A physical discomfort or health concern"],
+      ["ongoing","Nothing specific — it's been building"],["unknown","I'm not sure"]
+    ]
+  },
+  stress:{
+    id:"stress",group:"Situation & recent stress",type:"single",
+    prompt:"How much has this been weighing on you?",
+    options:[["small","A little"],["medium","A noticeable amount"],["high","A lot"],["constant","It feels constant"],["unsure","I'm not sure"]]
+  },
+  control:{
+    id:"control",group:"Situation & recent stress",type:"single",
+    prompt:"Does it feel like you have room to change the situation right now?",
+    options:[["can","I can take some action"],["limited","I have limited control"],["cannot","I can't change it right now"],["unsure","I'm not sure"]]
+  },
+  body:{
+    id:"body",group:"Body sensations",type:"multi",
+    prompt:"What are you noticing in your body?",
+    help:"Pick any sensations that fit. These are clues, not a diagnosis.",
+    options:[["tense","Tense or tight"],["heat","Hot or flushed"],["restless","Restless or jittery"],["heavy","Heavy or exhausted"],["stomach","A knot or discomfort in my stomach"],["heart","Racing heart or fast breathing"],["numb","Numb or disconnected"],["tears","Tears or a lump in my throat"],["none","Nothing specific"],["other","Something else"]]
+  },
+  bodyLocation:{
+    id:"bodyLocation",group:"Body sensations",type:"single",
+    prompt:"Where do you notice it most?",
+    options:[["chest","Chest or throat"],["head","Head or face"],["stomach","Stomach"],["limbs","Arms, legs, or whole body"],["everywhere","A little everywhere"],["unknown","I can't tell"]]
+  },
+  bodyIntensity:{
+    id:"bodyIntensity",group:"Body sensations",type:"single",
+    prompt:"How intense does the sensation feel?",
+    options:[["low","Mild"],["medium","Moderate"],["high","Strong"],["wave","It comes in waves"],["unsure","I'm not sure"]]
+  },
+  emotion:{
+    id:"emotion",group:"Emotions & urges",type:"multi",
+    prompt:"Which feelings might be showing up?",
+    help:"You can choose more than one, or choose “I can't name it yet.”",
+    options:[["angry","Angry or frustrated"],["sad","Sad or disappointed"],["anxious","Anxious or worried"],["hurt","Hurt or rejected"],["ashamed","Ashamed or guilty"],["lonely","Lonely or disconnected"],["overwhelmed","Overwhelmed or depleted"],["numb","Numb or blank"],["hopeful","Hopeful or excited"],["unknown","I can't name it yet"]]
+  },
+  urge:{
+    id:"urge",group:"Emotions & urges",type:"multi",
+    prompt:"What do you feel pulled to do?",
+    options:[["withdraw","Hide away or stop responding"],["argue","Argue, snap, or defend myself"],["cry","Cry or let it out"],["escape","Get away from everything"],["fix","Fix everything immediately"],["reassurance","Seek reassurance or connection"],["freeze","Shut down or do nothing"],["move","Move around or keep busy"],["none","No clear urge"],["unknown","I'm not sure"]]
+  },
+  thoughts:{
+    id:"thoughts",group:"Emotions & urges",type:"multi",
+    prompt:"What kind of thoughts have been showing up?",
+    options:[["racing","My thoughts are racing"],["selfcritical","I'm being hard on myself"],["whatif","I'm worrying about what might happen"],["replay","I'm replaying something that happened"],["stuck","I can't figure out what to do"],["blank","My mind feels blank"],["none","Nothing specific"],["unknown","I'm not sure"]]
+  },
+  water:{
+    id:"water",group:"Basic needs & capacity",type:"single",
+    prompt:"Have you had water recently?",
+    options:[["yes","Yes"],["some","A little"],["no","Not yet"],["unsure","I'm not sure"]]
+  },
+  food:{
+    id:"food",group:"Basic needs & capacity",type:"single",
+    prompt:"Have you eaten enough for your needs today?",
+    options:[["yes","Yes, I think so"],["some","A little"],["no","Not yet / not enough"],["unsure","I'm not sure"]]
+  },
+  sleep:{
+    id:"sleep",group:"Basic needs & capacity",type:"single",
+    prompt:"How has your sleep been lately?",
+    options:[["good","Pretty good"],["short","Not enough"],["broken","Interrupted or restless"],["poor","Very little / very poor"],["unsure","I'm not sure"]]
+  },
+  rest:{
+    id:"rest",group:"Basic needs & capacity",type:"single",
+    prompt:"Have you had a chance to rest or take a break?",
+    options:[["yes","Yes"],["some","A little"],["no","Not really"],["unsure","I'm not sure"]]
+  },
+  capacity:{
+    id:"capacity",group:"Basic needs & capacity",type:"single",
+    prompt:"How much energy do you have for a coping exercise right now?",
+    options:[["tiny","Very little — keep it tiny"],["some","A little energy"],["okay","I can focus for a few minutes"],["deep","I have room to explore"]]
+  },
+  need:{
+    id:"need",group:"Needs & support",type:"single",
+    prompt:"What would help most in this moment?",
+    options:[["calm","Calm my body or mind"],["clarity","Understand what I'm feeling"],["urge","Pause before acting on an urge"],["connection","Feel understood or connected"],["action","Figure out one next step"],["kindness","Hear something encouraging"],["rest","Give myself permission to rest"],["unsure","I'm not sure yet"]]
+  },
+  supportStyle:{
+    id:"supportStyle",group:"Needs & support",type:"single",
+    prompt:"What kind of support sounds best?",
+    options:[["gentle","Gentle and reassuring"],["direct","Clear and practical"],["guided","Walk me through it step by step"],["choice","Give me options and let me choose"]]
+  },
+  pastHelp:{
+    id:"pastHelp",group:"Needs & support",type:"multi",
+    prompt:"Has anything helped you feel a little steadier before?",
+    options:[["movement","Gentle movement"],["sensory","Music, comfort, or sensory grounding"],["talk","Talking to someone I trust"],["writing","Writing or naming what I'm feeling"],["breathing","Slow breathing or mindfulness"],["space","Space away from the situation"],["none","Nothing comes to mind"],["unknown","I'm not sure"]]
+  },
+  focusQuestion:{
+    id:"focusQuestion",group:"Focus",type:"single",
+    prompt:"What feels most important to understand?",
+    options:[["trigger","What set this off"],["pattern","Why it keeps coming back"],["body","Why my body feels this way"],["needs","What I need right now"],["response","How I want to respond"]]
+  },
+  relationshipNeed:{
+    id:"relationshipNeed",group:"Relationships",type:"single",
+    prompt:"What feels hardest about this relationship situation?",
+    options:[["heard","Feeling unheard or dismissed"],["rejection","Fear of rejection or disconnection"],["boundary","A boundary or expectation"],["uncertainty","Not knowing what the other person means"],["repair","Wanting to repair things"],["unsure","I'm not sure"]]
+  },
+  overwhelmSource:{
+    id:"overwhelmSource",group:"Overwhelm",type:"multi",
+    prompt:"What is taking up the most space in your mind?",
+    options:[["tasks","A long list of tasks"],["uncertainty","Uncertainty about the future"],["people","Other people's needs or expectations"],["sensory","Noise, activity, or sensory input"],["decisions","Too many decisions"],["emotions","The intensity of my own feelings"],["unknown","I'm not sure"]]
+  },
+  restBarrier:{
+    id:"restBarrier",group:"Rest & recovery",type:"single",
+    prompt:"What's making it hardest to rest?",
+    options:[["mind","My mind won't switch off"],["guilt","I feel guilty resting"],["time","There isn't enough time"],["body","My body feels uncomfortable or restless"],["demands","People or responsibilities need me"],["unknown","I'm not sure"]]
+  }
+};
+
+const deepCommon = ["situation","stress","control","body","bodyLocation","bodyIntensity","emotion","urge","thoughts","water","food","sleep","rest","capacity","need","supportStyle","pastHelp"];
+const deepFocus = {
+  general:["focusQuestion","situation","emotion"],
+  overwhelm:["overwhelmSource","stress","control","capacity","body","thoughts","need"],
+  relationships:["relationshipNeed","control","emotion","urge","thoughts","need"],
+  rest:["restBarrier","sleep","rest","water","food","capacity","need"]
+};
+function buildQuestions(depth, focus) {
+  if(depth==="quick") return ["situation","body","urge","emotion","water","sleep","need"].map(id=>questionBank[id]);
+  let ids = [...deepCommon];
+  const extras = deepFocus[focus] || deepFocus.general;
+  ids = [...ids.slice(0,3), ...extras, ...ids.slice(3)];
+  ids = [...new Set(ids)];
+  while(ids.length<20) ids.push(...["bodyIntensity","thoughts","pastHelp","supportStyle"].filter(id=>!ids.includes(id)));
+  return ids.slice(0, focus==="general" ? 20 : 22).map(id=>questionBank[id]);
+}
+function openDialog(html, wide=false) {
+  content.innerHTML = html;
+  dialog.classList.toggle("wide",wide);
+  overlay.classList.remove("hidden");
+  document.body.style.overflow="hidden";
+  const first = $("button:not(.close-x),input,textarea",content);
+  if(first) setTimeout(()=>first.focus({preventScroll:true}),30);
+}
+function closeDialog() {
+  overlay.classList.add("hidden");
+  document.body.style.overflow="";
+}
+$("#closeDialog").addEventListener("click", closeDialog);
+overlay.addEventListener("click", e=>{if(e.target===overlay) closeDialog();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!overlay.classList.contains("hidden"))closeDialog();});
+function esc(value=""){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function val(id){return state.answers[id] || [];}
+function has(id, value){return val(id).includes(value);}
+function labels(id){const q=questionBank[id];return val(id).map(v=>(q?.options||[]).find(o=>o[0]===v)?.[1]||v);}
+function questionIntro(depth) {
+  return depth==="quick" ? "A few gentle questions, then we'll reflect on what might help." : "We'll explore a little more context and connect the clues together. Skip anything you don't want to answer.";
+}
+function startCheckin() {
+  state.answers={};state.selectedFeeling="";state.customFeeling="";state.focus="general";
+  openDialog(`<div class="dialog-kicker">Let's check in ☁️</div><h2 id="dialogTitle">How much time do you have?</h2><p class="dialog-intro">Both paths lead to a personalized reflection and practical skills. Choose the pace that feels right for you.</p>
+  <div class="focus-grid">
+    <button class="focus-option" data-depth="quick"><strong>🌱 Quick check-in</strong><span>5–7 questions · A little clarity, without a long quiz.</span></button>
+    <button class="focus-option" data-depth="deep"><strong>🌙 In-depth check-in</strong><span>20–22 questions · Explore patterns, stressors, and what may be contributing.</span></button>
+  </div><div class="action-row"><button class="btn ghost" data-close>Maybe later</button></div>`);
+  $$("[data-depth]",content).forEach(btn=>btn.addEventListener("click",()=>{
+    state.depth=btn.dataset.depth;
+    if(state.depth==="deep") chooseFocus(); else beginQuiz();
+  }));
+  $("[data-close]",content).addEventListener("click",closeDialog);
+}
+function chooseFocus(){
+  openDialog(`<div class="dialog-kicker">Choose your focus ☁️</div><h2 id="dialogTitle">What would you like to explore?</h2><p class="dialog-intro">Your focus helps us choose follow-up questions. You can still explore anything that comes up.</p>
+  <div class="focus-grid">
+  ${Object.entries(focusInfo).map(([id,x])=>`<button class="focus-option ${state.focus===id?"selected":""}" data-focus="${id}"><strong>${({overwhelm:"🌊",relationships:"🫂",rest:"🌙",general:"🧭"})[id]} ${x.label}</strong><span>${x.desc}</span></button>`).join("")}
+  </div><div class="action-row"><button class="btn secondary" data-back>← Back</button><div class="right"><button class="btn" data-begin>Let's begin →</button></div></div>`);
+  $$("[data-focus]",content).forEach(btn=>btn.addEventListener("click",()=>{state.focus=btn.dataset.focus;chooseFocus();}));
+  $("[data-back]",content).addEventListener("click",startCheckin);
+  $("[data-begin]",content).addEventListener("click",beginQuiz);
+}
+function beginQuiz(){
+  state.checkinQuestions=buildQuestions(state.depth,state.focus);
+  state.questionIndex=0;
+  renderQuestion();
+}
+function renderQuestion(){
+  const questions=state.checkinQuestions;
+  if(state.questionIndex>=questions.length){showResults();return;}
+  const q=questions[state.questionIndex];
+  const current=val(q.id);
+  const multi=q.type==="multi";
+  const pct=Math.round(state.questionIndex/questions.length*100);
+  const choices=q.options.map(([v,label])=>`<button class="option ${current.includes(v)?"selected":""}" data-value="${esc(v)}" aria-pressed="${current.includes(v)}"><span class="option-dot">${current.includes(v)?"✓":""}</span><span>${esc(label)}</span></button>`).join("");
+  openDialog(`<div class="dialog-kicker">${state.depth==="quick"?"Quick check-in":"In-depth check-in"} · ${esc(q.group)}</div><h2 id="dialogTitle">${esc(q.prompt)}</h2><p class="dialog-intro">${esc(q.help || "Choose the answer or answers that fit best. You can skip any question.")}</p>
+  <div class="progress-track" aria-label="Question progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+  <div class="options">${choices}</div>
+  ${q.id==="situation" && state.depth==="deep" ? `<p class="question-help">You can select more than one. For example, career stress and poor sleep can both matter.</p>`:""}
+  <div class="action-row"><button class="btn secondary" data-prev>${state.questionIndex===0?"← Start over":"← Back"}</button><div class="right"><button class="btn ghost" data-skip>Skip</button><button class="btn" data-next>Continue →</button></div></div>
+  <p class="question-help">Question ${state.questionIndex+1} of ${questions.length} · You can revisit answers later.</p>`);
+  $$("[data-value]",content).forEach(btn=>btn.addEventListener("click",()=>{
+    const value=btn.dataset.value;
+    let selected=val(q.id).slice();
+    if(multi) selected=selected.includes(value)?selected.filter(x=>x!==value):[...selected.filter(x=>x!=="unknown"&&x!=="none"),value].filter((x,i,a)=>a.indexOf(x)===i);
+    else selected=[value];
+    if(selected.length===0) delete state.answers[q.id]; else state.answers[q.id]=selected;
+    renderQuestion();
+  }));
+  $("[data-prev]",content).addEventListener("click",()=>{if(state.questionIndex===0){if(state.depth==="deep")chooseFocus();else startCheckin();}else{state.questionIndex--;renderQuestion();}});
+  $("[data-skip]",content).addEventListener("click",()=>{state.questionIndex++;renderQuestion();});
+  $("[data-next]",content).addEventListener("click",()=>{state.questionIndex++;renderQuestion();});
+}
+function summarizeSituation(){
+  const parts=[];
+  const situation=labels("situation");
+  if(situation.length)parts.push(situation.join(", "));
+  const body=labels("body");
+  if(body.length)parts.push("body sensations: "+body.join(", "));
+  const emotions=labels("emotion");
+  if(emotions.length)parts.push("possible feelings: "+emotions.join(", "));
+  const urges=labels("urge");
+  if(urges.length)parts.push("urges: "+urges.join(", "));
+  const needs=[];
+  if(has("water","no")||has("water","some"))needs.push("little water");
+  if(has("food","no")||has("food","some"))needs.push("little food");
+  if(has("sleep","short")||has("sleep","broken")||has("sleep","poor"))needs.push("limited or disrupted sleep");
+  if(has("rest","no")||has("rest","some"))needs.push("limited rest");
+  if(needs.length)parts.push("basic needs to check: "+needs.join(", "));
+  return parts;
+}
+function buildInterpretations(){
+  const picks=[];
+  const add=(id,title,desc,emoji)=>{if(!picks.some(x=>x.id===id))picks.push({id,title,desc,emoji});};
+  const angry=has("emotion","angry")||has("urge","argue")||has("body","heat")||has("body","tense");
+  const hurt=has("emotion","hurt")||has("emotion","lonely")||has("situation","conflict")||has("relationshipNeed","rejection")||has("relationshipNeed","heard");
+  const depleted=has("emotion","overwhelmed")||has("body","heavy")||has("sleep","poor")||has("sleep","short")||has("rest","no")||has("water","no")||has("food","no")||has("capacity","tiny");
+  const anxious=has("emotion","anxious")||has("thoughts","racing")||has("thoughts","whatif")||has("body","heart")||has("body","restless");
+  const sad=has("emotion","sad")||has("urge","withdraw")||has("emotion","numb");
+  const rejected=has("situation","conflict")||has("emotion","hurt")||has("relationshipNeed","rejection")||has("relationshipNeed","heard");
+  const disappointed=has("emotion","sad")||has("emotion","ashamed")||has("situation","pressure");
+  if(hurt)add("hurt","Hurt or rejected","Something may have left you feeling disconnected, dismissed, or uncertain about where you stand.","💗");
+  if(angry)add("angry","Angry or frustrated","You may feel that something was unfair, upsetting, or outside your control.","🌋");
+  if(depleted)add("depleted","Overwhelmed or depleted","Stress and limited recovery may be making everyday demands feel heavier.","☁️");
+  if(anxious)add("anxious","Anxious or on edge","Uncertainty and physical activation may be contributing to a sense of alertness or worry.","🫧");
+  if(sad)add("sad","Sad or disconnected","You may be carrying disappointment, loneliness, or a wish to pull back.","🌧️");
+  if(rejected)add("rejected","Disappointed or dismissed","The situation may have touched a need to be heard, understood, or included.","🩵");
+  if(disappointed)add("disappointed","Disappointed or discouraged","Something may not have gone the way you hoped, leaving you discouraged or self-critical.","🌦️");
+  const fallback=[
+    {id:"uncertain",title:"Unsettled or unsure",desc:"You may be experiencing a mix of feelings that isn't easy to name yet.",emoji:"🧭"},
+    {id:"overloaded",title:"Overloaded",desc:"Several things may be competing for your attention at once.",emoji:"☁️"},
+    {id:"needingCare",title:"In need of care or reassurance",desc:"You may not need to label the feeling yet; a little support may be the best starting point.",emoji:"💙"}
+  ];
+  fallback.forEach(x=>{if(picks.length<3)add(x.id,x.title,x.desc,x.emoji);});
+  return picks.slice(0,3);
+}
+function showResults(){
+  state.interpretations=buildInterpretations();
+  const parts=summarizeSituation();
+  const clues=[
+    ["🧩","Situation",labels("situation").join(", ")||"You skipped this question."],
+    ["🌬️","Body",labels("body").join(", ")||"No specific sensations selected."],
+    ["💭","Emotions & urges",[...labels("emotion"),...labels("urge")].join(", ")||"Still exploring what fits."],
+    ["💧","Basic needs",[
+      has("water","no")?"Water: not yet":has("water","some")?"Water: a little":null,
+      has("food","no")?"Food: not yet / not enough":has("food","some")?"Food: a little":null,
+      has("sleep","poor")?"Sleep: very little / poor":has("sleep","short")?"Sleep: not enough":has("sleep","broken")?"Sleep: interrupted":null,
+      has("rest","no")?"Rest: not really":has("rest","some")?"Rest: a little":null
+    ].filter(Boolean).join(" · ")||"No unmet basic need reported."]
+  ];
+  const connections=[];
+  if(has("situation","career")&&(has("sleep","poor")||has("sleep","short")||has("rest","no")||has("rest","some")))connections.push("Career pressure combined with limited rest may leave less energy available for coping.");
+  if((has("sleep","poor")||has("sleep","short")||has("sleep","broken"))&&(has("emotion","angry")||has("emotion","anxious")||has("emotion","overwhelmed")||has("body","tense")))connections.push("Limited or disrupted sleep can make emotional regulation feel harder for some people, which may be one piece of what you're noticing.");
+  if((has("water","no")||has("water","some"))&&(has("body","heavy")||has("body","heart")||has("body","head")))connections.push("Low fluid intake can affect how your body feels. If you can, consider having some water; don't assume it explains every sensation.");
+  if(has("situation","conflict")&&(has("emotion","hurt")||has("emotion","angry")||has("urge","withdraw")||has("urge","argue")))connections.push("A difficult interaction paired with an urge to withdraw or react may mean you need a pause before deciding what to do next.");
+  if(has("capacity","tiny")||has("body","heavy")||has("emotion","overwhelmed"))connections.push("Because your energy feels low, a very small, low-effort skill may be more supportive than a demanding exercise.");
+  if(!connections.length)connections.push("Your answers don't point to one certain explanation. We can explore a few possibilities together, and you can tell us which feels closest.");
+  openDialog(`<div class="dialog-kicker">Your check-in · Connect the dots 🧩</div><h2 id="dialogTitle">Let's make sense of what you've shared.</h2><p class="dialog-intro">These are clues you gave us, not labels or diagnoses. Tap back any time if something needs changing.</p>
+  <div class="result-clues">${clues.map(c=>`<div class="clue"><span class="clue-icon">${c[0]}</span><strong>${c[1]}</strong><p>${esc(c[2])}</p></div>`).join("")}</div>
+  <div class="connect-box"><h3>What these clues may mean</h3><p>${connections.map(esc).join(" ")}</p><p style="margin-top:10px">These factors can contribute to how someone feels, but they don't prove a cause. Your own sense of what fits matters most.</p></div>
+  <p class="small-muted">${state.depth==="deep"?"In-depth reflection":"Quick reflection"} · Focus: ${esc(focusInfo[state.focus]?.label||"General reflection")}</p>
+  <div class="action-row"><button class="btn secondary" data-edit>← Review answers</button><div class="right"><button class="btn" data-feelings>What might I be feeling? →</button></div></div>`,true);
+  $("[data-edit]",content).addEventListener("click",()=>{state.questionIndex=0;renderQuestion();});
+  $("[data-feelings]",content).addEventListener("click",chooseFeeling);
+}
+function chooseFeeling(){
+  const choices=state.interpretations||buildInterpretations();
+  openDialog(`<div class="dialog-kicker">Your interpretation 💙</div><h2 id="dialogTitle">Which feeling sounds closest?</h2><p class="dialog-intro">You know your own experience best. These are possibilities based on what you shared.</p>
+  <div class="emotion-grid">${choices.map(x=>`<button class="emotion-card ${state.selectedFeeling===x.id?"selected":""}" data-feeling="${x.id}"><span class="emoji">${x.emoji}</span><strong>${esc(x.title)}</strong><small>${esc(x.desc)}</small></button>`).join("")}</div>
+  <button class="option" style="width:100%" data-other><span class="option-dot">＋</span><span>None of these fit — help me find another feeling</span></button>
+  <div class="action-row"><button class="btn secondary" data-back>← Back to clues</button><div class="right"><button class="btn" data-confirm ${state.selectedFeeling?"":"disabled"}>That feels closest →</button></div></div>`,true);
+  $$("[data-feeling]",content).forEach(btn=>btn.addEventListener("click",()=>{state.selectedFeeling=btn.dataset.feeling;chooseFeeling();}));
+  $("[data-other]",content).addEventListener("click",chooseOtherFeeling);
+  $("[data-back]",content).addEventListener("click",showResults);
+  $("[data-confirm]",content).addEventListener("click",showValidation);
+}
+const feelingOptions=[
+ ["anxious","Anxious or worried"],["angry","Angry or frustrated"],["sad","Sad or disappointed"],["hurt","Hurt or rejected"],
+ ["ashamed","Ashamed or guilty"],["lonely","Lonely or disconnected"],["overwhelmed","Overwhelmed or depleted"],["numb","Numb or blank"],
+ ["restless","Restless or on edge"],["hopeful","Hopeful or excited"],["confused","Confused or uncertain"],["something","Something else / hard to name"]
+];
+function chooseOtherFeeling(){
+  openDialog(`<div class="dialog-kicker">You get to name it 💗</div><h2 id="dialogTitle">What feels closer to your experience?</h2><p class="dialog-intro">Pick a feeling, or describe it in your own words. It's okay to feel more than one thing.</p>
+  <div class="options">${feelingOptions.map(([id,label])=>`<button class="option ${state.customFeeling===id?"selected":""}" data-custom="${id}"><span class="option-dot">${state.customFeeling===id?"✓":""}</span><span>${label}</span></button>`).join("")}</div>
+  <label for="customFeelingText" class="question-help">Optional: put it in your own words</label><textarea id="customFeelingText" class="text-answer" placeholder="I feel..." maxlength="350">${esc(state.customText||"")}</textarea>
+  <div class="action-row"><button class="btn secondary" data-back>← Back to options</button><div class="right"><button class="btn" data-continue>Continue →</button></div></div>`,true);
+  $$("[data-custom]",content).forEach(btn=>btn.addEventListener("click",()=>{state.customFeeling=btn.dataset.custom;chooseOtherFeeling();}));
+  $("[data-customFeelingText]",content).addEventListener("input",e=>state.customText=e.target.value);
+  $("[data-back]",content).addEventListener("click",chooseFeeling);
+  $("[data-continue]",content).addEventListener("click",()=>{
+    if(!state.customFeeling && !(state.customText||"").trim()){state.customFeeling="something";}
+    state.selectedFeeling=state.customFeeling||"something";
+    state.selectedFeelingLabel=feelingOptions.find(x=>x[0]===state.customFeeling)?.[1]||"A feeling that's hard to name";
+    if((state.customText||"").trim())state.selectedFeelingLabel=state.customText.trim();
+    showValidation();
+  });
+}
+function selectedFeelingInfo(){
+  const all=[...(state.interpretations||[]),...feelingOptions.map(([id,title])=>({id,title,desc:"A feeling you identified as a possibility.",emoji:"💙"}))];
+  return all.find(x=>x.id===state.selectedFeeling)||{id:state.selectedFeeling,title:state.selectedFeelingLabel||"A feeling that's hard to name",desc:"A feeling you identified in your own words.",emoji:"💙"};
+}
+function showValidation(){
+  const f=selectedFeelingInfo();
+  const needs=[];
+  if(has("water","no")||has("water","some"))needs.push("not much water");
+  if(has("food","no")||has("food","some"))needs.push("not much food");
+  if(has("sleep","poor")||has("sleep","short")||has("sleep","broken"))needs.push("limited or disrupted sleep");
+  if(has("rest","no")||has("rest","some"))needs.push("limited rest");
+  const context=labels("situation");
+  const body=labels("body");
+  const emotionText=f.title.toLowerCase();
+  let validation=`Given what you've shared, it makes sense that you might be feeling ${emotionText}.`;
+  if(context.length && !has("situation","unknown"))validation+=` You've been dealing with ${context.join(" and ").toLowerCase()}.`;
+  if(needs.length)validation+=` ${needs.join(", ").replace(/^./,c=>c.toUpperCase())} may also be making this moment harder to manage.`;
+  if(body.length)validation+=` You've noticed ${body.join(", ").toLowerCase()}, which sounds uncomfortable to sit with.`;
+  validation+=" These clues don't prove exactly why you're feeling this way, but they give us a few places to start. You don't have to fix everything right now.";
+  state.validationText=validation;
+  openDialog(`<div class="dialog-kicker">A moment of validation 💗</div><h2 id="dialogTitle">Your feelings deserve room.</h2>
+  <div class="connect-box"><h3>${f.emoji||"💙"} ${esc(f.title)}</h3><p class="validation">${esc(validation)}</p></div>
+  <p class="dialog-intro">You are not doing anything wrong by having a hard moment. Let's find a small, practical next step that fits your energy.</p>
+  <div class="action-row"><button class="btn secondary" data-edit>← Change my feeling</button><div class="right"><button class="btn" data-skills>Show me some skills →</button></div></div>`);
+  $("[data-edit]",content).addEventListener("click",chooseFeeling);
+  $("[data-skills]",content).addEventListener("click",showSkills);
+}
+const skillLibrary=[
+ {id:"stop",name:"STOP skill",emoji:"🛑",category:"Distress tolerance",short:"Pause before acting on an urge.",why:"Useful when emotions are intense and you want a little space before responding.",tags:["angry","hurt","anxious","overwhelmed","restless","confused"],energy:"tiny",
+  steps:[["S — Stop","Pause. Don't immediately react to the urge. You don't have to make a decision this second.","If physically pausing isn't possible or safe, adapt the pause to your situation."],["T — Take a step back","Create a little space if you can. Put down the phone, step away from the conversation, or simply pause before the next action.","You are not ignoring the problem; you're giving yourself a moment."],["O — Observe","Notice what is happening inside and around you. What are you feeling? What thoughts or urges are present?","Try describing what you notice without judging yourself."],["P — Proceed mindfully","Ask: what action is most likely to help rather than make this moment harder? Choose one small next step.","You can revisit this choice as the situation changes."]]},
+ {id:"grounding",name:"Grounding with your senses",emoji:"🫧",category:"Mindfulness",short:"Bring attention back to this moment.",why:"May help when thoughts are racing, attention feels scattered, or you feel disconnected.",tags:["anxious","overwhelmed","numb","restless","confused","sad"],energy:"tiny",
+  steps:[["Look around","Name three things you can see. Let your eyes rest on each one for a moment.","You don't need to find anything special or beautiful."],["Notice contact","Notice two places your body touches something supportive, like your feet on the floor or your back against a chair.","If focusing on your body feels uncomfortable, skip this and notice objects around you instead."],["Listen","Notice two sounds near or far away. You don't have to decide whether you like them.","Just let them be sounds."],["Choose an anchor","Pick one thing to keep noticing for a few breaths: a color, a sound, or the feeling of your feet on the floor.","You can stop whenever you want."]]},
+ {id:"checkfacts",name:"Check the Facts",emoji:"🔎",category:"Emotion regulation",short:"Separate what happened from what it might mean.",why:"May help when an interaction or uncertainty has led to a painful interpretation.",tags:["angry","hurt","anxious","sad","ashamed","confused"],energy:"some",
+  steps:[["Name the situation","Describe what happened using only what a camera could have recorded.","Leave out assumptions about what someone intended."],["Notice the interpretation","What meaning did your mind attach to the event? For example, “They didn't reply, so they must be upset with me.”","An interpretation can feel convincing without being the only explanation."],["Look for other possibilities","What facts support your interpretation? What facts might point another way? You don't have to force a positive explanation.","The goal is accuracy, not dismissing your feelings."],["Choose your next step","Given what you know—not only what you fear—what response fits your values and needs?","If facts are still missing, waiting or asking a clarifying question may be reasonable."]]},
+ {id:"pacedbreathing",name:"Gentle paced breathing",emoji:"🌬️",category:"Distress tolerance",short:"Try a comfortable, unforced breathing rhythm.",why:"May help some people settle physical activation. Stop if it feels uncomfortable or makes symptoms worse.",tags:["anxious","angry","restless","overwhelmed"],energy:"tiny",
+  steps:[["Find a comfortable position","Sit or stand in a way that feels steady. You can keep your eyes open.","No special posture is required."],["Let your breath be natural","Notice one ordinary breath without trying to make it deep.","If focusing on breathing feels uncomfortable, choose grounding instead."],["Try a gentle rhythm","If comfortable, let the exhale be a little slower than the inhale. Do not hold your breath or force it.","Return to normal breathing if you feel dizzy, short of breath, or uncomfortable."],["Check what you notice","Ask whether your body feels the same, a little steadier, or more uncomfortable.","Any answer is okay. You can stop here."]]},
+ {id:"oppositeaction",name:"Opposite Action",emoji:"👣",category:"Emotion regulation",short:"Consider a small action opposite to an unhelpful emotion-driven urge.",why:"May help when an urge is making you act in a way that doesn't fit the facts or your longer-term goals. It isn't right for every situation.",tags:["sad","anxious","ashamed","lonely","overwhelmed"],energy:"some",
+  steps:[["Name the emotion and urge","For example: sadness with an urge to isolate, or anxiety with an urge to avoid something.","First check whether the emotion fits the facts and whether the situation is safe."],["Ask what the urge would do","Would acting on it help you in the long run, or make things harder? Sometimes rest or distance is appropriate.","Opposite Action isn't about ignoring boundaries or forcing yourself into unsafe situations."],["Choose a small opposite step","If appropriate, try one manageable action: send a kind message, sit near someone safe, or begin a tiny part of a task.","Make it small enough to be realistic."],["Notice the result","Did the action change anything? If not, you can adjust or choose another skill.","You don't have to feel better immediately for the effort to count."]]},
+ {id:"selfsoothe",name:"Self-soothing",emoji:"🧸",category:"Distress tolerance",short:"Use a comforting sensory experience.",why:"May fit when you feel depleted, overstimulated, or in need of gentle care.",tags:["overwhelmed","sad","hurt","angry","numb"],energy:"tiny",
+  steps:[["Choose one sense","Pick something comforting to see, hear, touch, smell, or taste, using what you already have.","It doesn't need to cost money or be elaborate."],["Make it easy","Lower the volume, adjust the light, wrap up in a blanket, or hold a comfortable object if available.","Choose what feels soothing to you—not what someone else says should help."],["Give it a short moment","Spend a minute noticing the experience without requiring yourself to feel different.","You can pair this with a slow, comfortable breath if that feels good."],["Check what you need next","Would you like more comfort, a practical action, connection, or rest?","Self-soothing can support you while a bigger problem remains unsolved."]]},
+ {id:"radicalacceptance",name:"Radical Acceptance",emoji:"🌊",category:"Distress tolerance",short:"Acknowledge what is true right now without approving of it.",why:"May help when you're stuck fighting a reality you cannot change in this moment. Acceptance does not mean liking it or allowing harm.",tags:["sad","angry","hurt","overwhelmed","disappointed"],energy:"some",
+  steps:[["Name the reality","Complete the sentence: “Right now, what is happening is…” Keep it as factual and specific as you can.","You are naming the present, not deciding that it is fair."],["Notice the struggle","What part of this reality are you wishing were different? Let yourself acknowledge that honestly.","You don't have to shame yourself for wishing things were different."],["Separate acceptance from approval","Try: “I don't like this, and I can acknowledge that it is happening.”","You can accept a fact while still working to change what can be changed."],["Find the next workable step","What is one thing within your control right now, even if it is very small?","If there isn't a practical action yet, resting or asking for support can be a step."]]},
+ {id:"selfvalidation",name:"Self-validation",emoji:"💗",category:"Emotion regulation",short:"Acknowledge that your feelings make sense in context.",why:"May help when you're criticizing yourself for having a reaction or feeling unsure whether you're allowed to feel it.",tags:["hurt","sad","ashamed","overwhelmed","lonely","angry"],energy:"tiny",
+  steps:[["Name what you feel","Try: “I might be feeling ___.” You can use more than one word or say you're unsure.","You don't have to prove your feeling is correct to acknowledge it."],["Name the context","Complete: “It makes sense this is hard because…” Use the facts you know, not assumptions.","Understanding a feeling doesn't mean every action prompted by it is helpful."],["Offer yourself a fair response","Try speaking to yourself as you would to someone you care about: “This is difficult, and I deserve patience while I work through it.”","It may feel unfamiliar at first. You don't have to force it to feel true immediately."],["Choose what would support you","Ask: comfort, clarity, action, connection, or rest—which would help most right now?","You can choose a different skill if this one doesn't fit."]]},
+ {id:"oneThing",name:"One Small Next Step",emoji:"🪜",category:"Problem solving",short:"Make an overwhelming situation a little more manageable.",why:"May fit when stress comes from many tasks, uncertainty, or not knowing where to begin.",tags:["overwhelmed","anxious","sad","confused"],energy:"tiny",
+  steps:[["Get the thoughts out","Name one thing that's weighing on you. You don't have to list everything.","If writing feels like too much, just think of one thing."],["Separate now from later","Ask: does this need attention right now, later today, or another time?","If nothing needs action this minute, a pause may be appropriate."],["Shrink the task","Choose a step that takes about two minutes or less, such as opening a document, drinking water, or sending one message.","The point is to lower the starting barrier, not finish the whole problem."],["Decide whether to act or rest","If you have enough capacity, try the tiny step. If you're depleted, choose a basic need or a break.","Rest can be a useful next step too."]]}
+];
+function getSkills(){
+  const f=selectedFeelingInfo();
+  const id=f.id;
+  let list=skillLibrary.filter(s=>s.tags.includes(id));
+  const preferred=has("need","calm")?["grounding","pacedbreathing","selfsoothe"]:
+    has("need","clarity")?["checkfacts","selfvalidation","grounding"]:
+    has("need","urge")?["stop","grounding","checkfacts"]:
+    has("need","connection")?["selfvalidation","oppositeaction","selfsoothe"]:
+    has("need","rest")?["selfsoothe","selfvalidation","radicalacceptance"]:
+    has("need","action")?["oneThing","stop","checkfacts"]:[];
+  list.sort((a,b)=>Number(preferred.includes(b.id))-Number(preferred.includes(a.id)));
+  if(has("capacity","tiny"))list.sort((a,b)=>Number(b.energy==="tiny")-Number(a.energy==="tiny"));
+  const chosen=[];
+  [...list,...skillLibrary].forEach(s=>{if(chosen.length<3&&!chosen.some(x=>x.id===s.id))chosen.push(s);});
+  return chosen;
+}
+function showSkills(){
+  state.recommendedSkills=getSkills();
+  openDialog(`<div class="dialog-kicker">Your coping menu ☁️</div><h2 id="dialogTitle">Choose a small thing to try.</h2><p class="dialog-intro">These are three options, not instructions you have to follow. Each recommendation includes why it may fit what you shared.</p>
+  <div class="skill-grid">${state.recommendedSkills.map((s,i)=>`<button class="skill-card ${state.selectedSkill===s.id?"selected":""}" data-skill="${s.id}"><span class="emoji">${s.emoji}</span><strong>${i+1}. ${esc(s.name)}</strong><p>${esc(s.short)}</p><span class="why">Why this may help ↗</span></button>`).join("")}</div>
+  <div id="skillWhy" class="connect-box">${state.selectedSkill?skillWhyHTML(state.selectedSkill):"<h3>Choose a skill to see why we suggested it.</h3><p>You'll get a short explanation and a step-by-step walkthrough.</p>"}</div>
+  <div class="action-row"><button class="btn secondary" data-back>← Back to reflection</button><div class="right"><button class="btn" data-practice ${state.selectedSkill?"":"disabled"}>Practice this skill →</button></div></div>
+  <p class="small-muted">You can switch skills or revisit your answers at any time.</p>`,true);
+  $$("[data-skill]",content).forEach(btn=>btn.addEventListener("click",()=>{state.selectedSkill=btn.dataset.skill;showSkills();}));
+  $("[data-back]",content).addEventListener("click",showValidation);
+  $("[data-practice]",content).addEventListener("click",()=>startPractice(state.selectedSkill));
+}
+function skillWhyHTML(id){
+  const s=skillLibrary.find(x=>x.id===id);if(!s)return "";
+  return `<h3>${s.emoji} Why ${esc(s.name)}?</h3><p>${esc(s.why)}</p><p style="margin-top:9px"><strong>What you'll do:</strong> ${esc(s.short)}</p>`;
+}
+function startPractice(id){
+  state.selectedSkill=id;state.stepIndex=0;renderPractice();
+}
+function renderPractice(){
+  const skill=skillLibrary.find(s=>s.id===state.selectedSkill);
+  if(!skill)return showSkills();
+  const step=skill.steps[state.stepIndex],pct=Math.round((state.stepIndex)/skill.steps.length*100);
+  openDialog(`<div class="dialog-kicker">${skill.emoji} ${esc(skill.category)}</div><h2 id="dialogTitle">${esc(skill.name)}</h2><p class="dialog-intro">${esc(skill.short)} Take your time. You can pause or go back whenever you want.</p>
+  <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+  <div class="skill-step"><div class="step-count">Step ${state.stepIndex+1} of ${skill.steps.length}</div><h3 class="step-title">${esc(step[0])}</h3><div class="step-body">${esc(step[1])}</div><p class="step-tip">${esc(step[2])}</p></div>
+  <div class="action-row"><button class="btn secondary" data-backstep ${state.stepIndex===0?"disabled":""}>← Previous step</button><div class="right"><button class="btn ghost" data-skillmenu>Choose another skill</button><button class="btn" data-nextstep>${state.stepIndex===skill.steps.length-1?"Finish practice ✓":"Done — Next Step →"}</button></div></div>
+  <p class="small-muted">You don't have to do this perfectly. Stop if a step feels uncomfortable or isn't right for your situation.</p>`,true);
+  $("[data-backstep]",content).addEventListener("click",()=>{if(state.stepIndex>0){state.stepIndex--;renderPractice();}});
+  $("[data-skillmenu]",content).addEventListener("click",showSkills);
+  $("[data-nextstep]",content).addEventListener("click",()=>{if(state.stepIndex<skill.steps.length-1){state.stepIndex++;renderPractice();}else showSkillCheckin();});
+}
+function showSkillCheckin(){
+  openDialog(`<div class="dialog-kicker">A quick check-in 💙</div><h2 id="dialogTitle">How did that feel?</h2><p class="dialog-intro">You don't have to feel better immediately for the effort to count. What did you notice?</p>
+  <div class="options">
+    <button class="option" data-outcome="better"><span class="option-dot">✓</span><span>A little better</span></button>
+    <button class="option" data-outcome="same"><span class="option-dot">○</span><span>About the same</span></button>
+    <button class="option" data-outcome="worse"><span class="option-dot">↗</span><span>More uncomfortable</span></button>
+    <button class="option" data-outcome="unsure"><span class="option-dot">?</span><span>I'm not sure yet</span></button>
+  </div>
+  <div class="action-row"><button class="btn secondary" data-backpractice>← Review practice</button><div class="right"><button class="btn ghost" data-questions>Ask a question</button><button class="btn" data-next>What's next? →</button></div></div>`);
+  let outcome="";
+  $$("[data-outcome]",content).forEach(btn=>btn.addEventListener("click",()=>{outcome=btn.dataset.outcome;$$("[data-outcome]",content).forEach(b=>b.classList.toggle("selected",b===btn));}));
+  $("[data-backpractice]",content).addEventListener("click",renderPractice);
+  $("[data-questions]",content).addEventListener("click",showQuestions);
+  $("[data-next]",content).addEventListener("click",()=>showNextOptions(outcome));
+}
+function showNextOptions(outcome){
+  const message=outcome==="better"?"I'm glad you noticed a little shift. You can let that be enough for now.":outcome==="worse"?"Thank you for noticing that. You don't need to push through a skill that feels uncomfortable; we can try a different approach.":outcome==="same"?"That's okay. A skill isn't a test, and one try doesn't have to change everything.": "You don't have to decide yet. You can take a moment or choose a different kind of support.";
+  openDialog(`<div class="dialog-kicker">What's next? ☁️</div><h2 id="dialogTitle">You showed up for yourself.</h2><p class="dialog-intro">${esc(message)}</p>
+  <div class="talk-options">
+  <button class="option" data-nextaction="skills"><span class="option-dot">↻</span><span>Try another coping skill</span></button>
+  <button class="option" data-nextaction="questions"><span class="option-dot">?</span><span>Ask how these results were chosen</span></button>
+  <button class="option" data-nextaction="encourage"><span class="option-dot">♡</span><span>I want encouraging words</span></button>
+  <button class="option" data-nextaction="resources"><span class="option-dot">＋</span><span>Find support and resources</span></button>
+  <button class="option" data-nextaction="home"><span class="option-dot">⌂</span><span>Finish and return to the main page</span></button>
+  </div><div class="action-row"><button class="btn secondary" data-back>← Back to check-in</button><button class="btn ghost" data-review>Review answers</button></div>`);
+  $$("[data-nextaction]",content).forEach(btn=>btn.addEventListener("click",()=>{const a=btn.dataset.nextaction;if(a==="skills")showSkills();if(a==="questions")showQuestions();if(a==="encourage")showEncouragement();if(a==="resources")showResources();if(a==="home")closeDialog();}));
+  $("[data-back]",content).addEventListener("click",showSkillCheckin);
+  $("[data-review]",content).addEventListener("click",()=>{state.questionIndex=0;renderQuestion();});
+}
+const encouragements=[
+ ["You don't have to earn rest.","You don't have to solve everything today. One small step is enough for now."],
+ ["Your feelings aren't a failure.","Having a hard time does not make you weak. You deserve patience, especially from yourself."],
+ ["You can begin again.","A difficult hour does not define your whole day. You can start from wherever you are."],
+ ["You matter, even when you're struggling.","Your worth isn't measured by how productive, calm, or put-together you feel."],
+ ["One thing at a time.","You don't have to carry every problem at once. You can choose what needs your attention first."],
+ ["You are allowed to need support.","You don't have to explain your pain perfectly to deserve kindness and care."],
+ ["Small progress is still progress.","Getting through this moment, taking a break, or asking for help all count."]
+];
+function showEncouragement(){
+  const msg=encouragements[Math.floor(Math.random()*encouragements.length)];
+  openDialog(`<div class="dialog-kicker">A little kindness, just for you 💗</div><div class="encouragement-card"><span class="encouragement-heart">☁️</span><h2 id="dialogTitle">${esc(msg[0])}</h2><blockquote>${esc(msg[1])}</blockquote><p class="dialog-intro">You don't have to do anything with these words. You can just let them sit with you for a moment.</p></div>
+  <div class="action-row"><button class="btn secondary" data-close>That's enough for now</button><div class="right"><button class="btn" data-more>Another reminder ♡</button></div></div>`);
+  $("[data-close]",content).addEventListener("click",closeDialog);
+  $("[data-more]",content).addEventListener("click",showEncouragement);
+}
+function showResources(){
+  openDialog(`<div class="dialog-kicker">You deserve support 💙</div><h2 id="dialogTitle">You don't have to handle everything alone.</h2>
+  <p class="dialog-intro">Choose support that fits your situation. If you are in immediate danger or experiencing potentially urgent physical symptoms, seek appropriate emergency or urgent medical care.</p>
+  <div class="talk-options">
+  <div class="option"><span class="option-dot">1</span><span><strong>Immediate danger</strong><br><small>Contact local emergency services.</small></span></div>
+  <div class="option"><span class="option-dot">2</span><span><strong>Emotional crisis in the U.S.</strong><br><small>Call or text 988 to reach the Suicide & Crisis Lifeline. You do not need to be suicidal to contact them for emotional distress.</small></span></div>
+  <div class="option"><span class="option-dot">3</span><span><strong>Ongoing support</strong><br><small>Consider reaching out to a trusted person, therapist, doctor, or local support service.</small></span></div>
+  </div>
+  <div class="action-row"><button class="btn secondary" data-back>← Back</button><button class="btn" data-close>Close</button></div>`);
+  $("[data-back]",content).addEventListener("click",showNextOptions);
+  $("[data-close]",content).addEventListener("click",closeDialog);
+}
+function showQuestions(){
+  const feeling=selectedFeelingInfo();
+  openDialog(`<div class="dialog-kicker">How this works 🧩</div><h2 id="dialogTitle">Where did these suggestions come from?</h2>
+  <p class="dialog-intro">The companion uses the answers you selected to suggest possibilities. It doesn't know your feelings for certain, and it doesn't diagnose you.</p>
+  <div class="connect-box"><h3>What influenced your reflection?</h3><p>${esc(summarizeSituation().join(" · ")||"You chose to skip some or all check-in questions.")}</p><p style="margin-top:10px"><strong>Your selected interpretation:</strong> ${esc(feeling.title||"Not selected yet")}</p></div>
+  <ul class="source-list"><li>Situation answers help identify the type of stress you described.</li><li>Body sensations, emotions, and urges help surface possible interpretations.</li><li>Sleep, food, water, rest, and available energy can inform how demanding a suggested skill should be.</li><li>The skill suggestions come from a curated, browser-based set of DBT-informed exercises and are matched by simple rules.</li></ul>
+  <p class="small-muted">These connections are possibilities, not proof of cause. If a suggestion doesn't fit, change your answers or choose something else.</p>
+  <div class="action-row"><button class="btn secondary" data-back>← Back</button><div class="right"><button class="btn" data-edit>Review answers</button></div></div>`);
+  $("[data-back]",content).addEventListener("click",showSkillCheckin);
+  $("[data-edit]",content).addEventListener("click",()=>{state.questionIndex=0;renderQuestion();});
+}
+function startInstant(){
+  const s=skillLibrary[Math.floor(Math.random()*skillLibrary.length)];
+  state.selectedSkill=s.id;state.stepIndex=0;
+  openDialog(`<div class="dialog-kicker">A skill for right now ⚡</div><h2 id="dialogTitle">Let's make the next moment a little easier.</h2><p class="dialog-intro">No quiz and no explanation needed. Here's one practical skill you can try where you are.</p>
+  <div class="skill-step"><span class="pill">${esc(s.category)}</span><h3 class="step-title">${s.emoji} ${esc(s.name)}</h3><p class="step-body">${esc(s.short)}</p><p>${esc(s.why)}</p></div>
+  <div class="action-row"><button class="btn secondary" data-random>Give me another skill</button><div class="right"><button class="btn" data-start>Walk me through it →</button></div></div>
+  <p class="small-muted">If this doesn't fit, you can switch at any time.</p>`);
+  $("[data-random]",content).addEventListener("click",startInstant);
+  $("[data-start]",content).addEventListener("click",()=>startPractice(s.id));
+}
+const talkPrompts=[
+ {title:"Let's start small.",body:"What's taking up the most space in your mind right now?",options:[["stress","Stress or pressure"],["people","Something involving another person"],["body","How I feel physically"],["unknown","I can't put it into words"]]},
+ {title:"What would feel most helpful?",body:"You don't have to explain the whole story. Choose what you'd like right now.",options:[["understand","Help me understand it"],["calm","Help me settle"],["action","Help me decide on a next step"],["kindness","Just be encouraging"]]},
+ {title:"Choose a gentle next step.",body:"Based on what you picked, what sounds manageable?",options:[["skill","Try a coping skill"],["reflect","Do a short check-in"],["encourage","Hear encouraging words"],["stop","That's enough for now"]]}
+];
+function startTalk(){state.talkIndex=0;renderTalk();}
+function renderTalk(){
+  if(state.talkIndex>=talkPrompts.length){closeDialog();return;}
+  const q=talkPrompts[state.talkIndex];
+  openDialog(`<div class="dialog-kicker">Let's talk it through 💬</div><h2 id="dialogTitle">${q.title}</h2><p class="dialog-intro">${q.body}</p>
+  <div class="talk-options">${q.options.map(([id,label])=>`<button class="option" data-talk="${id}"><span class="option-dot">○</span><span>${label}</span></button>`).join("")}</div>
+  <div class="action-row"><button class="btn secondary" data-back ${state.talkIndex===0?"disabled":""}>← Back</button><button class="btn ghost" data-skip>Skip</button></div>`);
+  $$("[data-talk]",content).forEach(btn=>btn.addEventListener("click",()=>handleTalk(btn.dataset.talk)));
+  $("[data-back]",content).addEventListener("click",()=>{state.talkIndex=Math.max(0,state.talkIndex-1);renderTalk();});
+  $("[data-skip]",content).addEventListener("click",()=>{state.talkIndex++;renderTalk();});
+}
+function handleTalk(id){
+  if(state.talkIndex===0){state.talkFirst=id;state.talkIndex++;renderTalk();return;}
+  if(state.talkIndex===1){state.talkSecond=id;state.talkIndex++;renderTalk();return;}
+  if(id==="skill"){startInstant();return;}
+  if(id==="reflect"){startCheckin();return;}
+  if(id==="encourage"){showEncouragement();return;}
+  closeDialog();
+}
+function handleAction(action){
+  if(action==="instant")startInstant();
+  if(action==="checkin")startCheckin();
+  if(action==="encourage")showEncouragement();
+  if(action==="talk")startTalk();
+}
+$$("[data-action]").forEach(btn=>btn.addEventListener("click",()=>handleAction(btn.dataset.action)));
+})();
+</script>
+</body>
 </html>

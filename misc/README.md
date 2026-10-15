@@ -5,6 +5,8 @@ Hello World, 👋 I am just here to learn to code. I made this website just to t
 
 Hope you enjoy! 😊
 
+Also, I used AI for the styling and layouts. I am going to go back and revisit them so I can do it on my own. I just needed something I could look at. 
+
 
 
 

@@ -1,59 +1,228 @@
 <!DOCTYPE html>
-<!-- File Declaration -->
 <html lang="en">
-<!-- Original Language -->
 <head>
-    <meta charset="UTF-8">
-    <!-- Make sure all characters are displayed correctly -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Responsiveness for phones  -->
-    <title>💸😊 Budget 😊💸</title>
-    <!-- Browser Tab Text -->
-    <link rel="stylesheet" href="../../css_ALL.css" type="text/css">
-    <!-- Link to css  -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom google font -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💸 Life Lounge — Budget Buddy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#24332e;--muted:#687a70;--cream:#fbf8ef;--paper:#fffdf7;--green:#245b49;--green2:#367b60;--mint:#dcefe3;--gold:#e9b95f;--coral:#e98c78;--line:#e5e8dc;--shadow:0 18px 50px #294b3514}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 8% 5%,#e8f2df 0,transparent 27%),radial-gradient(circle at 95% 30%,#f9e7d6 0,transparent 25%),var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+a{color:inherit;text-decoration:none}.topline{height:7px;background:linear-gradient(90deg,var(--green),#9cc5a5,var(--gold),var(--coral))}
+header{max-width:1120px;margin:auto;padding:24px 24px 8px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.1rem}.brand-icon{width:43px;height:43px;display:grid;place-items:center;background:var(--green);color:white;border-radius:15px;font-size:1.35rem;box-shadow:0 7px 15px #245b4928}.brand small{display:block;font-family:"DM Sans",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--muted);font-weight:600;text-transform:uppercase;margin-top:2px}
+nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px}nav a{font-size:.79rem;font-weight:700;padding:9px 11px;border-radius:99px;color:#52675c;transition:.2s}nav a:hover,nav a.active{background:#e5eee3;color:var(--green)}
+main{max-width:1050px;margin:0 auto;padding:35px 24px 60px}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fffdf4;border:1px solid #efe2bd;color:#87692e;padding:7px 12px;border-radius:99px;font-size:.75rem;font-weight:700;letter-spacing:.04em}.hero{text-align:center;max-width:690px;margin:0 auto 28px}.hero h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.2rem,5vw,4rem);line-height:1.04;letter-spacing:-.055em;margin:17px 0 13px}.hero h1 span{color:var(--green2)}.hero p{max-width:570px;margin:0 auto;color:var(--muted);font-size:1.03rem;line-height:1.7}
+.layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(275px,.85fr);gap:22px;align-items:start}.chat-card,.side-card{background:var(--paper);border:1px solid #e8e8dc;border-radius:25px;box-shadow:var(--shadow);overflow:hidden}.chat-head{padding:18px 22px;background:#f1f5e9;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}.avatar{width:43px;height:43px;border-radius:15px;background:var(--green);color:white;display:grid;place-items:center;font-size:1.3rem}.chat-head strong{display:block;font-family:"Space Grotesk",sans-serif}.chat-head small{color:var(--muted);font-size:.78rem}.online{margin-left:auto;display:flex;align-items:center;gap:6px;color:var(--green2);font-size:.76rem;font-weight:700}.dot{width:7px;height:7px;border-radius:50%;background:#5eaf79}
+.chat-stream{padding:23px 20px 10px;min-height:300px;max-height:500px;overflow-y:auto;display:flex;flex-direction:column;gap:15px}.message{max-width:88%;padding:13px 15px;border-radius:17px;line-height:1.55;font-size:.94rem;animation:pop .25s ease-out;white-space:pre-line}.bot{align-self:flex-start;background:#edf3e9;border-bottom-left-radius:5px}.user{align-self:flex-end;background:var(--green);color:white;border-bottom-right-radius:5px}.message small{display:block;font-size:.68rem;opacity:.65;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}.typing{color:var(--muted);font-style:italic;font-size:.85rem;padding:0 22px 12px}
+@keyframes pop{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.prompt-area{border-top:1px solid var(--line);padding:17px 20px 20px;background:#fffefa}.prompt-label{font-size:.76rem;color:var(--muted);font-weight:700;margin-bottom:9px;display:block}.input-row{display:flex;gap:9px}.input-row input{min-width:0;flex:1;border:1.5px solid #dce3d6;background:white;border-radius:13px;padding:13px 14px;font:inherit;color:var(--ink);outline:none;transition:.2s}.input-row input:focus{border-color:var(--green2);box-shadow:0 0 0 3px #367b601b}.send{border:0;border-radius:13px;padding:0 19px;background:var(--green);color:white;font:inherit;font-weight:700;cursor:pointer;transition:.2s}.send:hover{background:#174634;transform:translateY(-1px)}.send:disabled{opacity:.4;cursor:not-allowed;transform:none}.helper{font-size:.75rem;color:var(--muted);margin:10px 0 0}
+.side-card{padding:23px;position:sticky;top:18px}.side-title{display:flex;align-items:center;justify-content:space-between;gap:10px}.side-title h2{font-family:"Space Grotesk",sans-serif;font-size:1.25rem;margin:0}.pill{font-size:.7rem;background:var(--mint);color:var(--green);padding:6px 9px;border-radius:99px;font-weight:700}.side-card>p{font-size:.87rem;line-height:1.6;color:var(--muted);margin:10px 0 20px}.progress-label{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);font-weight:700;margin-bottom:8px}.progress{height:8px;background:#edf0e7;border-radius:99px;overflow:hidden;margin-bottom:23px}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--green2),#8fbe91);border-radius:99px;transition:width .35s}
+.mini-stat{background:#f5f6ed;border-radius:17px;padding:16px;margin-bottom:12px}.mini-stat span{display:block;color:var(--muted);font-size:.76rem;font-weight:700;margin-bottom:7px}.mini-stat strong{font-family:"Space Grotesk",sans-serif;font-size:1.6rem;letter-spacing:-.04em}.mini-stat small{display:block;color:var(--muted);font-size:.76rem;margin-top:5px}.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat-grid .mini-stat{margin:0;padding:13px}.stat-grid strong{font-size:1.1rem}.budget-note{margin-top:17px;padding:13px 14px;border-left:3px solid var(--gold);background:#fff8e9;border-radius:0 12px 12px 0;color:#76603a;font-size:.8rem;line-height:1.5}
+.result-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}.secondary{border:1px solid #dce3d6;background:white;color:var(--green);padding:10px 13px;border-radius:11px;font:inherit;font-weight:700;font-size:.8rem;cursor:pointer}.secondary:hover{background:#f0f5ed}
+footer{max-width:1050px;margin:auto;padding:0 24px 28px;color:var(--muted);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:.8rem}.back-home{font-weight:700;color:var(--green)}
+@media(max-width:800px){header{align-items:flex-start;flex-direction:column}nav{justify-content:flex-start}main{padding-top:23px}.layout{grid-template-columns:1fr}.side-card{position:static;order:-1}.chat-stream{min-height:250px;max-height:430px}}
+@media(max-width:480px){header,main,footer{padding-left:15px;padding-right:15px}.hero h1{font-size:2.45rem}.message{max-width:95%}.chat-stream{padding:17px 13px 8px}.prompt-area{padding:14px}.send{padding:0 14px}.side-card{padding:18px}}
+</style>
 </head>
 <body>
-    <!-- Visible page content -->
-    <h1>💸😊 Budget 😊💸</h1>
-    <!-- Page Heading -->
+<div class="topline"></div>
+<header>
+  <a class="brand" href="../../index.html"><span class="brand-icon">🌱</span><span>Life Lounge<small>A break for your brain</small></span></a>
+  <nav aria-label="Main navigation">
+    <a href="../../index.html">🏠 Home</a><a href="../therapy/badtherapy.html">📝 Bad Therapy</a><a href="../m8/m8ball.html">🔮 Magic 8 Ball</a><a class="active" href="../budget/budget.html">💸 Budget</a><a href="../tarot/tarot.html">🃏 Tarot</a><a href="../horror/horror.html">👻 Horror</a><a href="../relax/relax.html">🌤️ Relax</a><a href="../blog/blog.html">💬 Blog</a>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <span class="eyebrow">✦ MONEY TALK, WITHOUT THE JUDGMENT ✦</span>
+    <h1>Let's talk <span>money.</span></h1>
+    <p>Your Budget Buddy will ask one question at a time. You answer, we do the math, and together we figure out what your money needs to do next. No shame. Just a plan. 🌿</p>
+  </section>
+  <section class="layout">
+    <div class="chat-card">
+      <div class="chat-head"><div class="avatar">💸</div><div><strong>Budget Buddy</strong><small>Your friendly money sidekick</small></div><div class="online"><span class="dot"></span> Ready to chat</div></div>
+      <div class="chat-stream" id="chatStream" aria-live="polite" aria-label="Budget conversation">
+        <div class="message bot"><small>Budget Buddy</small>Hey there! 👋 Welcome to your little money check-in. We'll take this one step at a time — no spreadsheet panic required.</div>
+        <div class="message bot"><small>Budget Buddy</small>First things first: what should I call you?</div>
+      </div>
+      <div class="prompt-area">
+        <label class="prompt-label" id="promptLabel" for="answerInput">YOUR TURN</label>
+        <form class="input-row" id="answerForm">
+          <input id="answerInput" type="text" placeholder="Type your answer here…" autocomplete="off" aria-label="Your answer">
+          <button class="send" id="sendButton" type="submit">Send ↗</button>
+        </form>
+        <p class="helper" id="inputHelper">One answer at a time. You’ve got this. ✨</p>
+      </div>
+    </div>
+    <aside class="side-card">
+      <div class="side-title"><h2>Your money snapshot</h2><span class="pill" id="statusPill">Just starting</span></div>
+      <p>As we chat, your answers will appear here. You can change your answers by restarting the conversation.</p>
+      <div class="progress-label"><span>Budget check-in</span><span id="progressText">0 of 10</span></div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="mini-stat"><span>MONTHLY MONEY COMING IN</span><strong id="incomeDisplay">$—</strong><small id="nameDisplay">Your name will show up here</small></div>
+      <div class="stat-grid">
+        <div class="mini-stat"><span>BILLS & PLANS</span><strong id="spentDisplay">$—</strong></div>
+        <div class="mini-stat"><span>LEFT OVER</span><strong id="leftDisplay">$—</strong></div>
+      </div>
+      <div class="budget-note" id="sideNote">💡 We’ll add things up together. Remember: this is information, not a judgment of you.</div>
+      <div class="result-actions"><button class="secondary" id="restartButton" type="button">↻ Start over</button><button class="secondary" id="skipButton" type="button">Use $0 for this item</button></div>
+    </aside>
+  </section>
+</main>
+<footer><span>🌿 Life Lounge — a little breathing room for your brain.</span><a class="back-home" href="../../index.html">← Back home</a></footer>
+<script>
+/* Your original Budget class idea is preserved: the class holds the answers,
+   and calcBill() subtracts the planned expenses from the monthly amount. */
+class Budget {
+  constructor(name, amount, rent, lights, car, phone, discretionary, needs, laundry, family) {
+    this.name = name;
+    this.amount = amount;
+    this.rent = rent;
+    this.lights = lights;
+    this.car = car;
+    this.phone = phone;
+    this.discretionary = discretionary;
+    this.needs = needs;
+    this.laundry = laundry;
+    this.family = family;
+  }
+  calcBill() {
+    return this.amount - (
+      this.rent + this.lights + this.car + this.phone +
+      this.discretionary + this.needs + this.laundry + this.family
+    );
+  }
+}
 
-    <nav class="TopBar">
-        <!-- Navigation Bar -->
-        <a id="Home" href="../../index.html"><h3>🏠👨‍💻 Home 👨‍💻🏠</h3></a>
-        <!-- Homepage link -->
-        <a id="practiceexam" href="../therapy/badtherapy.html"><h3>📝🏫 Bad Therapy 🏫📝</h3></a>
-        <a id="m8ball" href="../m8/m8ball.html"><h3>🔮🎱 Magic 8 Ball 🎱🔮</h3></a>
-        <a id="budget" href="../budget/budget.html"><h3>💸😊 Budget 😊💸</h3></a>
-        <a id="tarot" href="../tarot/tarot.html"><h3>♠️🃏  Tarot Reading 🃏♠️</h3></a>
-        <a id="horror" href="../horror/horror.html"><h3>👹👻 Horror Game 👻👹</h3></a>
-        <a id="relax" href="../relax/relax.html"><h3>🌤️😌Relaxing Games😌🌤️</h3></a>
-        <a id="blog" href="../blog/blog.html"><h3>📝💬Blog💬📝</h3></a>
-        <!-- Link to other HTML pages -->
-    </nav>
-    <div>
-    <form>
-    <input type="text" id="name" placeholder="Name" label="Name:"><br>
-    <input type="number" id="amount" placeholder="Total Amount"><br>
-    <input type="number" id="rent" placeholder="Rent"><br>
-    <input type="number" id="lights" placeholder="Lights"><br>
-    <input type="number" id="car" placeholder="Car"><br>
-    <input type="number" id="phone" placeholder="Phone"><br>
-    <input type="number" id="discretionary" placeholder="Discretionary"><br>
-    <input type="number" id="needs" placeholder="Needs"><br>
-    <input type="number" id="laundry" placeholder="Laundry"><br>
-    <input type="number" id="family" placeholder="Family"><br>
-    </form>
-    <button onclick="calculateBudget()">Calculate</button>
-    <p id="result"></p>
-     <script src="budget.js"></script> 
-    <div>
-    <footer>
-      <!-- Back to Home -->
-    <a href="../../index.html" class="back-home">🏠👨‍💻 Home 👨‍💻🏠</a>
-  </footer>
-</div>
-</div>
+const questions = [
+  {key:"name", label:"YOUR NAME", prompt:"What should I call you?", placeholder:"Your name", type:"text", reply:v=>`Nice to meet you, ${v}! 💚 I’m here to help you make a plan, not lecture you. Next up: how much money do you expect to have available this month, after taxes?`, nextLabel:"MONTHLY INCOME"},
+  {key:"amount", label:"MONTHLY INCOME", prompt:"How much money do you have coming in this month?", placeholder:"e.g. 2200", type:"number", reply:v=>`Got it — ${money(v)} coming in. 💵 Now let's give that money some jobs. How much are you planning to spend on rent this month?`, nextLabel:"RENT"},
+  {key:"rent", label:"RENT", prompt:"What’s your rent or housing contribution?", placeholder:"e.g. 350", type:"number", reply:v=>`Rent: ${money(v)}. Logged! 🏡 Next, what are you budgeting for electricity or other utility bills?`, nextLabel:"LIGHTS & UTILITIES"},
+  {key:"lights", label:"LIGHTS & UTILITIES", prompt:"How much for electricity and utilities?", placeholder:"e.g. 90", type:"number", reply:v=>`Utilities: ${money(v)}. ⚡ You're moving right along. Do you have a car payment or transportation cost to plan for? Enter 0 if none.`, nextLabel:"CAR & TRANSPORT"},
+  {key:"car", label:"CAR & TRANSPORT", prompt:"How much for your car or transportation?", placeholder:"e.g. 250", type:"number", reply:v=>`Transportation: ${money(v)}. 🚗 Next, what do you need to set aside for your phone bill?`, nextLabel:"PHONE"},
+  {key:"phone", label:"PHONE", prompt:"What’s your phone bill for the month?", placeholder:"e.g. 60", type:"number", reply:v=>`Phone: ${money(v)}. 📱 Now let's cover fun money and flexible spending — takeout, hobbies, little treats, or anything you choose to spend on yourself.`, nextLabel:"DISCRETIONARY"},
+  {key:"discretionary", label:"DISCRETIONARY", prompt:"How much for fun and flexible spending?", placeholder:"e.g. 100", type:"number", reply:v=>`Flexible spending: ${money(v)}. ✨ No judgment here — planning for fun can be part of a realistic budget. What do you need for everyday essentials like groceries, toiletries, and household items?`, nextLabel:"NEEDS & ESSENTIALS"},
+  {key:"needs", label:"NEEDS & ESSENTIALS", prompt:"How much for groceries and other essentials?", placeholder:"e.g. 300", type:"number", reply:v=>`Essentials: ${money(v)}. 🛒 Almost there! How much do you expect to spend on laundry this month?`, nextLabel:"LAUNDRY"},
+  {key:"laundry", label:"LAUNDRY", prompt:"What’s your laundry budget?", placeholder:"e.g. 25", type:"number", reply:v=>`Laundry: ${money(v)}. 🧺 One last category: are you setting aside money to help family or support someone else?`, nextLabel:"FAMILY"},
+  {key:"family", label:"FAMILY", prompt:"How much are you setting aside for family?", placeholder:"e.g. 100", type:"number", reply:v=>`Family support: ${money(v)}. 💚 That's all ten answers! Let me put the pieces together and see what your month looks like…`, nextLabel:"READY TO REVIEW"}
+];
+let answers = {};
+let step = 0;
+let finished = false;
+
+const stream = document.getElementById("chatStream");
+const input = document.getElementById("answerInput");
+const form = document.getElementById("answerForm");
+const sendButton = document.getElementById("sendButton");
+
+function money(value) {
+  return new Intl.NumberFormat("en-US", {style:"currency",currency:"USD"}).format(Number(value) || 0);
+}
+function addMessage(text, who="bot") {
+  const bubble = document.createElement("div");
+  bubble.className = `message ${who}`;
+  const label = document.createElement("small");
+  label.textContent = who === "bot" ? "Budget Buddy" : (answers.name || "You");
+  bubble.appendChild(label);
+  bubble.appendChild(document.createTextNode(text));
+  stream.appendChild(bubble);
+  stream.scrollTop = stream.scrollHeight;
+}
+function currentQuestion() {
+  const q = questions[step];
+  if (!q) return;
+  document.getElementById("promptLabel").textContent = q.label;
+  input.placeholder = q.placeholder;
+  input.type = q.type;
+  input.value = "";
+  input.required = true;
+  input.min = q.type === "number" ? "0" : "";
+  input.step = q.type === "number" ? "0.01" : "";
+  input.setAttribute("aria-label", q.prompt);
+  document.getElementById("inputHelper").textContent = q.type === "number" ? "Enter an amount. If this category doesn’t apply, use $0." : "One answer at a time. You’ve got this. ✨";
+  sendButton.textContent = step === questions.length - 1 ? "Finish ✓" : "Send ↗";
+  input.focus();
+}
+function updateSnapshot() {
+  const count = Object.keys(answers).length;
+  document.getElementById("progressText").textContent = `${count} of ${questions.length}`;
+  document.getElementById("progressBar").style.width = `${count/questions.length*100}%`;
+  document.getElementById("nameDisplay").textContent = answers.name ? `Made with you in mind, ${answers.name}` : "Your name will show up here";
+  document.getElementById("incomeDisplay").textContent = answers.amount !== undefined ? money(answers.amount) : "$—";
+  const keys = ["rent","lights","car","phone","discretionary","needs","laundry","family"];
+  const total = keys.reduce((sum,key)=>sum+(Number(answers[key])||0),0);
+  document.getElementById("spentDisplay").textContent = keys.some(k=>answers[k]!==undefined) ? money(total) : "$—";
+  if (answers.amount !== undefined && keys.every(k=>answers[k]!==undefined)) {
+    const remaining = Number(answers.amount)-total;
+    const leftEl = document.getElementById("leftDisplay");
+    leftEl.textContent = money(remaining);
+    document.getElementById("statusPill").textContent = remaining < 0 ? "Needs a tweak" : remaining === 0 ? "All allocated" : "Looking good";
+    document.getElementById("sideNote").textContent = remaining < 0 ? `🧭 Your plan is ${money(Math.abs(remaining))} over the money coming in. That’s not a personal failure — it’s a signal to adjust a category or find more income.` : remaining === 0 ? "🎯 Every dollar has a job. Leave a little wiggle room if you can." : `🌿 You have ${money(remaining)} unassigned. You could save some, build a buffer, or leave it flexible.`;
+  } else {
+    document.getElementById("leftDisplay").textContent = "$—";
+    document.getElementById("statusPill").textContent = count ? "In progress" : "Just starting";
+  }
+}
+function finishBudget() {
+  const b = new Budget(answers.name, Number(answers.amount), Number(answers.rent), Number(answers.lights), Number(answers.car), Number(answers.phone), Number(answers.discretionary), Number(answers.needs), Number(answers.laundry), Number(answers.family));
+  const remaining = b.calcBill();
+  const spent = Number(answers.rent)+Number(answers.lights)+Number(answers.car)+Number(answers.phone)+Number(answers.discretionary)+Number(answers.needs)+Number(answers.laundry)+Number(answers.family);
+  addMessage(`Okay ${answers.name}, here's the breakdown. 🧾\n\nMonthly money: ${money(answers.amount)}\nPlanned expenses: ${money(spent)}\nLeft after these categories: ${money(remaining)}\n\n${remaining < 0 ? `You're over by ${money(Math.abs(remaining))}. Take a breath — this is exactly why we're looking at the numbers. We can adjust the plan one category at a time.` : remaining === 0 ? "Everything is allocated. If possible, consider whether you need a small cushion for surprises." : `You have ${money(remaining)} left to assign. Saving some of it or keeping it as a buffer could give you more breathing room.`}\n\nWant to run through it again with different numbers?`, "bot");
+  document.getElementById("promptLabel").textContent = "CHECK-IN COMPLETE";
+  input.placeholder = "You did it! 🎉";
+  input.disabled = true;
+  sendButton.disabled = true;
+  document.getElementById("inputHelper").textContent = "Use “Start over” whenever you want to make a new plan.";
+  document.getElementById("statusPill").textContent = "Complete";
+  document.getElementById("progressText").textContent = `${questions.length} of ${questions.length}`;
+  document.getElementById("progressBar").style.width = "100%";
+  finished = true;
+}
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  if (finished) return;
+  const q = questions[step];
+  const raw = input.value.trim();
+  if (!raw) { input.focus(); return; }
+  if (q.type === "number" && (!Number.isFinite(Number(raw)) || Number(raw) < 0)) {
+    addMessage("Let's use a number of $0 or more for this one. You can always adjust it later. 💚");
+    input.focus();
+    return;
+  }
+  answers[q.key] = q.type === "number" ? Number(raw) : raw;
+  addMessage(q.type === "number" ? money(answers[q.key]) : answers[q.key], "user");
+  updateSnapshot();
+  addMessage(q.reply(answers[q.key]));
+  step++;
+  if (step >= questions.length) {
+    updateSnapshot();
+    finishBudget();
+  } else {
+    currentQuestion();
+  }
+});
+document.getElementById("skipButton").addEventListener("click", function() {
+  if (finished || step === 0 || questions[step].type !== "number") {
+    addMessage("For the name field, type what you'd like me to call you. For money fields, you can use $0 if they don't apply.");
+    return;
+  }
+  input.value = "0";
+  form.requestSubmit();
+});
+document.getElementById("restartButton").addEventListener("click", function() {
+  answers = {};
+  step = 0;
+  finished = false;
+  stream.innerHTML = "";
+  input.disabled = false;
+  sendButton.disabled = false;
+  addMessage("Fresh start! 🌱 No judgment, no pressure. We'll take it one question at a time.");
+  addMessage("What should I call you?");
+  updateSnapshot();
+  currentQuestion();
+});
+updateSnapshot();
+currentQuestion();
+</script>
 </body>
 </html>

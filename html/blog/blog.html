@@ -1,45 +1,284 @@
 <!DOCTYPE html>
-<!-- File Declaration -->
 <html lang="en">
-<!-- Original Language -->
 <head>
-    <meta charset="UTF-8">
-    <!-- Make sure all characters are displayed correctly -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Responsiveness for phones  -->
-    <title>📝💬Blog💬📝</title>
-    <!-- Browser Tab Text -->
-    <link rel="stylesheet" href="../../css_ALL.css" type="text/css">
-    <!-- Link to css  -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom google font -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain Dump Blog | Life Lounge</title>
+<style>
+:root{
+  --ink:#30264a;--muted:#756b8b;--purple:#7657d5;--pink:#f58bb8;--blue:#72b9f5;
+  --yellow:#ffd76d;--mint:#8de2c0;--paper:#fffdfb;--line:#eee7f8;
+  --shadow:0 14px 38px rgba(69,45,111,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;
+ background:radial-gradient(circle at 7% 5%,#f8d9eb 0,transparent 26rem),
+ radial-gradient(circle at 94% 12%,#d9edff 0,transparent 29rem),
+ linear-gradient(145deg,#f8f4ff,#fff8f1 60%,#f1fbff);min-height:100vh}
+a{color:inherit}
+.site-header{padding:22px clamp(16px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-weight:900;letter-spacing:.02em;font-size:1.15rem}.brand span{color:var(--purple)}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav a{text-decoration:none;padding:9px 12px;border-radius:999px;font-size:.9rem;font-weight:700;color:#665879}
+nav a:hover,nav a[aria-current="page"]{background:#fff;box-shadow:0 4px 16px #7860a51a;color:var(--purple)}
+main{width:min(1180px,92vw);margin:0 auto 60px}
+.hero{text-align:center;padding:24px 12px 28px;position:relative}
+.hero .eyebrow{display:inline-block;background:#fff;border:1px solid #eee4ff;color:var(--purple);padding:7px 13px;border-radius:999px;font-size:.8rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+h1{font-size:clamp(2.3rem,6vw,4.4rem);line-height:1.04;margin:17px 0 12px;letter-spacing:-.055em}
+.hero p{max-width:650px;margin:0 auto;color:var(--muted);font-size:1.07rem;line-height:1.7}
+.floaties{font-size:1.7rem;position:absolute;opacity:.8;animation:bob 4s ease-in-out infinite;pointer-events:none}
+.f1{left:7%;top:34px}.f2{right:8%;top:15px;animation-delay:.7s}.f3{right:15%;bottom:8px;animation-delay:1.4s}.f4{left:16%;bottom:4px;animation-delay:2s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-10px) rotate(7deg)}}
+.layout{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);gap:20px;align-items:start}
+.panel{background:rgba(255,255,255,.9);border:1px solid #fff;border-radius:26px;padding:clamp(18px,3vw,28px);box-shadow:var(--shadow);backdrop-filter:blur(8px)}
+.panel h2{font-size:1.25rem;margin:0 0 7px;letter-spacing:-.02em}
+.sub{margin:0 0 18px;color:var(--muted);font-size:.93rem;line-height:1.55}
+textarea{width:100%;min-height:205px;resize:vertical;border:2px solid #eee5fa;border-radius:18px;padding:17px;background:#fffdff;color:var(--ink);font:inherit;line-height:1.65;outline:none;transition:.2s}
+textarea:focus{border-color:#b5a0f1;box-shadow:0 0 0 4px #b5a0f126}
+textarea::placeholder{color:#b0a6c2}
+.entry-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin:9px 2px 15px;color:var(--muted);font-size:.82rem}
+.word-count strong{color:var(--purple)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border:0;border-radius:14px;padding:12px 16px;font-weight:850;transition:transform .15s,box-shadow .15s}
+button:hover{transform:translateY(-2px)}
+button:focus-visible,a:focus-visible{outline:3px solid #9b82ed;outline-offset:3px}
+.primary{background:linear-gradient(120deg,#7b5be0,#a17bea);color:#fff;box-shadow:0 8px 18px #8667d42e;flex:1}
+.secondary{background:#f2edff;color:#6b4dc3}.quiet{background:#fff2f7;color:#a94b7b}
+.privacy{display:flex;gap:9px;align-items:flex-start;margin-top:15px;color:var(--muted);font-size:.8rem;line-height:1.5}
+.privacy span:first-child{font-size:1.05rem}
+.dash-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:5px;background:#f0fbf6;color:#3c8c6d;border-radius:999px;padding:6px 9px;font-size:.74rem;font-weight:900;white-space:nowrap}
+.big-theme{margin:17px 0;background:linear-gradient(130deg,#f4eaff,#fff0f7);border-radius:20px;padding:18px;position:relative;overflow:hidden}
+.big-theme:after{content:"✦";position:absolute;right:15px;top:5px;font-size:3.4rem;color:#d5b9f6;opacity:.7}
+.big-theme small{color:#79678e;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.big-theme strong{display:block;font-size:1.4rem;margin-top:7px;max-width:85%}
+.bubble-area{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;min-height:150px;padding:10px 0 16px}
+.bubble{border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding:10px;min-width:78px;min-height:78px;aspect-ratio:1;border:2px solid #ffffffb8;box-shadow:0 7px 18px #43325b12;cursor:pointer;overflow-wrap:anywhere}
+.bubble strong{font-size:.83rem}.bubble small{font-size:.72rem;opacity:.8;margin-top:3px}
+.bubble:hover{transform:scale(1.05)}
+.chart-title{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:8px 0 12px}
+.chart-title h3{font-size:.95rem;margin:0}
+.category-bars{display:grid;gap:11px}
+.bar-row{display:grid;grid-template-columns:105px 1fr 25px;gap:8px;align-items:center;font-size:.8rem}
+.bar-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#625675}
+.bar-track{height:12px;background:#f1edf7;border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;width:0;border-radius:99px;transition:width .5s ease}
+.bar-num{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.category-section{margin-top:24px}
+.category-list{display:grid;gap:10px}
+.category-card{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:#fff}
+.category-top{display:flex;align-items:center;gap:10px;padding:12px 13px;cursor:pointer;list-style:none}
+.category-top::-webkit-details-marker{display:none}
+.category-emoji{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;font-size:1.15rem;flex-shrink:0}
+.category-title{flex:1;min-width:0}.category-title strong{display:block;font-size:.91rem}.category-title small{color:var(--muted);font-size:.77rem}
+.chev{color:#9b8cad;font-size:1.1rem}
+.category-content{padding:0 13px 14px 59px;color:#655a76;font-size:.88rem;line-height:1.6}
+.category-content p{margin:4px 0 9px;white-space:pre-wrap;overflow-wrap:anywhere}
+.cat-controls{display:flex;gap:7px;flex-wrap:wrap}
+.mini-btn{padding:7px 10px;border-radius:10px;background:#f4f0fb;color:#6e57a5;font-size:.76rem}
+.empty-state{text-align:center;padding:25px 14px;color:var(--muted)}
+.empty-state .emoji{font-size:2rem}.empty-state strong{display:block;color:#625575;margin:8px}
+.word-cloud{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;padding:14px 0}
+.word-chip{border-radius:999px;padding:7px 11px;background:#f1eaff;color:#7258b5;font-weight:800}
+.word-chip:nth-child(3n+2){background:#ffe8f2;color:#a94f7c}.word-chip:nth-child(3n){background:#e4f8f0;color:#41876e}
+.journal{margin-top:20px}
+.journal-tools{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.journal-tools input,.journal-tools select{min-width:0;flex:1;border:1px solid #e8e0f4;border-radius:12px;padding:10px 12px;font:inherit;color:var(--ink);background:#fff}
+.entries{display:grid;gap:10px}
+.entry-card{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
+.entry-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.entry-date{font-size:.75rem;color:var(--muted)}.entry-card p{margin:0;color:#625675;font-size:.88rem;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.entry-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.entry-tag{font-size:.7rem;border-radius:999px;padding:4px 7px;background:#f4efff;color:#7055b7}
+.entry-buttons{display:flex;gap:5px;flex-shrink:0}.entry-buttons button{padding:6px 8px;font-size:.73rem;border-radius:9px}
+.footer{text-align:center;color:#9185a4;font-size:.8rem;padding:30px 10px 0}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#30264a;color:#fff;border-radius:999px;padding:12px 17px;box-shadow:var(--shadow);transition:.25s;z-index:10;font-size:.9rem}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.floaties{opacity:.45}.hero{padding-top:20px}}
+@media(max-width:480px){.site-header{justify-content:center}.brand{width:100%;text-align:center}nav{justify-content:center}.bar-row{grid-template-columns:88px 1fr 20px}.entry-buttons{flex-direction:column}.panel{border-radius:21px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-    <!-- Visible page content -->
-    <h1>📝💬Blog💬📝</h1>
-    <!-- Page Heading -->
+<header class="site-header">
+  <a class="brand" href="../../index.html" style="text-decoration:none">☁️ Life <span>Lounge</span></a>
+  <nav aria-label="Main navigation">
+    <a href="../../index.html">Home</a>
+    <a href="../therapy/badtherapy.html">Bad Therapy</a>
+    <a href="../m8/m8ball.html">Magic 8 Ball</a>
+    <a href="../budget/budget.html">Budget Buddy</a>
+    <a href="../tarot/tarot.html">Tarot</a>
+    <a href="../horror/horror.html">Horror</a>
+    <a href="../relax/relax.html">Relaxing Games</a>
+    <a href="blog.html" aria-current="page">Blog</a>
+  </nav>
+</header>
 
-    <nav class="TopBar">
-        <!-- Navigation Bar -->
-        <a id="Home" href="../../index.html"><h3>🏠👨‍💻 Home 👨‍💻🏠</h3></a>
-        <!-- Homepage link -->
-        <a id="practiceexam" href="../therapy/badtherapy.html"><h3>📝🏫 Bad Therapy 🏫📝</h3></a>
-        <a id="m8ball" href="../m8/m8ball.html"><h3>🔮🎱 Magic 8 Ball 🎱🔮</h3></a>
-        <a id="budget" href="../budget/budget.html"><h3>💸😊 Budget 😊💸</h3></a>
-        <a id="tarot" href="../tarot/tarot.html"><h3>♠️🃏  Tarot Reading 🃏♠️</h3></a>
-        <a id="horror" href="../horror/horror.html"><h3>👹👻 Horror Game 👻👹</h3></a>
-        <a id="relax" href="../relax/relax.html"><h3>🌤️😌Relaxing Games😌🌤️</h3></a>
-        <a id="blog" href="../blog/blog.html"><h3>📝💬Blog💬📝</h3></a>
-        <!-- Link to other HTML pages -->
-    </nav>
-    
-    
+<main>
+  <section class="hero">
+    <span class="floaties f1">💭</span><span class="floaties f2">🌈</span>
+    <span class="floaties f3">✨</span><span class="floaties f4">🦋</span>
+    <span class="eyebrow">A little room for a busy brain</span>
+    <h1>🧠 Brain Dump Blog</h1>
+    <p>Get it out of your head. Big feelings, tiny reminders, wild ideas, future plans, half-formed dreams — it all belongs here. No need to make it make sense first.</p>
+  </section>
+
+  <div class="layout">
+    <section class="panel" aria-labelledby="dump-title">
+      <h2 id="dump-title">✨ What's taking up brain space?</h2>
+      <p class="sub">Type whatever comes to mind. This is your no-judgment zone. Up to 300 words per dump.</p>
+      <textarea id="brainText" maxlength="3000" aria-label="Your brain dump" placeholder="Okay brain, let's empty some tabs...&#10;&#10;I need to remember... I have an idea for... I feel like... What if I tried..."></textarea>
+      <div class="entry-meta">
+        <span class="word-count"><strong id="wordCount">0</strong> / 300 words</span>
+        <span id="charCount">0 characters</span>
+      </div>
+      <div class="actions">
+        <button class="primary" id="sortButton">🪄 Sort my brain</button>
+        <button class="secondary" id="clearInput">Clear text</button>
+      </div>
+      <div class="privacy"><span>🔒</span><span>Your journal is saved in this browser on this device using local storage. It isn't sent to a server. Clearing browser data may erase it, so export a backup if you want to keep it.</span></div>
+    </section>
+
+    <section class="panel" aria-labelledby="today-title">
+      <div class="dash-head">
+        <div><h2 id="today-title">🌈 My Brain Today</h2><p class="sub" style="margin:5px 0 0">A colorful snapshot of this brain dump.</p></div>
+        <span class="pill">✦ No judgment</span>
+      </div>
+      <div id="dashboard">
+        <div class="big-theme"><small>Your brain's headline</small><strong>Waiting for your thoughts...</strong></div>
+        <div class="empty-state"><div class="emoji">🫧</div><strong>Your thoughts will show up here.</strong>Write a brain dump and tap “Sort my brain.”</div>
+      </div>
+    </section>
+  </div>
+
+  <section class="panel category-section" id="sortedSection" aria-labelledby="sorted-title">
+    <h2 id="sorted-title">🗂️ Your thoughts, sorted-ish</h2>
+    <p class="sub">The blog uses simple keyword matching to suggest categories. Expand a card to see the matching text, then change its category if the guess is off.</p>
+    <div id="categories" class="category-list">
+      <div class="empty-state"><div class="emoji">🧩</div><strong>No categories yet</strong>Your first brain dump will appear here.</div>
+    </div>
+  </section>
+
+  <section class="panel journal" aria-labelledby="journal-title">
+    <div class="dash-head">
+      <div><h2 id="journal-title">📚 Thought Journal</h2><p class="sub" style="margin:5px 0 0">Your saved brain dumps, ready for a future-you check-in.</p></div>
+      <span class="pill" id="entryCount">0 entries</span>
+    </div>
+    <div class="journal-tools">
+      <input id="journalSearch" type="search" placeholder="🔎 Search your journal..." aria-label="Search journal">
+      <select id="journalFilter" aria-label="Filter journal by category">
+        <option value="all">All categories</option>
+      </select>
+      <button class="secondary" id="exportButton">⬇️ Export</button>
+    </div>
+    <div id="entries" class="entries"><div class="empty-state"><div class="emoji">📖</div><strong>Your journal starts here.</strong>Sort a brain dump to save your first entry.</div></div>
+  </section>
+  <div class="footer">Made for the beautifully messy human brain. 💜 · Life Lounge</div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  "use strict";
+  const STORAGE_KEY = "lifeLoungeBrainDumpJournal_v1";
+  const MAX_WORDS = 300;
+  const palette = {
+    "Ideas & creativity": {emoji:"💡",color:"#f7c84d",bg:"#fff6d8",keys:["idea","ideas","create","creative","story","game","art","animation","design","imagine","invent","write","project","concept","what if"]},
+    "Goals & growth": {emoji:"🌱",color:"#72c99e",bg:"#e7f8ef",keys:["goal","goals","learn","practice","improve","grow","growth","skill","progress","habit","future","become","want to","achieve","plan to"]},
+    "Reminders & tasks": {emoji:"📌",color:"#70b7ee",bg:"#e8f5ff",keys:["remember","remind","need to","have to","must","appointment","email","call","buy","pick up","laundry","clean","schedule","deadline","don't forget","due"]},
+    "Feelings & mood": {emoji:"💗",color:"#f28bb5",bg:"#ffedf5",keys:["feel","feeling","happy","sad","angry","mad","anxious","anxiety","excited","tired","overwhelmed","upset","lonely","proud","scared","worried","stress","stressed","frustrated","love","hate"]},
+    "People & relationships": {emoji:"🫶",color:"#bb91ec",bg:"#f3eaff",keys:["friend","friends","family","sister","brother","mom","mother","dad","father","partner","relationship","people","they said","he said","she said","talk to","together"]},
+    "Work & school": {emoji:"💻",color:"#7f9df3",bg:"#edf0ff",keys:["work","job","career","boss","coworker","interview","resume","school","class","teacher","study","assignment","project at work","application","meeting","office"]},
+    "Money & security": {emoji:"💰",color:"#e9b74d",bg:"#fff4d9",keys:["money","budget","pay","paid","bill","bills","rent","save","saving","spend","expensive","car","income","debt","financial","afford","salary"]},
+    "Needs & boundaries": {emoji:"🛟",color:"#57c6c4",bg:"#e4f9f7",keys:["need space","boundary","boundaries","rest","break","alone","privacy","say no","can't","cannot","shouldn't","protect","limit","quiet","help me","support"]},
+    "Random thoughts": {emoji:"🪐",color:"#a6a0b3",bg:"#f2f0f6",keys:[]}
+  };
+  const $ = id => document.getElementById(id);
+  const textArea = $("brainText");
+  let currentDump = null;
+  let currentParts = [];
+  let toastTimer;
+  const countWords = text => (text.trim().match(/\S+/g) || []).length;
+  const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const safeDate = value => { const d = new Date(value); return Number.isNaN(d.getTime()) ? new Date() : d; };
+  const formatDate = value => safeDate(value).toLocaleString(undefined,{month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"});
+  function showToast(message){$("toast").textContent=message;$("toast").classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").classList.remove("show"),2300);}
+  function loadEntries(){try{const data=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");return Array.isArray(data)?data:[]}catch(e){return[]}}
+  function persistEntries(entries){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(entries));return true}catch(e){showToast("Browser storage is full or unavailable. Export your journal to keep a backup.");return false}}
+  function updateCounter(){const n=countWords(textArea.value);$("wordCount").textContent=n;$("charCount").textContent=textArea.value.length+" characters";$("wordCount").style.color=n>MAX_WORDS?"#d94874":"var(--purple)";}
+  function classify(text){
+    const lower=text.toLowerCase();const parts=[];let matchedPositions=[];
+    const sentences=text.match(/[^.!?\n]+(?:[.!?]+|$)|[^\n]+/g)||[text];
+    const cleanSentences=sentences.map(s=>s.trim()).filter(Boolean);
+    cleanSentences.forEach(sentence=>{
+      const s=sentence.toLowerCase();let best=null,bestScore=0;
+      for(const [name,meta] of Object.entries(palette)){
+        if(name==="Random thoughts")continue;
+        let score=0;
+        meta.keys.forEach(key=>{const escaped=key.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");const re=new RegExp("\\b"+escaped+"\\b","gi");const matches=s.match(re);if(matches)score+=matches.length*(key.includes(" ")?1.4:1)});
+        if(score>bestScore){bestScore=score;best=name}
+      }
+      const category=bestScore>0?best:"Random thoughts";
+      parts.push({text:sentence,category});
+    });
+    // If a thought is too short or has no obvious keywords, it safely lands in Random thoughts.
+    return parts;
+  }
+  function headline(parts){
+    if(!parts.length)return "Waiting for your thoughts...";
+    const counts={};parts.forEach(p=>counts[p.category]=(counts[p.category]||0)+1);
+    const top=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
+    const headlines={"Ideas & creativity":"Ideas are bubbling up 💡","Goals & growth":"Growing, one thought at a time 🌱","Reminders & tasks":"A few tabs need your attention 📌","Feelings & mood":"Feelings are asking for space 💗","People & relationships":"People are on your mind 🫶","Work & school":"Work mode is taking up space 💻","Money & security":"Thinking about stability 💰","Needs & boundaries":"Your needs deserve a spot 🛟","Random thoughts":"A little bit of everything 🪐"};
+    return headlines[top]||"A little bit of everything 🪐";
+  }
+  function wordFrequency(text){
+    const stop=new Set(("about after again all also and are because been before being but can could did does doing down each for from get got had has have having her here him his how into its just like make many may more most much need not now off one only other our out over really said see she should some something still such than that the their them then there these they thing think this those through time too want was way well were what when where which who why will with would you your i'm ive dont can't").split(" "));
+    const freq={};(text.toLowerCase().match(/[a-z']{3,}/g)||[]).forEach(w=>{if(!stop.has(w))freq[w]=(freq[w]||0)+1});
+    return Object.entries(freq).filter(([,n])=>n>1).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  }
+  function renderDashboard(parts, text){
+    const counts={};parts.forEach(p=>counts[p.category]=(counts[p.category]||0)+1);
+    const ordered=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+    if(!parts.length){$("dashboard").innerHTML='<div class="big-theme"><small>Your brain&#39;s headline</small><strong>Waiting for your thoughts...</strong></div><div class="empty-state"><div class="emoji">🫧</div><strong>Your thoughts will show up here.</strong>Write a brain dump and tap “Sort my brain.”</div>';return;}
+    const top=ordered[0][0];const max=ordered[0][1];
+    const bubbles=ordered.map(([name,n])=>{const m=palette[name];const size=Math.min(142,Math.max(78,68+n/max*65));return `<button class="bubble" data-category="${escapeHTML(name)}" style="width:${size}px;background:${m.bg};color:#49385d;border-color:${m.color}66" title="Show ${escapeHTML(name)} thoughts"><strong>${m.emoji} ${escapeHTML(name.replace(/ &.*/,""))}</strong><small>${n} thought${n===1?"":"s"}</small></button>`}).join("");
+    const bars=ordered.map(([name,n])=>{const m=palette[name];return `<div class="bar-row"><span class="bar-label" title="${escapeHTML(name)}">${m.emoji} ${escapeHTML(name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/max*100)}%;background:${m.color}"></div></div><span class="bar-num">${n}</span></div>`}).join("");
+    const words=wordFrequency(text);const cloud=words.length?words.map(([w,n])=>`<span class="word-chip" style="font-size:${Math.min(1.35,.82+n*.09)}rem">${escapeHTML(w)} <small>×${n}</small></span>`).join(""):'<span style="color:var(--muted);font-size:.85rem">Repeated words will appear here when you use them.</span>';
+    $("dashboard").innerHTML=`<div class="big-theme"><small>Your brain's headline</small><strong>${escapeHTML(headline(parts))}</strong></div><div class="bubble-area" aria-label="Thought category bubbles">${bubbles}</div><div class="chart-title"><h3>📊 Thought breakdown</h3><span style="font-size:.76rem;color:var(--muted)">${parts.length} thought${parts.length===1?"":"s"}</span></div><div class="category-bars">${bars}</div><div class="category-section"><div class="chart-title"><h3>☁️ Words that came up more than once</h3></div><div class="word-cloud">${cloud}</div></div>`;
+    $("dashboard").querySelectorAll("[data-category]").forEach(btn=>btn.addEventListener("click",()=>{const name=btn.dataset.category;const details=[...$("categories").querySelectorAll("details")].find(d=>d.dataset.category===name);if(details){details.open=true;details.scrollIntoView({behavior:"smooth",block:"center"})}}));
+  }
+  function renderCategories(parts){
+    if(!parts.length){$("categories").innerHTML='<div class="empty-state"><div class="emoji">🧩</div><strong>No categories yet</strong>Your first brain dump will appear here.</div>';return;}
+    const grouped={};parts.forEach((p,i)=>{(grouped[p.category]??=[]).push({...p,index:i})});
+    $("categories").innerHTML=Object.entries(grouped).map(([name,items])=>{const m=palette[name];return `<details class="category-card" data-category="${escapeHTML(name)}" open><summary class="category-top"><span class="category-emoji" style="background:${m.bg}">${m.emoji}</span><span class="category-title"><strong>${escapeHTML(name)}</strong><small>${items.length} thought${items.length===1?"":"s"}</small></span><span class="chev">⌄</span></summary><div class="category-content">${items.map(item=>`<div class="thought-line" data-index="${item.index}"><p>${escapeHTML(item.text)}</p><div class="cat-controls"><label class="sr-only" for="cat-${item.index}">Change category</label><select id="cat-${item.index}" class="category-select" data-index="${item.index}" aria-label="Change category for thought" style="max-width:220px;border:1px solid #e9e0f3;border-radius:9px;padding:7px;color:var(--ink);background:#fff;font:inherit;font-size:.78rem">${Object.keys(palette).map(cat=>`<option value="${escapeHTML(cat)}" ${cat===item.category?"selected":""}>${palette[cat].emoji} ${escapeHTML(cat)}</option>`).join("")}</select></div></div>`).join("")}</div></details>`}).join("");
+    $("categories").querySelectorAll(".category-select").forEach(select=>select.addEventListener("change",()=>{const idx=Number(select.dataset.index);currentParts[idx].category=select.value;renderCategories(currentParts);renderDashboard(currentParts,currentDump.text);}));
+  }
+  function updateFilter(){const select=$("journalFilter");const current=select.value;select.innerHTML='<option value="all">All categories</option>'+Object.keys(palette).map(c=>`<option value="${escapeHTML(c)}">${palette[c].emoji} ${escapeHTML(c)}</option>`).join("");if([...select.options].some(o=>o.value===current))select.value=current;}
+  function renderJournal(){
+    const entries=loadEntries();$("entryCount").textContent=entries.length+" entr"+(entries.length===1?"y":"ies");updateFilter();
+    const q=$("journalSearch").value.trim().toLowerCase(),filter=$("journalFilter").value;
+    const filtered=entries.filter(e=>(!q||e.text.toLowerCase().includes(q))&&(filter==="all"||(e.parts||[]).some(p=>p.category===filter)));
+    if(!filtered.length){$("entries").innerHTML=entries.length?'<div class="empty-state"><div class="emoji">🔎</div><strong>No matching entries.</strong>Try another search or category.</div>':'<div class="empty-state"><div class="emoji">📖</div><strong>Your journal starts here.</strong>Sort a brain dump to save your first entry.</div>';return;}
+    $("entries").innerHTML=filtered.map(e=>{const cats=[...new Set((e.parts||[]).map(p=>p.category))];return `<article class="entry-card"><div class="entry-card-head"><div><strong>📝 Brain dump</strong><div class="entry-date">${escapeHTML(formatDate(e.createdAt))}</div></div><div class="entry-buttons"><button class="secondary" data-load="${escapeHTML(e.id)}">Edit / reuse</button><button class="quiet" data-delete="${escapeHTML(e.id)}" aria-label="Delete entry">Delete</button></div></div><p>${escapeHTML(e.text)}</p><div class="entry-tags">${cats.map(c=>`<span class="entry-tag">${palette[c]?.emoji||"🪐"} ${escapeHTML(c)}</span>`).join("")}</div></article>`}).join("");
+    $("entries").querySelectorAll("[data-load]").forEach(btn=>btn.addEventListener("click",()=>{const e=loadEntries().find(x=>x.id===btn.dataset.load);if(!e)return;textArea.value=e.text;updateCounter();currentDump=e;currentParts=JSON.parse(JSON.stringify(e.parts||classify(e.text)));renderCategories(currentParts);renderDashboard(currentParts,e.text);$("dump-title").scrollIntoView({behavior:"smooth",block:"start"});showToast("Loaded into the editor — your saved entry is still in the journal.");}));
+    $("entries").querySelectorAll("[data-delete]").forEach(btn=>btn.addEventListener("click",()=>{if(!confirm("Delete this brain dump from your journal? This can't be undone."))return;persistEntries(loadEntries().filter(e=>e.id!==btn.dataset.delete));renderJournal();showToast("Entry deleted.");}));
+  }
+  function sortAndSave(){
+    const text=textArea.value.trim();if(!text){showToast("Your brain dump box is empty — add a thought first.");textArea.focus();return;}
+    const words=countWords(text);if(words>MAX_WORDS){showToast("That dump is over 300 words. Trim it a little first.");return;}
+    currentParts=classify(text);
+    const entry={id:currentDump?.text===text?currentDump.id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()),createdAt:currentDump?.text===text?currentDump.createdAt:new Date().toISOString(),text,parts:JSON.parse(JSON.stringify(currentParts))};
+    const entries=loadEntries();const index=entries.findIndex(e=>e.id===entry.id);if(index>=0)entries[index]=entry;else entries.unshift(entry);
+    currentDump=entry;renderCategories(currentParts);renderDashboard(currentParts,text);persistEntries(entries);renderJournal();showToast(index>=0?"Journal entry updated!":"Brain dump sorted and saved! 💜");
+  }
+  textArea.addEventListener("input",updateCounter);
+  $("sortButton").addEventListener("click",sortAndSave);
+  $("clearInput").addEventListener("click",()=>{if(textArea.value.trim()&&!confirm("Clear the text in the editor? Saved journal entries won't be deleted."))return;textArea.value="";currentDump=null;currentParts=[];updateCounter();renderCategories([]);renderDashboard([], "");showToast("Fresh page, fresh brain space.");});
+  $("journalSearch").addEventListener("input",renderJournal);
+  $("journalFilter").addEventListener("change",renderJournal);
+  $("exportButton").addEventListener("click",()=>{const entries=loadEntries();if(!entries.length){showToast("Your journal is empty — nothing to export yet.");return;}const blob=new Blob([JSON.stringify(entries,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="life-lounge-brain-dump-journal.json";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showToast("Journal backup exported! Keep it somewhere safe.");});
+  updateCounter();renderJournal();
+})();
+</script>
 </body>
-
-    <div>
-    <footer>
-      <!-- Back to Home -->
-    <a href="../../index.html" class="back-home">🏠👨‍💻 Home 👨‍💻🏠</a>
-  </footer>
-</div>
 </html>
